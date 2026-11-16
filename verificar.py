@@ -129,10 +129,15 @@ def main() -> int:
     quiz_json = AQUI / "privado" / "quiz_mati.json"
     if quiz_json.exists() and ruta_guion.exists():
         qs = json.loads(quiz_json.read_text(encoding="utf-8"))["preguntas"]
-        lineas_mati = json.loads(ruta_guion.read_text(encoding="utf-8")).get("lineas", {})
-        quitar = lambda s: re.sub(r"\[pausa [^\]]*\]", "", s)  # noqa: E731
-        texto_mati = normalizar(quitar(" ".join(l for ls in lineas_mati.values() for l in ls)))
+        guiones_q = json.loads(ruta_guion.read_text(encoding="utf-8")).get("guiones", {})
+        quitar = lambda s: re.sub(r"\[[^\]]*\]", " ", s)  # noqa: E731
+        its = [it for n in sorted(guiones_q, key=int) for it in guiones_q[n]]
+        # las líneas de cada bloque y, al final, la frase del pase (que se guarda aparte)
+        lineas_de = lambda it: it["lineas"] + ([it["pase"]["frase"]] if it.get("pase") else [])  # noqa: E731
+        texto_todo = normalizar(" ".join(quitar(l) for it in its for l in lineas_de(it)))
+        texto_mati = normalizar(" ".join(quitar(l) for it in its if it["orador"] == "mati" for l in lineas_de(it)))
         por_tipo: dict[str, int] = {}
+        por_tipo_mati: dict[str, int] = {}
         vistos: set[str] = set()
         for q in qs:
             por_tipo[q.get("tipo", "?")] = por_tipo.get(q.get("tipo", "?"), 0) + 1
@@ -149,11 +154,17 @@ def main() -> int:
                 errores.append(f"{q.get('id')}: una opción múltiple lleva 4 opciones distintas y el índice de la correcta")
             if q.get("tipo") == "completar" and (q.get("texto", "").count("___") != 1 or not q.get("respuestas")):
                 errores.append(f"{q.get('id')}: completar lleva un solo «___» y las respuestas aceptadas")
-            for trozo in q.get("guion", "").split(" … "):
-                if trozo and normalizar(quitar(trozo)) not in texto_mati:
-                    errores.append(f"{q.get('id')}: esta frase no está en el guion de Mati: «{trozo}»")
-        if set(por_tipo) != {"vf", "completar", "mc"} or min(por_tipo.values()) < 10:
-            errores.append(f"El juego necesita al menos 10 preguntas de cada tipo (verdadero o falso, completar y opción múltiple): {por_tipo}")
+            piezas = [x for x in q.get("guion", "").split(" … ") if x]
+            for trozo in piezas:
+                if normalizar(quitar(trozo)) not in texto_todo:
+                    errores.append(f"{q.get('id')}: esta frase no está en el guion: «{trozo}»")
+            if piezas and normalizar(quitar(piezas[0])) in texto_mati:
+                por_tipo_mati[q.get("tipo", "?")] = por_tipo_mati.get(q.get("tipo", "?"), 0) + 1
+        tipos = {"vf", "completar", "mc"}
+        if set(por_tipo) != tipos or min(por_tipo.values()) < 20:
+            errores.append(f"«Todo el trabajo» necesita al menos 20 preguntas de cada tipo (verdadero o falso, completar y opción múltiple): {por_tipo}")
+        if set(por_tipo_mati) != tipos or min(por_tipo_mati.values()) < 10:
+            errores.append(f"«Mi parte» necesita al menos 10 preguntas de cada tipo con frases de Mati: {por_tipo_mati}")
         html_juego = (AQUI / "index.html").read_text(encoding="utf-8") if (AQUI / "index.html").exists() else ""
         if html_juego:
             m = re.search(r'id="quiz-cifrado">(.*?)</script>', html_juego, re.S)
@@ -163,7 +174,7 @@ def main() -> int:
             for marca in ('"respuestas"', '"correcta"', '"explicacion"', '"opciones"'):
                 if marca in html_juego:
                     errores.append(f"index.html tiene {marca} en texto plano: el juego no está cifrado")
-        print(f"Juego: {len(qs)} preguntas {por_tipo}, todas con frase de su guion")
+        print(f"Juego: {len(qs)} preguntas en total {por_tipo}; de Mati {por_tipo_mati}; todas con frase real del guion")
     else:
         avisos.append("No está privado/quiz_mati.json (no se pudo comprobar el juego)")
 

@@ -17,6 +17,7 @@ vista. El cifrado necesita Playwright con Chromium (cifra con la misma WebCrypto
 from __future__ import annotations
 
 import argparse
+import base64
 import json
 import re
 import sys
@@ -88,6 +89,7 @@ def main() -> None:
             .replace("/*CSS*/", (AQUI / "src" / "estilos.css").read_text(encoding="utf-8"))
             .replace("/*DATOS*/", en_script(json.dumps(datos, ensure_ascii=False, separators=(",", ":"))))
             .replace("/*QUIZ*/", en_script(cifrado))
+            .replace("/*EMOJI_LECHUZA*/", "data:image/png;base64," + base64.b64encode((AQUI / "src" / "emoji-lechuza.png").read_bytes()).decode())
             .replace("/*CODIGO*/", (AQUI / "src" / "codigo-casillas.js").read_text(encoding="utf-8"))
             .replace("/*JUEGO*/", (AQUI / "src" / "juego.js").read_text(encoding="utf-8"))
             .replace("/*APP*/", (AQUI / "src" / "app.js").read_text(encoding="utf-8")))

@@ -12,7 +12,7 @@ Material de estudio del Grupo 1 para exponer el trabajo práctico [«¿El bono a
 - **Cada idea viene explicada:** cada sala dice qué es ese cuarto y cada estación traduce la imagen en un «(De qué se trata: …)», sin ambigüedades.
 - **Al lado de cada sala, y también en la historia completa, el guion exacto** de lo que dice cada persona en la exposición (con los números ya reemplazados), para comparar con la historia del palacio. Lo de Mati va en violeta.
 
-- **Un juego para practicar tu parte** (el botón de la lechuza 🦉 en el header, con un código): 36 preguntas sacadas solo del guion de Mati, de verdadero o falso, completar escribiendo y opción múltiple. Cada respuesta muestra la frase exacta del guion. Las preguntas viajan cifradas.
+- **Un juego para practicar el guion** (el botón de la lechuza en el header, con el emoji de Apple como imagen, y un código), con verdadero o falso, completar escribiendo y opción múltiple. Tiene dos secciones: **Mi parte** (36 preguntas con lo que dice Mati) y **Todo el trabajo** (100 preguntas con el guion entero de los cinco, como si tuviera que presentar todo: qué métodos se usaron, para qué, por qué y qué dio cada uno), con un modo **En orden de la exposición**. Cada respuesta muestra la frase exacta del guion, quién la dice y un link a la sala del palacio. Las preguntas viajan cifradas.
 
 ## Cómo estudiar
 
@@ -57,4 +57,4 @@ Las preguntas del juego van cifradas con un código de 3 dígitos (no es segurid
 
 No hay cuentas, cookies ni analítica. El progreso («Lo sé») se guarda en el navegador de cada persona y se borra con el botón del pie de página.
 
-Los datos originales pertenecen a Data912 y al INDEC (vía datos.gob.ar).
+Los datos originales pertenecen a Data912 y al INDEC (vía datos.gob.ar). El emoji de la lechuza es de Apple (© Apple), usado como imagen (`src/emoji-lechuza.png`, 80 px, bajado del CDN de Emojipedia).
