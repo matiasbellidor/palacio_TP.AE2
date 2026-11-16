@@ -1,0 +1,283 @@
+{
+ "titulo": "Tu guion textual, Mati",
+ "lineas": {
+  "r4-1": [
+   "Gracias, Luka. Usamos dos fuentes públicas."
+  ],
+  "r4-2": [
+   "Para el bono, los precios de cierre diarios del AL30D en dólares, de Data912. Con ellos armamos la variación de cada mes."
+  ],
+  "r4-3": [
+   "Para la economía, el PBI real del INDEC."
+  ],
+  "r4-4": [
+   "Y acá apareció el problema: **el INDEC lo publica cada tres meses, y el bono cotiza todos los días.** [pausa 1 s]"
+  ],
+  "r4-5": [
+   "Lo resolvimos en dos pasos. Primero le sacamos la estacionalidad, con un método que se llama STL."
+  ],
+  "r4-6": [
+   "Después lo pasamos a meses con un spline cúbico, que es una curva suave que respeta el dato de cada trimestre."
+  ],
+  "r4-7": [
+   "Así llegamos a **56 meses, de octubre de 2021 a mayo de 2026.** La consigna pide al menos 50 observaciones; por eso la muestra principal es mensual. [pausa 1 s]"
+  ],
+  "r5-1": [
+   "Estas son las dos series. Arriba, la variación mensual del bono: azul cuando sube, naranja cuando baja."
+  ],
+  "r5-2": [
+   "Abajo, la del PBI."
+  ],
+  "r5-3": [
+   "[pausa 1 s] **Miren la escala: el bono se mueve decenas de puntos en un mes, y el PBI uno o dos como mucho.**"
+  ],
+  "r5-4": [
+   "Algo más del método: qué bono usar, qué período y qué pruebas lo dejamos escrito antes de calcular un solo p-valor, para que el resultado no se acomode a lo que queríamos encontrar. [pausa 1 s]"
+  ],
+  "r5-5": [
+   "«Con los datos armados, Manu les cuenta qué estimamos.»"
+  ]
+ },
+ "guiones": {
+  "1": [
+   {
+    "orador": "todos",
+    "etiqueta": "Todos",
+    "tema": "Saludo",
+    "tiempo": "0:00 a 0:10 · 10 s",
+    "como": "Los cinco de frente al público, a la vez. Después de la pausa, Luka da un paso adelante.",
+    "lineas": [
+     "[público] «¡Hola!» [pausa 1s]"
+    ],
+    "pase": null
+   },
+   {
+    "orador": "luka",
+    "etiqueta": "Luka",
+    "tema": "Presentación inicial e hipótesis principal",
+    "tiempo": "0:10 a 0:40 · 30 s",
+    "como": "Tono de charla. La pregunta se dice mirando al público, no a la pantalla.",
+    "lineas": [
+     "[señalá «El grupo»] Somos el Grupo 1: María Victoria, Mati, Meli, Manu y yo, Luka.",
+     "[público] Les traemos una pregunta simple. **Cuando la economía argentina crece, ¿el bono AL30D sube?** [pausa 2s]",
+     "[señalá «La pregunta del trabajo»] El AL30D es deuda del Estado en dólares y vence en 2030. Si al país le va bien, uno esperaría que el mercado confíe más en que el Estado va a pagar."
+    ],
+    "pase": null
+   }
+  ],
+  "2": [
+   {
+    "orador": "luka",
+    "etiqueta": "Luka",
+    "tema": "Presentación inicial e hipótesis principal",
+    "tiempo": "0:40 a 1:30 · 50 s",
+    "como": "Más lento en el modelo. Señalá cada parte a medida que la nombrás.",
+    "lineas": [
+     "[señalá «Las dos variables»] Para ponerlo a prueba usamos dos variables, las dos mes a mes: la variación del precio del AL30D, que es lo que queremos explicar, y la variación del PBI real.",
+     "[lento] El modelo es una recta: la variación del bono es igual a beta cero, más beta uno por la variación del PBI, más un error. **Todo se juega en beta uno, la pendiente.** [pausa 1s]",
+     "[señalá «H₀: β₁ = 0»] La hipótesis nula dice que beta uno vale cero: no hay asociación. La alternativa dice que es distinta de cero, para arriba o para abajo. Trabajamos con un nivel de significación de 0,05.",
+     "[señalá «Asociación, no causalidad»] Medimos asociación, no causalidad: si las dos variables se mueven juntas, no si una mueve a la otra. [pausa 1s]"
+    ],
+    "pase": null
+   }
+  ],
+  "3": [
+   {
+    "orador": "luka",
+    "etiqueta": "Luka",
+    "tema": "Presentación inicial e hipótesis principal",
+    "tiempo": "1:30 a 2:10 · 40 s",
+    "como": "Dejá que miren la figura un segundo antes de hablar.",
+    "lineas": [
+     "[pausa 2s] Así se ve la regresión. [señalá «Cada punto, un mes»] Cada punto es un mes: en el eje horizontal, cuánto varió el PBI; en el vertical, cuánto varió el bono.",
+     "[señalá «La recta, casi plana»] La línea es la recta que mejor ajusta esos 56 puntos. **Fíjense que está casi plana.** [pausa 2s] Si el bono acompañara al PBI, la nube estaría inclinada, para arriba o para abajo, y no lo está.",
+     "Ahora, ¿de dónde salen estos 56 meses?"
+    ],
+    "pase": {
+     "a": "Mati",
+     "frase": "Mati, contales vos."
+    }
+   }
+  ],
+  "4": [
+   {
+    "orador": "mati",
+    "etiqueta": "Mati",
+    "tema": "Metodología y recolección de datos",
+    "tiempo": "2:10 a 3:10 · 60 s",
+    "como": "Contalo como una receta, en orden. Las fuentes, después el problema y al final cómo lo resolvimos.",
+    "lineas": [
+     "Gracias, Luka. Usamos dos fuentes públicas. [señalá «Bono: Data912»] Para el bono, los precios de cierre diarios del AL30D en dólares, de Data912. Con ellos armamos la variación de cada mes.",
+     "[señalá «PBI: INDEC»] Para la economía, el PBI real del INDEC. Y acá apareció el problema: **el INDEC lo publica cada tres meses, y el bono cotiza todos los días.** [pausa 1s]",
+     "Lo resolvimos en dos pasos. Primero le sacamos la estacionalidad, con un método que se llama STL. Después lo pasamos a meses con un spline cúbico, que es una curva suave que respeta el dato de cada trimestre.",
+     "[señalá «La muestra»] Así llegamos a **56 meses, de octubre de 2021 a mayo de 2026.** La consigna pide al menos 50 observaciones; por eso la muestra principal es mensual. [pausa 1s]"
+    ],
+    "pase": null
+   }
+  ],
+  "5": [
+   {
+    "orador": "mati",
+    "etiqueta": "Mati",
+    "tema": "Metodología y recolección de datos",
+    "tiempo": "3:10 a 4:00 · 50 s",
+    "como": "Señalá los dos paneles. Los números de la figura no hace falta leerlos.",
+    "lineas": [
+     "[señalá «Bono: azul sube, naranja baja»] Estas son las dos series. Arriba, la variación mensual del bono: azul cuando sube, naranja cuando baja. [señalá «PBI mensualizado»] Abajo, la del PBI.",
+     "[pausa 1s] **Miren la escala: el bono se mueve decenas de puntos en un mes, y el PBI uno o dos como mucho.**",
+     "Algo más del método: qué bono usar, qué período y qué pruebas lo dejamos escrito antes de calcular un solo p-valor, para que el resultado no se acomode a lo que queríamos encontrar. [pausa 1s]"
+    ],
+    "pase": {
+     "a": "Manu",
+     "frase": "Con los datos armados, Manu les cuenta qué estimamos."
+    }
+   }
+  ],
+  "6": [
+   {
+    "orador": "manu",
+    "etiqueta": "Manu (1/2)",
+    "tema": "Estimador, intervalo de confianza y bondad de ajuste",
+    "tiempo": "4:00 a 4:50 · 50 s",
+    "como": "Tono tranquilo. Los números grandes ya están en pantalla, así que alcanza con decirlos redondeados.",
+    "lineas": [
+     "Gracias, Mati. Arranco por los estimadores. La media de la muestra estima el promedio de cada serie, y el desvío estándar, cuánto se aleja cada mes de ese promedio.",
+     "[señalá «Desvío del bono»] El bono subió en promedio 2,52 % por mes, con un desvío de 12,53 puntos. El intervalo de confianza del 95 % para esa media va de −0,84 a 5,87: incluye el cero. [señalá «Desvío del PBI»] El PBI creció 0,13 % por mes, con un desvío de 0,84. [pausa 1s]",
+     "[señalá «La comparación»] **El bono es unas 15 veces más volátil que el PBI.** Con semejante diferencia ya se intuye que la actividad sola difícilmente explique lo que hace el bono."
+    ],
+    "pase": null
+   }
+  ],
+  "7": [
+   {
+    "orador": "manu",
+    "etiqueta": "Manu (1/2)",
+    "tema": "Estimador, intervalo de confianza y bondad de ajuste",
+    "tiempo": "4:50 a 6:10 · 80 s",
+    "como": "Este es el resultado central. Andá más lento, hacé las pausas y mirá al público cuando digas la conclusión.",
+    "lineas": [
+     "Ahora, la pendiente. [señalá «β₁ estimado»] Con el estimador de mínimos cuadrados, beta uno da 0,0154: por cada punto que crece el PBI, el bono se mueve en promedio 0,0154 puntos, o sea, casi nada.",
+     "[señalá «p-valor»] [lento] El test t da un p-valor de **0,9940**, muy lejos de 0,05. [pausa 2s] [público] No rechazamos la hipótesis nula.",
+     "[señalá «IC 95 %»] El intervalo de confianza del 95 % para beta uno va de −4,06 a 4,09 y **contiene al cero**, que es lo mismo que dice el test."
+    ],
+    "pase": null
+   }
+  ],
+  "9": [
+   {
+    "orador": "manu",
+    "etiqueta": "Manu (1/2)",
+    "tema": "Estimador, intervalo de confianza y bondad de ajuste",
+    "tiempo": "4:50 a 6:10 · 80 s",
+    "como": "",
+    "lineas": [
+     "[señalá «R²»] Para la bondad de ajuste, el R² da 0,0000: el PBI no explica prácticamente nada de lo que hace el bono. También probamos si los datos siguen una Normal, con chi cuadrado y Shapiro-Wilk. El bono tiene meses extremos, de −19,5 % a +39,5 %, pero con 56 observaciones las pruebas sobre la media y la pendiente siguen siendo aproximadamente válidas. [pausa 1s]"
+    ],
+    "pase": {
+     "a": "María",
+     "frase": "¿Y si al modelo le faltaba una variable? María."
+    }
+   }
+  ],
+  "10": [
+   {
+    "orador": "maria",
+    "etiqueta": "María",
+    "tema": "Regresión lineal múltiple y por qué el CCL",
+    "tiempo": "6:10 a 7:40 · 90 s",
+    "como": "Contá el CCL como una decisión del grupo, tomada a propósito y desde el principio.",
+    "lineas": [
+     "Gracias, Manu. El AL30D cotiza en dólares, así que su precio también se mueve con el tipo de cambio. **Si el dólar estaba tapando la relación con el PBI, la regresión simple no la iba a ver.** [pausa 1s]",
+     "Por eso sumamos una segunda variable: la variación del dólar contado con liquidación implícito, el CCL, que sale de comparar el mismo bono en pesos y en dólares cable. La propuso Mati al principio del trabajo, y la dejamos fijada como control antes de ver un solo resultado.",
+     "[señalá «Regresión múltiple con CCL»] Con el CCL adentro del modelo, el PBI sigue sin aparecer: su p-valor es **0,9131**. El modelo completo explica el 3,4 % de la variación del bono, con un p-valor de 0,3975. [pausa 1s]",
+     "Además, las dos variables casi no se mueven juntas (el VIF da 1,01), así que el modelo puede separar lo que aporta cada una."
+    ],
+    "pase": {
+     "a": "Manu",
+     "frase": "Faltaba mirar los datos sin suponer una recta. Manu."
+    }
+   }
+  ],
+  "11": [
+   {
+    "orador": "manu",
+    "etiqueta": "Manu (2/2)",
+    "tema": "ANOVA de un factor",
+    "tiempo": "7:40 a 8:50 · 70 s",
+    "como": "Retomá con energía, que es tu segunda parte. Señalá las filas de la tabla.",
+    "lineas": [
+     "La regresión busca una relación en línea recta; el ANOVA de un factor no necesita esa forma. [señalá «ANOVA por terciles»] Partimos los 56 meses en tres grupos según cuánto creció el PBI (bajo, medio y alto, con un tercio de los meses cada uno) y comparamos la variación media del bono entre los grupos.",
+     "La hipótesis nula es que las tres medias son iguales. [pausa 1s] A simple vista se ven distintas: 3,44 %, 3,34 % y 0,81 %. Pero el F da 0,2581 y el p-valor, **0,7735**. La diferencia entre grupos es chica al lado de lo que varía el bono adentro de cada grupo."
+    ],
+    "pase": null
+   }
+  ],
+  "12": [
+   {
+    "orador": "manu",
+    "etiqueta": "Manu (2/2)",
+    "tema": "ANOVA de un factor",
+    "tiempo": "7:40 a 8:50 · 70 s",
+    "como": "",
+    "lineas": [
+     "[señalá «Diferencia de medias»] Y mirado al revés, separando los meses en que el bono subió de los meses en que bajó, el PBI creció lo mismo: la diferencia es de −0,0112 puntos, con un p-valor de 0,9610. [pausa 2s] [público] **Con ninguna de las herramientas aparece la relación.**"
+    ],
+    "pase": {
+     "a": "Meli",
+     "frase": "Meli cierra con lo que sacamos de todo esto."
+    }
+   }
+  ],
+  "14": [
+   {
+    "orador": "meli",
+    "etiqueta": "Meli",
+    "tema": "Conclusiones y cierre",
+    "tiempo": "8:50 a 9:35 · 45 s",
+    "como": "Contala sin apuro, porque es la pregunta que más probablemente hagan los profes.",
+    "lineas": [
+     "Gracias, Manu. Hubo una excepción, y la mostramos. [señalá «Trimestral: n = 19»] Con los datos trimestrales sin interpolar, que son solo 19, la pendiente sí da significativa: −4,54, con un p-valor de 0,0142. Y con signo negativo.",
+     "[pausa 1s] **No la tomamos como resultado, por dos razones.** Son menos de las 50 observaciones que pide la consigna, y [señalá «Sin ese trimestre»] depende de un solo período: sin el primer trimestre de 2024, el p-valor sube a 0,0527 y deja de ser significativo."
+    ],
+    "pase": null
+   }
+  ],
+  "15": [
+   {
+    "orador": "meli",
+    "etiqueta": "Meli",
+    "tema": "Conclusiones y cierre",
+    "tiempo": "9:35 a 10:10 · 35 s",
+    "como": "Rápido y claro, una tarjeta por límite.",
+    "lineas": [
+     "También tenemos que decir los límites. [señalá «El spline»] El PBI mensual lo construimos con un spline, así que los meses vecinos se parecen por construcción. [señalá «La ventana»] La ventana es corta: menos de cinco años. [señalá «Muchas pruebas»] Y probamos varias especificaciones; con tantas pruebas, alguna puede salir significativa por azar."
+    ],
+    "pase": null
+   },
+   {
+    "orador": "meli",
+    "etiqueta": "Meli",
+    "tema": "Conclusiones y cierre",
+    "tiempo": "10:10 a 10:55 · 45 s",
+    "como": "La frase central va despacio y mirando al público.",
+    "lineas": [
+     "[señalá «La conclusión»] [lento] Entonces, la conclusión. **Entre octubre de 2021 y mayo de 2026, los datos no muestran asociación entre la variación mensual del PBI y la del AL30D.** [pausa 2s]",
+     "[señalá «Cómo leerla»] Ojo con cómo se lee: no rechazar la hipótesis nula no prueba que la relación sea cero. Lo que sí podemos decir es que, si existe, es chica: aun en el extremo del intervalo, un movimiento típico del PBI iría con unos 3,4 puntos de variación del bono, cuando el bono se mueve 12,5 puntos por mes."
+    ],
+    "pase": null
+   },
+   {
+    "orador": "meli",
+    "etiqueta": "Meli",
+    "tema": "Conclusiones y cierre",
+    "tiempo": "10:55 a 11:20 · 25 s",
+    "como": "Cerrá con energía y abrí a preguntas.",
+    "lineas": [
+     "Esto deja preguntas abiertas: [señalá «Otros bonos»] mirar otros bonos de la curva, [señalá «Variables fiscales»] sumar variables fiscales, como las reservas o el resultado primario, [señalá «Más trimestres»] y volver a probar la muestra trimestral cuando haya más trimestres.",
+     "[pausa 1s] [público] Eso es todo. ¡Gracias! ¿Tienen alguna pregunta?"
+    ],
+    "pase": null
+   }
+  ]
+ }
+}

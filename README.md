@@ -10,7 +10,7 @@ Material de estudio del Grupo 1 para exponer el trabajo práctico [«¿El bono a
 - **Personajes que se repiten:** AL (el bono), Don Pibi (el PBI), el Dado (p-valor), la Cinta (intervalo de confianza) y la Cero (H0).
 - **Tres modos por sala:** Recorrido (todo a la vista), Ensayo (las imágenes tapadas hasta que las pedís) e Historia (la sala contada de corrido). Además, una película con las 15 salas encadenadas.
 - **Cada idea viene explicada:** cada sala dice qué es ese cuarto y cada estación traduce la imagen en un «(De qué se trata: …)», sin ambigüedades.
-- **Al lado de cada sala, el guion exacto** de lo que dice cada persona en la exposición (con los números ya reemplazados), para comparar con la historia del palacio. Lo de Mati va en violeta. Se abre con el código del grupo.
+- **Al lado de cada sala, y también en la historia completa, el guion exacto** de lo que dice cada persona en la exposición (con los números ya reemplazados), para comparar con la historia del palacio. Lo de Mati va en violeta.
 
 ## Cómo estudiar
 
@@ -24,21 +24,20 @@ Si tu gimnasio es distinto, cambiá los lugares por los del tuyo: lo único que 
 index.html              página única y autocontenida (sin pedidos externos; funciona sin conexión)
 contenido/meta.json     título, personajes y preguntas frecuentes
 contenido/salas/*.json  una sala por archivo, con sus estaciones
-src/                    plantilla, estilos, lógica y el componente del código de 3 casillas
+src/                    plantilla, estilos y lógica
 build.py                arma index.html
 verificar.py            comprueba los números contra el TP
-tools/cifrar_json.py    cifra el guion textual (AES-GCM; clave PBKDF2 del código)
-privado/                guion textual de Mati: NO está en el repo (.gitignore)
+contenido/guion.json    el guion exacto de cada persona, repartido por sala (lo genera tools/generar_guion.py)
+tools/generar_guion.py  toma el guion del TP y lo reparte entre las salas
 ```
 
 ```bash
-python tools/generar_guion.py --tp ../trabajo_practico_AE2   # reparte el guion exacto del TP entre las salas (privado/)
+python tools/generar_guion.py --tp ../trabajo_practico_AE2   # reparte el guion exacto del TP entre las salas
 python build.py                 # arma index.html
-python build.py --codigo NNN    # además vuelve a cifrar privado/guion_mati.json con ese código de 3 dígitos
 python verificar.py --tp ../trabajo_practico_AE2
 ```
 
-`build.py --codigo` necesita Playwright con Chromium (cifra con la misma WebCrypto que después descifra el navegador). Para verlo en local, `python -m http.server`: WebCrypto no funciona con doble clic sobre el archivo (`file://`).
+Para verlo en local alcanza con abrir `index.html` o correr `python -m http.server`.
 
 ## Los números
 
@@ -46,7 +45,7 @@ python verificar.py --tp ../trabajo_practico_AE2
 
 ## Privacidad
 
-El guion textual no está en el texto de la página: viaja cifrado y se abre con el código del grupo. **No es seguridad fuerte**: con 3 dígitos, alguien con conocimientos técnicos puede probar las 1000 combinaciones. Sirve para que las frases exactas no queden a la vista de cualquiera. El código no figura en ningún archivo del repo y no se recuerda: hay que ponerlo cada vez que se abre la página.
+El guion exacto está a la vista dentro de la página y de este repo: el palacio es material de estudio del grupo y el profesor no tiene el link. Quien encuentre el repo o el link puede leerlo; el guion protegido con código sigue siendo el de la sección Recursos del TP. Si eso cambia, la versión anterior (con el guion cifrado) está en el historial de git (commit `4a681b0`).
 
 No hay cuentas, cookies ni analítica. El progreso («Lo sé») se guarda en el navegador de cada persona y se borra con el botón del pie de página.
 

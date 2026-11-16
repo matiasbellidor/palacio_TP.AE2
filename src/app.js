@@ -1,13 +1,12 @@
-/* Palacio mental del TP AE2: mapa, salas con estaciones, ensayo y guion textual con código.
+/* Palacio mental del TP AE2: mapa, salas con estaciones, ensayo y el guion exacto de cada persona.
    Todo corre en el navegador; el progreso se guarda solo en este dispositivo (localStorage, con respaldo en memoria). */
 (() => {
   "use strict";
   document.documentElement.classList.add("js");
 
   const D = JSON.parse(document.getElementById("datos").textContent);
-  let CIF = null;
-  try { const c = JSON.parse(document.getElementById("guion-cifrado").textContent); CIF = c && c.datos ? c : null; } catch (e) { CIF = null; }
   const SALAS = D.salas, META = D.meta;
+  const GUION = D.guion || { lineas: {}, guiones: {} };  // guion exacto de cada persona, repartido por sala
   /* Una sala puede tener sub-salas (por ejemplo, la 5A: STL); sus estaciones cuentan en el progreso */
   const todasEst = (s) => s.estaciones.concat((s.subsalas || []).flatMap((x) => x.estaciones));
   const TOTAL = SALAS.reduce((a, s) => a + todasEst(s).length, 0);
@@ -39,7 +38,6 @@
   }
 
   /* ── Estado de la vista ── */
-  let guion = null;               // guion textual descifrado (solo en memoria; no se recuerda el código)
   const reveladas = new Set();    // estaciones destapadas en el ensayo
   let modoActual = "recorrido";
 
@@ -105,7 +103,7 @@
   }
 
   /* ── Sala ── */
-  const ICONO_CANDADO = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 11V8a5 5 0 0 1 10 0v3"/><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M12 15v2"/></svg>';
+  const ICONO_GUION = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7"/></svg>';
 
   function dichoHTML(it) {
     const mati = it.orador === "mati";
@@ -116,43 +114,24 @@
       (it.pase ? `<p class="dicho__pase"><b>Pase a ${esc(it.pase.a)}:</b> «${esc(it.pase.frase)}»</p>` : "") + `</section>`;
   }
 
-  /* Panel al lado de cada sala: el guion exacto de cada persona, para comparar con la historia del palacio.
-     El texto viaja cifrado: se abre con el código del grupo y no se recuerda. */
-  function ladoHTML(s) {
-    if (!CIF) return "";
-    if (s.conGuion === false) {
-      return `<aside class="lado lado--vacio" aria-labelledby="lado-t"><h2 id="lado-t" class="lado__t">Guion de la exposición</h2><p>${esc(s.sinGuion || "Esta sala no tiene guion propio.")}</p></aside>`;
-    }
-    if (!guion) {
-      const casillas = [1, 2, 3].map((i) => `<input class="codigo__casilla" id="cod-${i}" data-casilla type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" autocomplete="off" autocorrect="off" spellcheck="false" aria-label="Número ${i} de 3" aria-describedby="cod-ayuda cod-error">`).join("");
-      return `<details class="lado" data-lado open><summary><span class="lado__t">${ICONO_CANDADO}Guion exacto de esta sala</span></summary><div class="lado__cuerpo">` +
-        `<p>Lo que dice cada persona en la exposición, para comparar con la historia del palacio. No está en el texto de la página: se abre con el código del grupo.</p>` +
-        `<form class="codigo" data-codigo novalidate><div class="codigo__cabecera"><label class="codigo__etiqueta" id="cod-et" for="cod-1">Código del grupo</label><span class="codigo__formato" id="cod-fmt">3 números</span></div>` +
-        `<div class="codigo__casillas" role="group" aria-labelledby="cod-et cod-fmt">${casillas}</div>` +
-        `<p class="codigo__ayuda" id="cod-ayuda" data-ayuda>Se abre solo al completar las tres casillas. También podés pegarlo.</p>` +
-        `<p class="codigo__error" id="cod-error" data-error role="alert"></p><button class="codigo__abrir" type="submit" data-abrir>Abrir el guion</button></form></div></details>`;
-    }
-    const items = (guion.guiones || {})[s.n] || [];
-    return `<details class="lado lado--abierto" data-lado open><summary><span class="lado__t">${ICONO_CANDADO}Lo que dicen en la exposición</span></summary><div class="lado__cuerpo">` +
-      (items.length ? items.map(dichoHTML).join("") : "<p>Esta sala no tiene guion propio.</p>") +
-      `<button class="boton" type="button" data-bloquear>Volver a bloquear</button></div></details>`;
+  /* El guion exacto de lo que dice cada persona en esta sala, para comparar con la historia del palacio */
+  function guionDeSala(s) {
+    if (s.conGuion === false) return `<p class="dicho__vacio">${esc(s.sinGuion || "Esta sala no tiene guion propio.")}</p>`;
+    const items = (GUION.guiones || {})[s.n] || [];
+    return items.length ? items.map(dichoHTML).join("") : `<p class="dicho__vacio">Esta sala no tiene guion propio.</p>`;
   }
 
-  function montarCerrojo() {
-    const form = $("[data-codigo]");
-    if (!form || !window.CodigoCasillas) return;
-    CodigoCasillas.montar(form, {
-      verificar: (cod) => CodigoCasillas.descifrar(CIF, cod),
-      alAbrir: (g) => { guion = g; renderSala(leerRuta()); const l = $("[data-lado]"); if (l) { l.open = true; const c = $("summary", l); if (c) c.focus(); } },
-      error: "Ese código no abre el guion. Revisalo con el grupo.",
-    });
+  /* Panel al lado de cada sala (plegable en celular) */
+  function ladoHTML(s) {
+    return `<details class="lado" data-lado open><summary><span class="lado__t">${ICONO_GUION}Lo que dicen en la exposición</span></summary>` +
+      `<div class="lado__cuerpo">${guionDeSala(s)}</div></details>`;
   }
 
   function estHTML(s, e, i, modo) {
     const dice = !!e.dice;
     const sabe = !!memoria[e.id];
-    const priv = dice && guion && guion.lineas && guion.lineas[e.id]
-      ? `<blockquote class="guion"><small>Lo que decís, textual</small>${guion.lineas[e.id].map((l) => `<p>${guionHTML(l)}</p>`).join("")}</blockquote>` : "";
+    const priv = dice && GUION.lineas && GUION.lineas[e.id]
+      ? `<blockquote class="guion"><small>Lo que decís, textual</small>${GUION.lineas[e.id].map((l) => `<p>${guionHTML(l)}</p>`).join("")}</blockquote>` : "";
     const cuerpo = `<p class="est__imagen">${md(e.imagen)}</p>${e.significa ? `<p class="est__sig">(<b>De qué se trata:</b> ${md(e.significa)})</p>` : ""}<p class="est__frase">${esc(e.frase)}</p>` +
       `<div class="est__dato"><b>${dice ? "Qué cubrís vos" : "Qué hay que saber"}</b>${md(e.dato)}</div>${priv}`;
     const acciones = `<div class="est__acciones"><button class="est__sabe" type="button" data-sabe="${e.id}" aria-pressed="${sabe}">Lo sé</button></div>`;
@@ -207,7 +186,6 @@
     modoActual = r.modo;
     main.innerHTML = `<div class="view">${salaHTML(s, r.modo)}</div>`;
     document.title = `Sala ${s.n}: ${s.nombre} · Palacio AE2`;
-    montarCerrojo();
     if (matchMedia("(max-width: 1099px)").matches) { const l = $("[data-lado]"); if (l) l.open = false; }
     if (conFoco) $("[data-foco]").focus({ preventScroll: true });
   }
@@ -225,9 +203,13 @@
   /* ── Historia completa ── */
   function historiaHTML() {
     return `<section class="hero" style="padding-bottom:var(--e4)"><p class="kicker">Historia completa</p><h1>La película de todo el trabajo</h1>` +
-      `<p>Leela de corrido y en voz alta, una vez por día. Es el hilo que une las ${SALAS.length} salas: si la película te sale entera, las estaciones salen solas.</p></section>` +
-      `<div class="historia">${SALAS.map((s) => `<section class="historia-sala${s.tuParte ? " historia-sala--violeta" : ""}"><h2><span>Sala ${s.n} · ${esc(diapoCorta(s))}</span><a href="#/sala/${s.n}" style="color:inherit;text-decoration:none">${esc(s.nombre)}</a></h2>` +
-        `<p>${md(s.historia)}</p>${(s.subsalas || []).map((x) => `<p><strong>Sub-sala ${esc(x.etiqueta)} (${esc(x.nombre)}):</strong> ${md(x.historia)}</p>`).join("")}<p class="puente">${md(s.puerta)}</p></section>`).join("")}</div>`;
+      `<p>Leela de corrido y en voz alta, una vez por día. Es el hilo que une las ${SALAS.length} salas. Al lado de cada sala está el guion exacto de lo que dice cada persona: comparalo con la historia para ver qué parte de lo que hay que decir pasa en cada escena.</p></section>` +
+      `<div class="historia historia--completa">${SALAS.map((s) =>
+        `<section class="historia-sala${s.tuParte ? " historia-sala--violeta" : ""}" aria-labelledby="hs-${s.n}"><div class="historia-sala__texto">` +
+        `<h2 id="hs-${s.n}"><span>Sala ${s.n} · ${esc(diapoCorta(s))}</span><a href="#/sala/${s.n}" style="color:inherit;text-decoration:none">${esc(s.nombre)}</a></h2>` +
+        `<p>${md(s.historia)}</p>${(s.subsalas || []).map((x) => `<p><strong>Sub-sala ${esc(x.etiqueta)} (${esc(x.nombre)}):</strong> ${md(x.historia)}</p>`).join("")}` +
+        `<p class="puente">${md(s.puerta)}</p></div>` +
+        `<div class="historia-sala__guion"><p class="kicker">Guion exacto de esta sala</p>${guionDeSala(s)}</div></section>`).join("")}</div>`;
   }
 
   /* ── Render general ── */
@@ -285,9 +267,6 @@
       if (destino) destino.scrollIntoView({ behavior: reducido ? "instant" : "smooth", block: "start" });
     } else if (b.dataset.modo) {
       cambiarModo(b.dataset.modo);
-    } else if (b.hasAttribute("data-bloquear")) {
-      guion = null;
-      renderSala(leerRuta());
     }
   });
   main.addEventListener("keydown", (e) => {

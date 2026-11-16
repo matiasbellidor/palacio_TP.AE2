@@ -1,6 +1,3 @@
-# Guion textual de Mati: el repo es público y se publica solo cifrado dentro de index.html
-privado/
-
 # Python y verificación local
 __pycache__/
 *.pyc

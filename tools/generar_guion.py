@@ -4,8 +4,8 @@ Uso (con el Python del proyecto del TP, que tiene sus dependencias):
     python tools/generar_guion.py --tp ../trabajo_practico_AE2
 
 Lee guion/guion.yaml del TP (que no está en ningún repo) y outputs/resultados.json, arma el guion con los números ya
-reemplazados (la misma función que usa Recursos) y escribe la parte «guiones» de privado/guion_mati.json, que
-build.py cifra con el código del grupo. Las frases por estación de Mati («lineas») se conservan.
+reemplazados (la misma función que usa Recursos) y escribe la parte «guiones» de contenido/guion.json, que
+build.py incluye en la página (a la vista: el profesor no tiene el link). Las frases por estación de Mati («lineas») se conservan.
 
 Cada sala dice qué pasos del guion le corresponden. Donde dos salas comparten una diapositiva (9 con la 7; 11 y 12 con
 la 8), se reparte por párrafos.
@@ -20,7 +20,7 @@ import sys
 from pathlib import Path
 
 AQUI = Path(__file__).resolve().parent.parent
-DESTINO = AQUI / "privado" / "guion_mati.json"
+DESTINO = AQUI / "contenido" / "guion.json"
 
 # sala -> [(id del bloque, id de la diapositiva, desde el párrafo, hasta el párrafo)]
 SALAS = {
@@ -92,7 +92,6 @@ def main() -> None:
 
     previo = json.loads(DESTINO.read_text(encoding="utf-8")) if DESTINO.exists() else {}
     previo["guiones"] = guiones
-    DESTINO.parent.mkdir(exist_ok=True)
     DESTINO.write_text(json.dumps(previo, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     total = sum(len(i["lineas"]) for v in guiones.values() for i in v)
     print(f"guiones de {len(guiones)} salas, {total} párrafos, duración total {armado['duracion_texto']} → {DESTINO.relative_to(AQUI)}")

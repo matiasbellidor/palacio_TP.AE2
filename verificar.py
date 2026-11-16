@@ -7,9 +7,9 @@ Uso:
    informe del TP. Todo número con coma decimal del campo «dato» también (los datos son exactos; las imágenes pueden
    redondear y solo avisan).
 2. Las salas son consecutivas, los ids no se repiten y cada estación tiene sus campos.
-3. Lo que dice Mati está marcado (dice) y tiene su frase textual en privado/guion_mati.json; cada sala con
-   guion lo tiene en «guiones» (generado con tools/generar_guion.py).
-4. El guion textual NO está en texto plano en index.html (se buscan frases reales, no marcas del intérprete).
+3. Lo que dice Mati está marcado (dice) y tiene su frase textual en contenido/guion.json; cada sala con guion lo
+   tiene en «guiones» (generado con tools/generar_guion.py).
+4. index.html no trae el guion cifrado de la versión anterior (ahora el guion está a la vista).
 """
 
 from __future__ import annotations
@@ -100,34 +100,30 @@ def main() -> int:
                 if n not in corpus:
                     avisos.append(f"{e['id']}: «{n}» (en la imagen) es un redondeo o no está en el TP")
 
-    # Lo que dice Mati
-    priv = AQUI / "privado" / "guion_mati.json"
-    html = (AQUI / "index.html").read_text(encoding="utf-8") if (AQUI / "index.html").exists() else ""
-    if priv.exists():
-        contenido_priv = json.loads(priv.read_text(encoding="utf-8"))
-        lineas = contenido_priv["lineas"]
-        guiones = contenido_priv.get("guiones", {})
+    # Guion exacto de cada persona (contenido/guion.json): repartido entre las salas con guion
+    ruta_guion = AQUI / "contenido" / "guion.json"
+    if not ruta_guion.exists():
+        errores.append("Falta contenido/guion.json (python tools/generar_guion.py --tp <carpeta del TP>)")
+    else:
+        g = json.loads(ruta_guion.read_text(encoding="utf-8"))
+        lineas = g.get("lineas", {})
+        guiones = g.get("guiones", {})
         con_guion = {str(s["n"]) for s in salas if s.get("conGuion")}
         if con_guion != set(guiones):
-            errores.append(f"Las salas con guion y el guion privado no coinciden: {sorted(con_guion ^ set(guiones))}")
+            errores.append(f"Las salas con guion y contenido/guion.json no coinciden: {sorted(con_guion ^ set(guiones))}")
         for n, items in guiones.items():
             for it in items:
-                if not it.get("lineas"):
-                    errores.append(f"Guion de la sala {n}: «{it.get('etiqueta')}» sin líneas")
+                if not it.get("lineas") or not it.get("etiqueta"):
+                    errores.append(f"Guion de la sala {n}: bloque sin etiqueta o sin líneas")
         dicen = {e["id"] for s in salas for e in s["estaciones"] if e.get("dice") and e["id"][:2] in ("r4", "r5")}
         if dicen != set(lineas):
-            errores.append(f"Guion privado y estaciones violetas no coinciden: {sorted(dicen ^ set(lineas))}")
-        plano = normalizar(html)
-        todo = list(lineas.items()) + [(f"sala {n}", it["lineas"]) for n, its in guiones.items() for it in its]
-        for k, ls in todo:
-            for l in ls:
-                limpia = normalizar(re.sub(r"\[pausa [^\]]*\]", "", l))
-                if len(limpia) > 25 and (limpia in plano or " ".join(limpia.split()[:7]) in plano):
-                    errores.append(f"{k}: el guion textual aparece en texto plano en index.html")
-    else:
-        avisos.append("No está privado/guion_mati.json (no se pudo comprobar el guion textual)")
-    if html and '"datos"' not in re.search(r'id="guion-cifrado">(.*?)</script>', html, re.S).group(1):
-        avisos.append("index.html no trae guion cifrado")
+            errores.append(f"Las frases de Mati y las estaciones violetas no coinciden: {sorted(dicen ^ set(lineas))}")
+        html = (AQUI / "index.html").read_text(encoding="utf-8") if (AQUI / "index.html").exists() else ""
+        if html and "guion-cifrado" in html:
+            errores.append("index.html todavía tiene el bloque del guion cifrado")
+        sin_marcas = [n for n, its in guiones.items() for it in its for l in it["lineas"] if re.search(r"\[señalar \d+\]", l)]
+        if sin_marcas:
+            errores.append(f"Marcas «[señalar N]» sin convertir en las salas {sorted(set(sin_marcas))}")
 
     print(f"{len(salas)} salas, {total} estaciones, {len(corpus):,} caracteres de TP leídos".replace(",", "."))
     for av in avisos:
