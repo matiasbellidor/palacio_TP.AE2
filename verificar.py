@@ -24,6 +24,10 @@ CAMPOS = ("id", "lugar", "imagen", "frase", "dato", "cifras")
 DECIMAL = re.compile(r"(?<![\w.])[−+-]?\d{1,3}(?:\.\d{3})*,\d+")
 
 
+def estaciones_de(sala: dict) -> list[dict]:
+    return sala["estaciones"] + [e for x in sala.get("subsalas", []) for e in x["estaciones"]]
+
+
 def normalizar(t: str) -> str:
     return re.sub(r"\s+", " ", t.replace("*", "")).strip().lower()
 
@@ -69,7 +73,11 @@ def main() -> int:
                 errores.append(f"Sala {i}: falta {campo}")
         if i not in (4, 5) and any(e.get("dice") for e in s["estaciones"]) and i != 1:
             errores.append(f"Sala {i}: tiene estaciones que dice Mati y no es la 1, 4 ni 5")
-        for e in s["estaciones"]:
+        for x in s.get("subsalas", []):
+            for campo in ("id", "etiqueta", "nombre", "tema", "lugar", "historia", "puerta", "estaciones"):
+                if not x.get(campo):
+                    errores.append(f"Sala {i}, sub-sala {x.get('id', '?')}: falta {campo}")
+        for e in estaciones_de(s):
             total += 1
             for campo in CAMPOS:
                 if campo not in e:

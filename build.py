@@ -25,13 +25,18 @@ SALIDA = AQUI / "index.html"
 PRIVADO = AQUI / "privado" / "guion_mati.json"
 
 
+def estaciones_de(sala: dict) -> list[dict]:
+    """Las estaciones de la sala y las de sus sub-salas."""
+    return sala["estaciones"] + [e for x in sala.get("subsalas", []) for e in x["estaciones"]]
+
+
 def cargar_contenido() -> dict:
     meta = json.loads((AQUI / "contenido" / "meta.json").read_text(encoding="utf-8"))
     salas = [json.loads(p.read_text(encoding="utf-8")) for p in sorted((AQUI / "contenido" / "salas").glob("*.json"))]
     for i, s in enumerate(salas, start=1):
         if s["n"] != i:
             raise SystemExit(f"Las salas tienen que ser consecutivas: el archivo {i} trae n = {s['n']}")
-    ids = [e["id"] for s in salas for e in s["estaciones"]]
+    ids = [e["id"] for s in salas for e in estaciones_de(s)]
     if len(ids) != len(set(ids)):
         raise SystemExit("Hay ids de estación repetidos")
     return {"meta": meta, "salas": salas}
@@ -79,7 +84,7 @@ def main() -> None:
             .replace("/*CODIGO*/", (AQUI / "src" / "codigo-casillas.js").read_text(encoding="utf-8"))
             .replace("/*APP*/", (AQUI / "src" / "app.js").read_text(encoding="utf-8")))
     SALIDA.write_text(html, encoding="utf-8", newline="\n")
-    estaciones = sum(len(s["estaciones"]) for s in datos["salas"])
+    estaciones = sum(len(estaciones_de(s)) for s in datos["salas"])
     print(f"index.html: {len(html) / 1024:.0f} KB, {len(datos['salas'])} salas, {estaciones} estaciones, "
           f"guion {'cifrado de nuevo' if a.codigo else 'reutilizado' if cifrado != '{}' else 'AUSENTE'}")
 

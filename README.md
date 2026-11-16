@@ -4,7 +4,7 @@ Material de estudio del Grupo 1 para exponer el trabajo práctico [«¿El bono a
 
 **Es un [palacio de la memoria](https://es.wikipedia.org/wiki/M%C3%A9todo_de_loci)** (método de loci): un lugar que conocés de memoria, recorrido siempre en el mismo orden, con una imagen exagerada en cada punto que guarda un dato.
 
-- **15 salas y 80 estaciones**, en el orden de la exposición. Cada estación tiene un lugar, una imagen absurda, una frase para recordarla y el dato que guarda.
+- **15 salas y 88 estaciones**, en el orden de la exposición. La sala 5 tiene una **sub-sala (5A: la licuadora STL)** que explica qué es STL, sus tres componentes y cómo funciona el loess. Cada estación tiene un lugar, una imagen absurda, una frase para recordarla y el dato que guarda.
 - **Cada sala dice qué diapositiva del deck le corresponde** (en el mapa, en el encabezado y en la historia completa). Las salas sin diapositiva propia lo aclaran y dicen dónde están en el informe. `verificar.py` comprueba los números contra el orden real del deck del TP.
 - **En violeta, lo que dice Mati** (salas 4 y 5, de 2:10 a 4:00, más el «¡Hola!» del grupo). En celeste, el resto del trabajo, por si hay que contestar preguntas o cubrir a alguien.
 - **Personajes que se repiten:** AL (el bono), Don Pibi (el PBI), el Dado (p-valor), la Cinta (intervalo de confianza) y la Cero (H0).

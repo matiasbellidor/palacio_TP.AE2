@@ -8,7 +8,9 @@
   let CIF = null;
   try { const c = JSON.parse(document.getElementById("guion-cifrado").textContent); CIF = c && c.datos ? c : null; } catch (e) { CIF = null; }
   const SALAS = D.salas, META = D.meta;
-  const TOTAL = SALAS.reduce((a, s) => a + s.estaciones.length, 0);
+  /* Una sala puede tener sub-salas (por ejemplo, la 5A: STL); sus estaciones cuentan en el progreso */
+  const todasEst = (s) => s.estaciones.concat((s.subsalas || []).flatMap((x) => x.estaciones));
+  const TOTAL = SALAS.reduce((a, s) => a + todasEst(s).length, 0);
   const CLAVE = "palacio-ae2-progreso";
 
   const $ = (s, r = document) => r.querySelector(s);
@@ -23,7 +25,7 @@
   let memoria = {};
   try { memoria = JSON.parse(localStorage.getItem(CLAVE) || "{}") || {}; } catch (e) { memoria = {}; }
   const guardar = () => { try { localStorage.setItem(CLAVE, JSON.stringify(memoria)); } catch (e) { /* sin almacenamiento: queda en memoria */ } };
-  const hechas = (s) => s.estaciones.filter((e) => memoria[e.id]).length;
+  const hechas = (s) => todasEst(s).filter((e) => memoria[e.id]).length;
   const hechasTotal = () => SALAS.reduce((a, s) => a + hechas(s), 0);
   /* Qué diapositiva del deck corresponde a cada sala (los números salen del orden real del deck) */
   const diapoLarga = (s) => { const d = s.diapositivas || []; return !d.length ? "Sin diapositiva propia" : d.length === 1 ? `Diapositiva ${d[0]}` : `Diapositivas ${d[0]} a ${d[d.length - 1]}`; };
@@ -52,9 +54,10 @@
   const columnas = () => (matchMedia("(min-width: 1000px)").matches ? 5 : matchMedia("(min-width: 640px)").matches ? 3 : 2);
 
   function salaTile(s) {
-    const h = hechas(s), t = s.estaciones.length;
+    const h = hechas(s), t = todasEst(s).length;
     return `<a class="sala${s.tuParte ? " sala--violeta" : ""}" href="#/sala/${s.n}" data-sala="${s.n}" aria-label="Sala ${s.n}: ${esc(s.nombre)}. ${esc(s.tema)}. ${diapoLarga(s)}. ${h} de ${t} estaciones sabidas${s.tuParte ? ". La decís vos" : ""}">` +
       `<span class="sala__cab"><span class="sala__num">${s.n}</span><span class="sala__diapo">${diapoCorta(s)}</span></span><span class="sala__nombre">${esc(s.nombre)}</span><span class="sala__tema">${esc(s.tema)}</span>` +
+      (s.subsalas ? `<span class="sala__sub">+ Sub-sala ${esc(s.subsalas[0].etiqueta)}: STL</span>` : "") +
       `<span class="sala__quien">${s.tuParte ? "La decís vos" : esc(s.quien)}</span>` +
       `<span class="sala__barra" aria-hidden="true"><i style="--p:${Math.round((h / t) * 100)}"></i></span></a>`;
   }
@@ -142,16 +145,25 @@
     return `<li class="est${modo === "ensayo" ? " est--ensayo" : ""}${dice ? " est--dice" : ""}" data-est="${e.id}">${cab}<div class="est__cuerpo">${cuerpo}</div>${acciones}</li>`;
   }
 
+  function subsalasHTML(s, modo) {
+    return (s.subsalas || []).map((x) =>
+      `<section class="subsala" id="sub-${esc(x.id)}" aria-labelledby="sub-${esc(x.id)}-t"><div class="subsala__cab">` +
+      `<p class="kicker">Sub-sala ${esc(x.etiqueta)} · ${esc(x.lugar)}</p><h2 id="sub-${esc(x.id)}-t">${esc(x.nombre)}</h2>` +
+      `<p class="sala-cab__tema">${esc(x.tema)}</p><div class="sala-cab__chips"><span class="chip chip--azul">Si te preguntan</span><span class="chip chip--diapo">Dentro de la sala ${s.n} · ${esc(diapoLarga(s))}</span><span class="chip">${x.estaciones.length} estaciones</span></div>` +
+      `${x.nota ? `<p class="sala-cab__como">${esc(x.nota)}</p>` : ""}</div>` +
+      `<ol class="estaciones">${x.estaciones.map((e, i) => estHTML(s, e, i, modo)).join("")}</ol></section>`).join("");
+  }
+
   function cuerpoSala(s, modo) {
     if (modo === "historia") {
-      return `<div class="historia"><p>${md(s.historia)}</p><p class="puente">${md(s.puerta)}</p></div>`;
+      return `<div class="historia"><p>${md(s.historia)}</p>${(s.subsalas || []).map((x) => `<p><strong>Sub-sala ${esc(x.etiqueta)} (${esc(x.nombre)}):</strong> ${md(x.historia)}</p><p class="puente">${md(x.puerta)}</p>`).join("")}<p class="puente">${md(s.puerta)}</p></div>`;
     }
     const barra = modo === "ensayo"
       ? `<div class="est__acciones" style="margin-bottom:var(--e4)"><button class="boton" type="button" data-todo="tapar">Tapar todo</button><button class="boton" type="button" data-todo="mostrar">Mostrar todo</button></div>` : "";
     const sig = s.n < SALAS.length
       ? `<a class="boton boton--primario" href="#/sala/${s.n + 1}">Sala ${s.n + 1}: ${esc(SALAS[s.n].nombre)}</a>`
       : `<a class="boton boton--primario" href="#/">Volver al mapa</a>`;
-    return `${barra}<ol class="estaciones">${s.estaciones.map((e, i) => estHTML(s, e, i, modo)).join("")}</ol>` +
+    return `${barra}<ol class="estaciones">${s.estaciones.map((e, i) => estHTML(s, e, i, modo)).join("")}</ol>` + subsalasHTML(s, modo) +
       `<div class="puerta"><h2>${s.n < SALAS.length ? "La puerta a la siguiente sala" : "Fin del recorrido"}</h2><p>${md(s.puerta)}</p>${sig}</div>`;
   }
 
@@ -163,7 +175,7 @@
       `<span class="sala-nav__pos">Sala ${s.n} de ${SALAS.length}</span><span class="sala-nav__espacio"></span>${ant}${sgt}</nav>` +
       `<p class="kicker"${s.tuParte ? ' style="color:var(--violeta)"' : ""}>Sala ${s.n} · ${esc(diapoLarga(s))} · ${esc(s.diapositiva)}</p>` +
       `<h1 tabindex="-1" data-foco>${esc(s.nombre)}</h1><p class="sala-cab__tema">${esc(s.tema)}</p>` +
-      `<div class="sala-cab__chips">${s.tuParte ? `<span class="chip chip--violeta">La decís vos · ${esc(s.tiempo)}</span>` : `<span class="chip chip--azul">Lo dice ${esc(s.quien)}</span>`}<span class="chip chip--diapo">${esc(diapoLarga(s))}</span><span class="chip">${s.estaciones.length} estaciones</span></div>` +
+      `<div class="sala-cab__chips">${s.tuParte ? `<span class="chip chip--violeta">La decís vos · ${esc(s.tiempo)}</span>` : `<span class="chip chip--azul">Lo dice ${esc(s.quien)}</span>`}<span class="chip chip--diapo">${esc(diapoLarga(s))}</span><span class="chip">${todasEst(s).length} estaciones</span>${(s.subsalas || []).map((x) => `<button class="chip chip--btn" type="button" data-ir="sub-${esc(x.id)}">Sub-sala ${esc(x.etiqueta)}: ${esc(x.nombre)} ↓</button>`).join("")}</div>` +
       `<p class="sala-cab__como">${esc(s.como || s.resumen)}</p>${s.diapositivaNota ? `<p class="sala-cab__como">${esc(s.diapositivaNota)}</p>` : ""}</div>` +
       cerrojoHTML(s) +
       `<div class="pestanas${s.tuParte ? " pestanas--violeta" : ""}" role="tablist" aria-label="Cómo estudiar esta sala">${tab("recorrido", "Recorrido")}${tab("ensayo", "Ensayo")}${tab("historia", "Historia")}</div>` +
@@ -194,7 +206,7 @@
     return `<section class="hero" style="padding-bottom:var(--e4)"><p class="kicker">Historia completa</p><h1>La película de todo el trabajo</h1>` +
       `<p>Leela de corrido y en voz alta, una vez por día. Es el hilo que une las ${SALAS.length} salas: si la película te sale entera, las estaciones salen solas.</p></section>` +
       `<div class="historia">${SALAS.map((s) => `<section class="historia-sala${s.tuParte ? " historia-sala--violeta" : ""}"><h2><span>Sala ${s.n} · ${esc(diapoCorta(s))}</span><a href="#/sala/${s.n}" style="color:inherit;text-decoration:none">${esc(s.nombre)}</a></h2>` +
-        `<p>${md(s.historia)}</p><p class="puente">${md(s.puerta)}</p></section>`).join("")}</div>`;
+        `<p>${md(s.historia)}</p>${(s.subsalas || []).map((x) => `<p><strong>Sub-sala ${esc(x.etiqueta)} (${esc(x.nombre)}):</strong> ${md(x.historia)}</p>`).join("")}<p class="puente">${md(s.puerta)}</p></section>`).join("")}</div>`;
   }
 
   /* ── Render general ── */
@@ -244,8 +256,12 @@
     } else if (b.dataset.todo) {
       const r = leerRuta();
       const s = SALAS[r.n - 1];
-      s.estaciones.forEach((e2) => (b.dataset.todo === "mostrar" ? reveladas.add(e2.id) : reveladas.delete(e2.id)));
+      todasEst(s).forEach((e2) => (b.dataset.todo === "mostrar" ? reveladas.add(e2.id) : reveladas.delete(e2.id)));
       $("[data-cuerpo]").innerHTML = cuerpoSala(s, "ensayo");
+    } else if (b.dataset.ir) {
+      if (modoActual === "historia") cambiarModo("recorrido");
+      const destino = document.getElementById(b.dataset.ir);
+      if (destino) destino.scrollIntoView({ behavior: reducido ? "instant" : "smooth", block: "start" });
     } else if (b.dataset.modo) {
       cambiarModo(b.dataset.modo);
     } else if (b.hasAttribute("data-bloquear")) {

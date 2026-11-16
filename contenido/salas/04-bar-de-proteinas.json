@@ -53,7 +53,7 @@
       "lugar": "Licuadora STL",
       "imagen": "Metés el PBI en una licuadora con tres picos de salida: **tendencia**, **estacionalidad** y **resto**. Abrís la ventana y tirás por ahí el pico de estacionalidad: el patrón que se repite cada año.",
       "frase": "STL: separa y tira lo que se repite.",
-      "dato": "Primer paso de la solución: quitar la estacionalidad con STL, que separa tendencia, estacionalidad y resto. El PBI repite un patrón cada año (el segundo trimestre siempre es alto). Los factores coinciden con los del PIB desestacionalizado del INDEC.",
+      "dato": "Primer paso de la solución: quitar la estacionalidad con STL, que separa tendencia, estacionalidad y resto. El PBI repite un patrón cada año (el segundo trimestre siempre es alto). Los factores coinciden con los del PIB desestacionalizado del INDEC. Qué es STL y cómo funciona: sub-sala 5A.",
       "dice": true,
       "cifras": []
     },

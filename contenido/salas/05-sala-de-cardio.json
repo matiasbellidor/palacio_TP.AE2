@@ -68,5 +68,86 @@
   ],
   "diapositivasId": [
     "figura-1"
+  ],
+  "subsalas": [
+    {
+      "id": "5a",
+      "etiqueta": "5A",
+      "nombre": "La licuadora STL",
+      "tema": "STL: qué es, qué separa y cómo funciona el loess",
+      "lugar": "Cuartito al costado de la sala de cardio",
+      "nota": "Tu guion solo nombra STL (lo decís en la diapositiva 4). Esta sub-sala es para contestar si te preguntan qué es y cómo funciona.",
+      "historia": "Al costado de la sala de cardio hay un cuartito con la **licuadora STL** de la sala 4. Un cartel luminoso muestra el nombre completo. Metés una serie temporal y la licuadora tiene **tres picos**: del primero sale un **calendario girando** (estacionalidad), del segundo un **sendero largo** (tendencia) y del tercero caen las **migas** (residuo). Adentro, un **colador de goma sin molde** (loess) se adapta a cada tramo; la **perilla de la ola** gira despacito y un **meteorito** rebota sin torcer nada. Al final tirás la ola del segundo trimestre y te quedás con el camino.",
+      "puerta": "Salís del cuartito con el camino limpio en una bandeja y volvés a la sala de cardio: al final del pasillo, Manu te espera con la balanza.",
+      "estaciones": [
+        {
+          "id": "r5a-1",
+          "lugar": "Cartel luminoso sobre la puerta del cuartito",
+          "imagen": "Sobre la puerta, un cartel luminoso con las letras **STL** enormes y debajo el nombre completo: **Seasonal and Trend decomposition using Loess**. Por la ventana se ve la licuadora de la sala 4 con una serie temporal ondulada adentro.",
+          "frase": "STL: la licuadora que separa una serie en tres.",
+          "dato": "STL (Seasonal and Trend decomposition using Loess) es una técnica estadística usada para descomponer una serie temporal en tres componentes: estacionalidad, tendencia y residuo.",
+          "cifras": []
+        },
+        {
+          "id": "r5a-2",
+          "lugar": "Primer pico de la licuadora",
+          "imagen": "Del primer pico sale un **calendario que gira** y escupe, año tras año, la misma **ola** en el mismo mes. Vos la atajás con una red: siempre vuelve igual.",
+          "frase": "Estacionalidad: la misma ola que vuelve cada año.",
+          "dato": "Estacionalidad: patrones que se repiten de manera cíclica. En el PBI argentino, por ejemplo, el segundo trimestre siempre es alto.",
+          "cifras": []
+        },
+        {
+          "id": "r5a-3",
+          "lugar": "Segundo pico de la licuadora",
+          "imagen": "Del segundo pico se desenrolla un **sendero largo de montaña**, parejo, que sube despacio o baja despacio. Don Pibi lo recorre con su termo sin mirar los saltos de alrededor.",
+          "frase": "Tendencia: hacia dónde va el camino.",
+          "dato": "Tendencia: evolución a largo plazo o dirección general de la serie.",
+          "cifras": []
+        },
+        {
+          "id": "r5a-4",
+          "lugar": "Tercer pico de la licuadora",
+          "imagen": "Del tercer pico caen **migas** en un vaso. Son lo que queda cuando ya sacaste la ola y el sendero: el **resto**. Barrés las migas con una escobita.",
+          "frase": "Residuo: las migas que quedan.",
+          "dato": "Residuo: lo que queda después de remover la tendencia y la estacionalidad.",
+          "cifras": []
+        },
+        {
+          "id": "r5a-5",
+          "lugar": "Colador de goma dentro de la licuadora",
+          "imagen": "Adentro de la licuadora hay un **colador de goma sin molde**: se estira y se adapta a cada tramo de la serie, sin forma fija. En la goma está escrito **LOESS**.",
+          "frase": "Loess: un colador de goma, sin molde.",
+          "dato": "STL se basa en LOESS, una técnica de regresión no paramétrica: no impone una forma fija a la curva y la ajusta localmente, tramo por tramo.",
+          "cifras": []
+        },
+        {
+          "id": "r5a-6",
+          "lugar": "Perilla de la ola",
+          "imagen": "La ola del primer pico tiene una **perilla** que gira **muy despacito**. Con los años la ola cambia de forma, pero nunca de golpe: tenés que esperar para ver el cambio.",
+          "frase": "La ola puede cambiar, pero despacito.",
+          "dato": "Gracias a LOESS, el componente estacional puede cambiar lentamente a lo largo del tiempo (no es un patrón fijo e idéntico todos los años).",
+          "cifras": []
+        },
+        {
+          "id": "r5a-7",
+          "lugar": "Escudo de la licuadora",
+          "imagen": "Un **meteorito** (un dato loco, un outlier) cae del techo y **rebota en un escudo** de la licuadora. Ni el sendero ni la ola se tuercen: quedan derechos.",
+          "frase": "Un meteorito no tuerce el camino.",
+          "dato": "LOESS es resistente a outliers: evita que un dato extremo distorsione la tendencia o la estacionalidad.",
+          "cifras": []
+        },
+        {
+          "id": "r5a-8",
+          "lugar": "Bandeja de salida del cuartito",
+          "imagen": "Entra el PBI trimestral de Don Pibi. Por el primer pico sale **la ola del segundo trimestre** y la tirás por la ventana. En la bandeja queda **el camino limpio**, con un sello del INDEC que dice «coincide».",
+          "frase": "Tiro la ola, me quedo con el camino.",
+          "dato": "En el TP: STL se aplica al PBI trimestral antes de pasarlo a meses con el spline. El PBI tiene un patrón que se repite todos los años (el segundo trimestre siempre es alto) y los factores coinciden con los del PIB desestacionalizado que publica el INDEC. Sensibilidades: con el PBI sin desestacionalizar p = 0,5218 y con el PIB desestacionalizado por el INDEC p = 0,8208: la decisión no cambia.",
+          "cifras": [
+            "0,5218",
+            "0,8208"
+          ]
+        }
+      ]
+    }
   ]
 }
