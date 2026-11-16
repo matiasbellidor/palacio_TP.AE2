@@ -49,6 +49,7 @@
       if (n >= 1 && n <= SALAS.length) return { vista: "sala", n, modo: ["ensayo", "historia"].includes(p[2]) ? p[2] : "recorrido" };
     }
     if (p[0] === "historia") return { vista: "historia" };
+    if (p[0] === "juego") return { vista: "juego" };
     return { vista: "inicio" };
   }
 
@@ -217,11 +218,15 @@
   function render() {
     const r = leerRuta();
     $$("[data-nav]").forEach((a) => {
-      const activo = (a.dataset.nav === "historia") === (r.vista === "historia");
+      const clave = r.vista === "historia" ? "historia" : r.vista === "juego" ? "juego" : "inicio";
+      const activo = a.dataset.nav === clave;
       if (activo) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
     });
     if (r.vista === "sala") renderSala(r, !primera);
-    else if (r.vista === "historia") {
+    else if (r.vista === "juego") {
+      PalacioJuego.montar(main);
+      document.title = "Practicá tu parte · Palacio AE2";
+    } else if (r.vista === "historia") {
       main.innerHTML = `<div class="view">${historiaHTML()}</div>`;
       document.title = "Historia completa · Palacio AE2";
     } else {
@@ -289,6 +294,7 @@
     memoria = {};
     reveladas.clear();
     try { localStorage.removeItem(CLAVE); } catch (e) { /* nada que borrar */ }
+    if (window.PalacioJuego) PalacioJuego.borrar();
     render();
   });
   window.addEventListener("hashchange", render);

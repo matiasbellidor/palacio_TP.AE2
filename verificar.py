@@ -125,6 +125,48 @@ def main() -> int:
         if sin_marcas:
             errores.append(f"Marcas «[señalar N]» sin convertir en las salas {sorted(set(sin_marcas))}")
 
+    # Juego de la parte de Mati (privado/quiz_mati.json, publicado cifrado): solo con frases de su guion
+    quiz_json = AQUI / "privado" / "quiz_mati.json"
+    if quiz_json.exists() and ruta_guion.exists():
+        qs = json.loads(quiz_json.read_text(encoding="utf-8"))["preguntas"]
+        lineas_mati = json.loads(ruta_guion.read_text(encoding="utf-8")).get("lineas", {})
+        quitar = lambda s: re.sub(r"\[pausa [^\]]*\]", "", s)  # noqa: E731
+        texto_mati = normalizar(quitar(" ".join(l for ls in lineas_mati.values() for l in ls)))
+        por_tipo: dict[str, int] = {}
+        vistos: set[str] = set()
+        for q in qs:
+            por_tipo[q.get("tipo", "?")] = por_tipo.get(q.get("tipo", "?"), 0) + 1
+            for campo in ("id", "tipo", "texto", "explicacion", "guion"):
+                if not q.get(campo):
+                    errores.append(f"Pregunta {q.get('id', '?')}: falta {campo}")
+            if q.get("id") in vistos:
+                errores.append(f"Pregunta {q.get('id')}: id repetido")
+            vistos.add(q.get("id"))
+            if q.get("tipo") == "vf" and not isinstance(q.get("correcta"), bool):
+                errores.append(f"{q.get('id')}: «correcta» tiene que ser true o false")
+            if q.get("tipo") == "mc" and (len(q.get("opciones", [])) != 4 or len(set(q.get("opciones", []))) != 4
+                                          or not isinstance(q.get("correcta"), int) or not 0 <= q["correcta"] < 4):
+                errores.append(f"{q.get('id')}: una opción múltiple lleva 4 opciones distintas y el índice de la correcta")
+            if q.get("tipo") == "completar" and (q.get("texto", "").count("___") != 1 or not q.get("respuestas")):
+                errores.append(f"{q.get('id')}: completar lleva un solo «___» y las respuestas aceptadas")
+            for trozo in q.get("guion", "").split(" … "):
+                if trozo and normalizar(quitar(trozo)) not in texto_mati:
+                    errores.append(f"{q.get('id')}: esta frase no está en el guion de Mati: «{trozo}»")
+        if set(por_tipo) != {"vf", "completar", "mc"} or min(por_tipo.values()) < 10:
+            errores.append(f"El juego necesita al menos 10 preguntas de cada tipo (verdadero o falso, completar y opción múltiple): {por_tipo}")
+        html_juego = (AQUI / "index.html").read_text(encoding="utf-8") if (AQUI / "index.html").exists() else ""
+        if html_juego:
+            m = re.search(r'id="quiz-cifrado">(.*?)</script>', html_juego, re.S)
+            if not m or '"datos"' not in m.group(1):
+                errores.append("index.html no trae el juego cifrado (build.py --codigo NNN)")
+            # Las frases del guion de Mati son públicas; lo que no puede quedar a la vista es la estructura del juego
+            for marca in ('"respuestas"', '"correcta"', '"explicacion"', '"opciones"'):
+                if marca in html_juego:
+                    errores.append(f"index.html tiene {marca} en texto plano: el juego no está cifrado")
+        print(f"Juego: {len(qs)} preguntas {por_tipo}, todas con frase de su guion")
+    else:
+        avisos.append("No está privado/quiz_mati.json (no se pudo comprobar el juego)")
+
     print(f"{len(salas)} salas, {total} estaciones, {len(corpus):,} caracteres de TP leídos".replace(",", "."))
     for av in avisos:
         print("AVISO ", av)

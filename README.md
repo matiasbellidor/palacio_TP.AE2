@@ -12,6 +12,8 @@ Material de estudio del Grupo 1 para exponer el trabajo práctico [«¿El bono a
 - **Cada idea viene explicada:** cada sala dice qué es ese cuarto y cada estación traduce la imagen en un «(De qué se trata: …)», sin ambigüedades.
 - **Al lado de cada sala, y también en la historia completa, el guion exacto** de lo que dice cada persona en la exposición (con los números ya reemplazados), para comparar con la historia del palacio. Lo de Mati va en violeta.
 
+- **Un juego para practicar tu parte** (el botón de la lechuza 🦉 en el header, con un código): 36 preguntas sacadas solo del guion de Mati, de verdadero o falso, completar escribiendo y opción múltiple. Cada respuesta muestra la frase exacta del guion. Las preguntas viajan cifradas.
+
 ## Cómo estudiar
 
 1. Leé la historia de la sala. 2. Recorré las estaciones imaginando la escena con todos los sentidos y diciendo la frase en voz alta. 3. Pasá a Ensayo y recordá antes de destapar. 4. Marcá «Lo sé» solo cuando te salga sin mirar. 5. Caminá las 15 salas de memoria.
@@ -29,11 +31,15 @@ build.py                arma index.html
 verificar.py            comprueba los números contra el TP
 contenido/guion.json    el guion exacto de cada persona, repartido por sala (lo genera tools/generar_guion.py)
 tools/generar_guion.py  toma el guion del TP y lo reparte entre las salas
+tools/cifrar_json.py    cifra el juego (AES-GCM; clave PBKDF2 del código)
+src/juego.js            el juego de preguntas
+privado/                preguntas del juego: NO está en el repo (.gitignore)
 ```
 
 ```bash
 python tools/generar_guion.py --tp ../trabajo_practico_AE2   # reparte el guion exacto del TP entre las salas
-python build.py                 # arma index.html
+python build.py                 # arma index.html (reutiliza el juego cifrado)
+python build.py --codigo NNN    # además vuelve a cifrar privado/quiz_mati.json con ese código de 3 dígitos
 python verificar.py --tp ../trabajo_practico_AE2
 ```
 
@@ -46,6 +52,8 @@ Para verlo en local alcanza con abrir `index.html` o correr `python -m http.serv
 ## Privacidad
 
 El guion exacto está a la vista dentro de la página y de este repo: el palacio es material de estudio del grupo y el profesor no tiene el link. Quien encuentre el repo o el link puede leerlo; el guion protegido con código sigue siendo el de la sección Recursos del TP. Si eso cambia, la versión anterior (con el guion cifrado) está en el historial de git (commit `4a681b0`).
+
+Las preguntas del juego van cifradas con un código de 3 dígitos (no es seguridad fuerte: alguien técnico puede probar las 1000 combinaciones) y el código no figura en ningún archivo del repo.
 
 No hay cuentas, cookies ni analítica. El progreso («Lo sé») se guarda en el navegador de cada persona y se borra con el botón del pie de página.
 

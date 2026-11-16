@@ -1,3 +1,6 @@
+# Preguntas del juego de Mati: el repo es público y se publican solo cifradas dentro de index.html
+privado/
+
 # Python y verificación local
 __pycache__/
 *.pyc
