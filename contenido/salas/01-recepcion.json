@@ -1,0 +1,62 @@
+{
+  "n": 1,
+  "id": "recepcion",
+  "nombre": "Recepción",
+  "tema": "La pregunta del trabajo",
+  "diapositiva": "Portada",
+  "quien": "Luka",
+  "resumen": "Qué es el AL30D, qué es el PBI y qué pregunta hacemos.",
+  "historia": "Empujás la puerta de vidrio y los cinco gritan **¡Hola!**. Arriba, el neón pregunta si **AL** sigue a **Don Pibi**. En el torniquete un culturista enorme con remera «30 D» te frena con la tarjeta que vence en 2030. En el mostrador, un abuelito diminuto, Don Pibi, abre el diario del INDEC una vez cada tres meses. En la pizarra alguien dibujó con tiza: crece, recauda, paga, ¿sube? Y un cartel te recuerda: se mira, no se empuja.",
+  "puerta": "Pasás por la puerta de los vestuarios y el olor a candado nuevo te avisa: ahí se guardan las reglas antes de jugar.",
+  "estaciones": [
+    {
+      "id": "r1-1",
+      "lugar": "Puerta de vidrio",
+      "imagen": "Empujás la puerta y los cinco, alineados detrás del mostrador, gritan **¡Hola!** a la vez. Vos mirás al público, no a la pantalla, y levantás una mano.",
+      "frase": "Los cinco, de frente, a la vez.",
+      "dato": "Apertura de 10 segundos: el grupo entero de frente al público. Después de la pausa, Luka da un paso adelante.",
+      "dice": true,
+      "cifras": []
+    },
+    {
+      "id": "r1-2",
+      "lugar": "Cartel de neón sobre la puerta",
+      "imagen": "En letras de neón: **¿El bono argentino sigue al PBI?** Debajo, un culturista (AL) camina detrás de un abuelito diminuto (Don Pibi) y no lo mira ni una vez.",
+      "frase": "¿AL sigue a Don Pibi?",
+      "dato": "Pregunta del trabajo: cuando la economía argentina crece, ¿el bono AL30D sube? Análisis Estadístico 2, Cátedra Tito Lasanta, FCE-UBA, segundo cuatrimestre de 2026. Grupo 1.",
+      "cifras": ["2026"]
+    },
+    {
+      "id": "r1-3",
+      "lugar": "Torniquete de entrada",
+      "imagen": "Un culturista gigante bloquea el torniquete con una remera que dice **30 D**. De la manga le cuelgan billetes verdes. Te muestra una tarjeta: **VENCE 2030**.",
+      "frase": "AL30D: Deuda en Dólares que vence al 30.",
+      "dato": "El AL30D es un bono de la deuda del Estado argentino, en dólares, que vence en 2030. Su precio sube cuando el mercado confía más en que el Estado va a pagar y baja cuando confía menos.",
+      "cifras": ["2030"]
+    },
+    {
+      "id": "r1-4",
+      "lugar": "Mostrador de recepción",
+      "imagen": "Detrás del mostrador, **Don Pibi**, un abuelito del tamaño de un termo, abre el diario del INDEC **cada tres meses** y le pasa un borrador a la inflación hasta dejarlo «real».",
+      "frase": "Don Pibi: real, trimestral y tranquilo.",
+      "dato": "El PBI mide todo lo que produce la economía. Usamos el PBI real (sin el efecto de la inflación) que publica el INDEC cada tres meses.",
+      "cifras": []
+    },
+    {
+      "id": "r1-5",
+      "lugar": "Pizarra de tiza de la pared",
+      "imagen": "Con tiza, cuatro dibujos encadenados con flechas: una planta que **crece**, una caja que **recauda**, una mano que **paga**, un signo de pregunta que dice **¿sube?**",
+      "frase": "Crece, recauda, paga… ¿sube?",
+      "dato": "La intuición que pusimos a prueba: si la economía crece, el Estado recauda más y debería pagar su deuda con más facilidad, así que el bono podría subir.",
+      "cifras": []
+    },
+    {
+      "id": "r1-6",
+      "lugar": "Cartelito pegado en el mostrador",
+      "imagen": "Un cartelito en el vidrio: **SE MIRA, NO SE EMPUJA**. Podés mirar si AL y Don Pibi caminan juntos; no podés probar que uno empuja al otro.",
+      "frase": "Se mira, no se empuja.",
+      "dato": "Asociación, no causalidad: buscamos si las dos variables se mueven juntas. Aunque lo hicieran, eso solo no probaría que una mueve a la otra, porque los datos son observacionales.",
+      "cifras": []
+    }
+  ]
+}

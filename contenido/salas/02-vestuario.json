@@ -1,0 +1,53 @@
+{
+  "n": 2,
+  "id": "vestuario",
+  "nombre": "Vestuario",
+  "tema": "Hipótesis y reglas fijadas de antemano",
+  "diapositiva": "Hipótesis",
+  "quien": "Luka",
+  "resumen": "El modelo, H0 y H1, el 0,05, las tres hipótesis y la caja fuerte del config.",
+  "historia": "En el vestuario abrís el primer locker y hay una regla de madera apoyada: arranca en beta cero y se inclina en beta uno. De su candado cuelga una medalla con forma de **0**: **Hay Cero** relación. En el banco, una torta de veinte porciones con una sola mordida. En la pared, tres perchas con tres remeras: Principal, Adelante y Profes. Al fondo, la caja fuerte del config, cerrada antes de que nadie mire nada.",
+  "puerta": "Salís del vestuario con la regla de madera bajo el brazo y entrás a la zona de pesas libres, donde esa regla va a quedar apoyada sobre 56 discos.",
+  "estaciones": [
+    {
+      "id": "r2-1",
+      "lugar": "Locker número 1",
+      "imagen": "Abrís el locker y adentro hay una **regla de madera** apoyada: el pie de la regla marca de dónde arranca (**β0**) y el ángulo con el piso es cuánto se inclina (**β1**).",
+      "frase": "Beta-cero arranca, beta-uno inclina.",
+      "dato": "Modelo: Var AL30D = β0 + β1 · Var PBI + error. Todo se juega en β1, la pendiente: cuántos puntos se mueve el bono por cada punto que se mueve el PBI.",
+      "cifras": []
+    },
+    {
+      "id": "r2-2",
+      "lugar": "Candado del locker",
+      "imagen": "Del candado cuelga una medalla con forma de **cero** gigante, dorada. En el grabado se lee: **H0, Hay Cero**. Una segunda medalla, más chica y torcida, dice H1: distinto de cero.",
+      "frase": "H0: Hay Cero.",
+      "dato": "H0: β1 = 0 (no hay asociación, el PBI no ayuda a predecir el bono). H1: β1 ≠ 0 (hay asociación, positiva o negativa). Contraste bilateral.",
+      "cifras": []
+    },
+    {
+      "id": "r2-3",
+      "lugar": "Banco de madera",
+      "imagen": "Sobre el banco, una torta partida en **20 porciones** y le falta una sola: **una de veinte**. Un cartel: «riesgo que acepto: 0,05».",
+      "frase": "Una de veinte es mi riesgo.",
+      "dato": "Nivel de significación α = 0,05: el riesgo que aceptamos de rechazar H0 por error. Equivale a trabajar con 95 % de confianza.",
+      "cifras": ["0,05"]
+    },
+    {
+      "id": "r2-4",
+      "lugar": "Tres perchas en la pared",
+      "imagen": "Tres remeras colgadas: una dice **Principal** (la regresión simple), otra tiene una flecha hacia adelante y un **+1** (**Adelante**), y la tercera lleva un sello con la fecha **22/10** (**Profes**).",
+      "frase": "Principal, Adelante, Profes.",
+      "dato": "Hipótesis principal: regresión simple del bono contra el PBI del mismo mes. Extensión: con el PBI del mes siguiente, ¿el bono se anticipa? Hipótesis enviada a los docentes el 22/10: ¿el PBI crece distinto en los meses en que el bono sube que en los que baja? (diferencia de medias).",
+      "cifras": ["22/10"]
+    },
+    {
+      "id": "r2-5",
+      "lugar": "Caja fuerte del fondo",
+      "imagen": "Una caja fuerte con **config.yaml** grabado en la puerta. El Dado (el p-valor) espera sentado afuera, sin tirarse, porque la caja se cierra **antes**.",
+      "frase": "Primero cierro, después miro.",
+      "dato": "Todas las decisiones de método (qué bono, qué ventana, cómo tratar el PBI, qué pruebas son principales y cuáles exploratorias) se fijaron en config.yaml antes de calcular cualquier p-valor, para que el resultado no se acomode a lo que se quería encontrar.",
+      "cifras": []
+    }
+  ]
+}

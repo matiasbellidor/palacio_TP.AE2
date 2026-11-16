@@ -1,0 +1,53 @@
+{
+  "n": 11,
+  "id": "clase-grupal",
+  "nombre": "Clase grupal",
+  "tema": "ANOVA de un factor por terciles del PBI",
+  "diapositiva": "Sensibilidad",
+  "quien": "Manu",
+  "resumen": "Tres grupos de meses, medias distintas a simple vista y un F que no llega.",
+  "historia": "La clase grupal tiene tres filas de gente con remeras de colores: **19** de baja, **18** de media, **19** de alta. En el pizarrón, tres promedios: **3,44**, **3,34** y **0,81**. La instructora corta una torta enorme: el bocadito de **entre** y todo el resto **dentro**. El F pesa **0,26** y no llega al cartel de **3,17**. Y la torta dice: **1 %**.",
+  "puerta": "Cuando termina la clase salís a la cancha: dos equipos tiran de una soga y no se mueve.",
+  "estaciones": [
+    {
+      "id": "r11-1",
+      "lugar": "Tres filas con remeras",
+      "imagen": "Tres filas en el salón: **bajo** (19 personas con remera azul oscuro), **medio** (18, celeste) y **alto** (19, blanca). Cada fila es un tercio de los meses por crecimiento del PBI.",
+      "frase": "Tres tercios: diecinueve, dieciocho, diecinueve.",
+      "dato": "Grupos por terciles de la Var PBI: bajo −1,85 % a 0,07 % (19 meses); medio 0,09 % a 0,27 % (18); alto 0,30 % a 2,30 % (19). H0: la variación media del bono es igual en los tres. H1: al menos un grupo difiere.",
+      "cifras": ["19 meses", "18"]
+    },
+    {
+      "id": "r11-2",
+      "lugar": "Pizarrón de promedios",
+      "imagen": "En el pizarrón, tres promedios con marcador: **+3,44**, **+3,34** y **+0,81**. A simple vista parecen distintos; la instructora levanta una ceja.",
+      "frase": "Dos parecidos arriba y uno abajo.",
+      "dato": "Variación media del bono: bajo +3,44 %; medio +3,34 %; alto +0,81 %. A simple vista las medias se ven distintas; hay que ver si esa diferencia es mayor que la variación dentro de cada grupo.",
+      "cifras": ["+3,44", "+3,34", "+0,81"]
+    },
+    {
+      "id": "r11-3",
+      "lugar": "Torta de la instructora",
+      "imagen": "Una torta enorme: el bocadito de **entre** grupos pesa **83,32**; todo el resto, **dentro**, pesa **8.555,05**. La torta entera pesa **8.638,37**.",
+      "frase": "Entre es un bocadito; dentro es la torta.",
+      "dato": "SC total = SC entre + SC dentro: 8.638,37 = 83,32 + 8.555,05. La diferencia entre grupos es chica al lado de lo que varía el bono adentro de cada grupo.",
+      "cifras": ["83,32", "8.555,05", "8.638,37"]
+    },
+    {
+      "id": "r11-4",
+      "lugar": "Balanza F junto a la puerta",
+      "imagen": "Una balanza con un cociente: **41,66 / 161,42 = 0,26**. Cuelga un cartel de **3,17**. El F ni se acerca.",
+      "frase": "F de 0,26: no llega a 3,17.",
+      "dato": "F = CM entre / CM dentro = 41,66 / 161,42 = 0,2581, con (2; 53) gl. Valor crítico al 95 % 3,1716. p = 0,7735: no se rechaza H0.",
+      "cifras": ["41,66", "161,42", "0,2581", "3,1716", "0,7735"]
+    },
+    {
+      "id": "r11-5",
+      "lugar": "Cartel de tamaño del efecto",
+      "imagen": "En el espejo, un solo punto rojo del tamaño de una moneda: el **1 %**. El grupo de crecimiento explica apenas una moneda de toda la torta. Al lado, un checklist con **Levene 0,0518**.",
+      "frase": "Un uno por ciento de torta.",
+      "dato": "Tamaño del efecto η² = SC entre / SC total = 0,0096: el grupo de crecimiento del PBI explica el 1,0 % de la variación del bono. Supuestos: igualdad de varianzas (Levene) p = 0,0518; normalidad por grupo (Shapiro-Wilk): bajo p = 0,6217, medio p = 0,0088, alto p = 0,0407.",
+      "cifras": ["0,0096", "0,0518", "0,6217", "0,0088", "0,0407"]
+    }
+  ]
+}

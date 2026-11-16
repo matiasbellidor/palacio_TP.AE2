@@ -1,0 +1,45 @@
+{
+  "n": 9,
+  "id": "sala-de-boxeo",
+  "nombre": "Sala de boxeo",
+  "tema": "Bondad de ajuste: χ² y Shapiro-Wilk",
+  "diapositiva": "Informe 5.7 (se menciona en Regresión mensual)",
+  "quien": "Manu",
+  "resumen": "¿Los datos se parecen a una Normal? Ocho rounds y un juez.",
+  "historia": "Colgada del techo, una **campana** de boxeo: la Normal. Los datos pelean **8 rounds**; se esperaban 7 golpes por round. AL aguanta (6,86) y Don Pibi se cae (19,43). El juez **Wilk** levanta una tarjeta con la **W**: ninguno saca 1. Aunque los golpes del bono sean extremos, **56** alcanza para aguantarlos.",
+  "puerta": "Cruzás el ring y llegás a la sala funcional: dos cuerdas de TRX cuelgan, una por variable.",
+  "estaciones": [
+    {
+      "id": "r9-1",
+      "lugar": "Campana colgada del techo",
+      "imagen": "Una **campana de boxeo** con forma de campana de Gauss. Cada vez que los datos la golpean, suena o no suena: ¿son Normales? El test t y los IC suponen que sí.",
+      "frase": "¿Suena como Normal?",
+      "dato": "Por qué: el test t y los intervalos suponen que los datos (o los errores) siguen una distribución Normal. La bondad de ajuste lo verifica; la consigna la pide.",
+      "cifras": []
+    },
+    {
+      "id": "r9-2",
+      "lugar": "Ring de ocho rounds",
+      "imagen": "El ring tiene **8 rounds** (8 clases). En cada round esperabas **7 golpes** (56 dividido 8). AL saca un chi de **6,86**: bien. Don Pibi saca **19,43**: knockout. Línea roja en **11,07**.",
+      "frase": "Ocho rounds, siete golpes cada uno.",
+      "dato": "Test χ²: k = 8 clases equiprobables, esperadas 7,0 por clase, 5 gl (se pierden 2 por estimar media y desvío), valor crítico 11,0705. Bono: χ² = 6,8571, p = 0,2315 (pasa). PBI: χ² = 19,4286, p = 0,0016 (no pasa).",
+      "cifras": ["6,8571", "0,2315", "19,4286", "0,0016", "11,0705"]
+    },
+    {
+      "id": "r9-3",
+      "lugar": "Silla del juez",
+      "imagen": "El juez **Wilk** levanta tarjetas con una **W**: AL recibe **0,9390** y Don Pibi **0,9542**. Un 1 sería perfecto; nadie lo saca. Debajo, los p-valores: **0,0070** y **0,0327**, los dos bajo 0,05.",
+      "frase": "Wilk castiga a los dos: bajo 0,05.",
+      "dato": "Shapiro-Wilk: bono W = 0,9390 (p = 0,0070); PBI W = 0,9542 (p = 0,0327); residuos de la regresión principal W = 0,9390 (p = 0,0070). W vale 1 si el ajuste es perfecto. Con muestras chicas detecta desvíos que el χ² pasa por alto.",
+      "cifras": ["0,9390", "0,0070", "0,9542", "0,0327"]
+    },
+    {
+      "id": "r9-4",
+      "lugar": "Guantes colgados en la pared",
+      "imagen": "Los guantes de AL están marcados con **−19,5** y **+39,5**: golpes extremos. Pero el ring aguanta: un cartel dice **56 alcanzan**, y un paraguas robusto (HAC) cubre a todos.",
+      "frase": "Cincuenta y seis aguantan el golpe.",
+      "dato": "Las series no son exactamente Normales: el bono tiene meses extremos, de −19,5 % a +39,5 %. Con n = 56, los tests sobre medias y coeficientes siguen siendo aproximadamente válidos por el teorema central del límite, y los errores robustos llegan a la misma conclusión.",
+      "cifras": ["−19,5 %", "+39,5 %"]
+    }
+  ]
+}

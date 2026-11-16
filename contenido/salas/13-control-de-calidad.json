@@ -1,0 +1,53 @@
+{
+  "n": 13,
+  "id": "control-de-calidad",
+  "nombre": "Oficina del encargado",
+  "tema": "Controles: supuestos y sensibilidades",
+  "diapositiva": "Sensibilidad",
+  "quien": "María",
+  "resumen": "¿El resultado se sostiene? Cuatro inspectores y siete perillas.",
+  "historia": "En la oficina del encargado, cuatro inspectores con chaleco. **Breusch-Pagan** mide si la varianza es pareja: pasa **por poco**, 0,0586. **Durbin-Watson** marca **1,94**, cerca de 2. **Breusch-Godfrey** da 0,83. Y el **paraguas HAC** cubre a todos: 0,9455. Al fondo, una consola con perillas rotuladas **A, B, C, D, F, G, H**: la E se perdió. Giraste todas y la decisión no se movió.",
+  "puerta": "Cuando la última perilla vuelve a su lugar, te llaman desde otra sala: hay una máquina con solo 19 discos y una luz roja que prende.",
+  "estaciones": [
+    {
+      "id": "r13-1",
+      "lugar": "Inspector Breusch-Pagan",
+      "imagen": "Un inspector con chaleco revisa si todos los alumnos tienen **brazos parejos** (varianza constante). Pasa raspando: **0,0586**, a un pelo del 0,05.",
+      "frase": "Brazos parejos, por poco: 0,0586.",
+      "dato": "Breusch-Pagan testea si la varianza de los errores cambia con X: p = 0,0586. No rechaza homocedasticidad, aunque queda cerca del umbral.",
+      "cifras": ["0,0586"]
+    },
+    {
+      "id": "r13-2",
+      "lugar": "Inspector Durbin-Watson",
+      "imagen": "Un segundo inspector sostiene un cartel con **1,94**: «el ideal es cerca de **2**, dos pies, dos independientes». Al lado, el compañero Breusch-Godfrey marca **0,83**.",
+      "frase": "Cerca de dos: sin eco entre meses.",
+      "dato": "Durbin-Watson = 1,94 (el ideal es cerca de 2) y Breusch-Godfrey p = 0,8349: no hay autocorrelación de los errores.",
+      "cifras": ["1,94", "0,8349"]
+    },
+    {
+      "id": "r13-3",
+      "lugar": "Paraguas en el perchero",
+      "imagen": "Un **paraguas robusto** con las siglas **HAC** (Newey-West) cubre a los cuatro inspectores bajo el aguacero de supuestos. Cartel: **0,9455**, misma decisión.",
+      "frase": "Con paraguas HAC: 0,9455.",
+      "dato": "Errores robustos Newey-West (HAC, 3 rezagos), que no suponen varianza constante ni ausencia de autocorrelación: el coeficiente del PBI da p = 0,9455. Misma conclusión.",
+      "cifras": ["0,9455"]
+    },
+    {
+      "id": "r13-4",
+      "lugar": "Consola de perillas, fila superior",
+      "imagen": "Cuatro perillas: **A** (bono sin ajuste de pagos, 0,8915), **B** (PBI sin desestacionalizar, 0,5218), **D** (spline not-a-knot, 0,9943), **H** (PIB desestacionalizado del INDEC, 0,8208). Todas giran y la luz sigue apagada.",
+      "frase": "A, B, D, H: giro y no cambia.",
+      "dato": "Sensibilidades de la regresión simple, una decisión por vez: (a) bono sin ajuste ex-pago p = 0,8915; (b) PBI sin desestacionalizar p = 0,5218; (d) spline con not-a-knot p = 0,9943; (h) PBI desestacionalizado por el INDEC p = 0,8208.",
+      "cifras": ["0,8915", "0,5218", "0,9943", "0,8208"]
+    },
+    {
+      "id": "r13-5",
+      "lugar": "Consola de perillas, fila inferior",
+      "imagen": "Tres perillas: **C** (ANOVA con umbrales ±0,5 %, 0,7404), **F** (múltiple con HAC, 0,9455) y **G** (CCL con cierres operados, 0,8499 y 0,1544). Un hueco en la fila: **falta la E**.",
+      "frase": "C, F, G… la E se perdió.",
+      "dato": "(c) ANOVA con umbrales ±0,5 % (n por grupo 10/32/14) p = 0,7404; (f) múltiple con errores HAC, β de Var PBI p = 0,9455; (g) múltiple con CCL de cierres operados (AL30C con volumen > 0): β de Var PBI p = 0,8499 y β de Var CCL p = 0,1544. Ninguna cambia la decisión.",
+      "cifras": ["0,7404", "0,8499", "0,1544"]
+    }
+  ]
+}

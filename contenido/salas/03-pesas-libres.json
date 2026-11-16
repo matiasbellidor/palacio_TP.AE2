@@ -1,0 +1,45 @@
+{
+  "n": 3,
+  "id": "pesas-libres",
+  "nombre": "Zona de pesas libres",
+  "tema": "La recta casi plana (Figura 4)",
+  "diapositiva": "Figura 4",
+  "quien": "Luka",
+  "resumen": "56 puntos, una recta de mínimos cuadrados casi horizontal.",
+  "historia": "En el rack cuelgan **56 discos**, uno por mes, repartidos como una nube. Apoyás la regla de madera y el entrenador la acomoda con un metro hasta que la suma de distancias al cuadrado sea la mínima. Queda **casi horizontal**: AL no sigue a Don Pibi. Un silencio de un segundo frente al espejo y, en el pasillo, Luka te señala el cartel con tu nombre.",
+  "puerta": "Luka te da el pase: al fondo del pasillo huele a licuado y se prende un cartel con tu nombre. Entrás al bar de proteínas.",
+  "estaciones": [
+    {
+      "id": "r3-1",
+      "lugar": "Rack de sentadillas",
+      "imagen": "En el rack cuelgan **56 discos** de colores como medallas, cada uno rotulado con un mes. Por la altura se ve cuánto subió el bono; por la posición, cuánto creció el PBI.",
+      "frase": "Cada disco, un mes.",
+      "dato": "Diagrama de dispersión: cada punto es un mes. Eje horizontal: variación del PBI. Eje vertical: variación del bono. n = 56 meses.",
+      "cifras": ["56"]
+    },
+    {
+      "id": "r3-2",
+      "lugar": "Espejo largo de la pared",
+      "imagen": "El entrenador apoya tu regla de madera sobre los discos y con un metro mide las distancias, las eleva al cuadrado y las suma, moviendo la regla hasta que la suma **sea la mínima posible**.",
+      "frase": "La regla que menos se aleja de los discos.",
+      "dato": "Mínimos cuadrados (MCO): la recta que hace mínima la suma de los errores al cuadrado. Es el método con el que se estima la pendiente β1.",
+      "cifras": []
+    },
+    {
+      "id": "r3-3",
+      "lugar": "Barra apoyada en el rack",
+      "imagen": "La regla queda **casi horizontal**, plana como una mesa. AL (el culturista) pasa por debajo sin agacharse: no hay inclinación que seguir.",
+      "frase": "Regla plana: AL no sigue a Don Pibi.",
+      "dato": "La recta ajustada está casi plana: β1 = 0,0154. Si el bono acompañara al PBI, la nube estaría inclinada, para arriba o para abajo, y no lo está.",
+      "cifras": ["0,0154"]
+    },
+    {
+      "id": "r3-4",
+      "lugar": "Cartel luminoso del pasillo",
+      "imagen": "Al final del pasillo, un cartel luminoso con tu nombre, y un megáfono que Luka te acerca. El cartel pregunta: **¿de dónde salen estos 56 meses?**",
+      "frase": "Mati, contales vos.",
+      "dato": "Luka cierra su bloque preguntando de dónde salen esos 56 meses y te pasa la palabra: «Mati, contales vos». Esa es tu señal de entrada.",
+      "cifras": ["56"]
+    }
+  ]
+}

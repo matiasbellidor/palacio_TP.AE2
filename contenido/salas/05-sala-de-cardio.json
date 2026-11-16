@@ -1,0 +1,66 @@
+{
+  "n": 5,
+  "id": "sala-de-cardio",
+  "nombre": "Sala de cardio",
+  "tema": "Las dos series (Figura 1)",
+  "diapositiva": "Figura 1",
+  "quien": "Mati",
+  "tuParte": true,
+  "tiempo": "3:10 a 4:00 · 50 s",
+  "como": "Señalá las dos pantallas; los números de la figura no hace falta leerlos.",
+  "resumen": "Tu segunda parte: las dos series, la escala y la promesa de dejar todo escrito antes.",
+  "historia": "En la sala de cardio hay dos pantallas apiladas. En la **de arriba**, AL corre: barras azules cuando sube, naranjas cuando baja. En la **de abajo**, Don Pibi camina suave. Entre las dos, una **regla gigante pintada en el piso**: AL mide decenas, Don Pibi uno o dos. En la pared del fondo, un cartel sellado por escribano con un candado: escrito **antes**. Al salir, Manu te espera con una balanza.",
+  "puerta": "Manu te recibe en la puerta con una balanza de gimnasio bajo el brazo: «Con los datos armados, te cuento qué estimamos».",
+  "estaciones": [
+    {
+      "id": "r5-1",
+      "lugar": "Cinta de correr 1 (pantalla de arriba)",
+      "imagen": "En la pantalla de arriba corre **AL**. Cuando sube, deja barras **azules** como botellas de agua; cuando baja, barras **naranjas** como zanahorias. Vos señalás la pantalla con el dedo.",
+      "frase": "Arriba AL: azul sube, naranja baja.",
+      "dato": "Señalar el panel de arriba: variación mensual del bono, azul cuando sube y naranja cuando baja.",
+      "dice": true,
+      "cifras": []
+    },
+    {
+      "id": "r5-2",
+      "lugar": "Cinta de correr 2 (pantalla de abajo)",
+      "imagen": "En la pantalla de abajo camina **Don Pibi**, tranquilo: una línea azul suave, ondulada, que apenas sube y baja. Vos bajás el dedo a esa pantalla.",
+      "frase": "Abajo Don Pibi, tranquilo.",
+      "dato": "Señalar el panel de abajo: la variación del PBI (mensualizado).",
+      "dice": true,
+      "cifras": []
+    },
+    {
+      "id": "r5-3",
+      "lugar": "Regla gigante pintada en el piso",
+      "imagen": "Entre las cintas, una **regla gigante** en el piso. A la izquierda AL salta de −19 a +39: **decenas**. A la derecha Don Pibi apenas pasa de **uno o dos**. Pausa de un segundo y frase firme.",
+      "frase": "Decenas contra uno o dos.",
+      "dato": "Pausa de 1 s y frase firme sobre la escala: el bono se mueve decenas de puntos en un mes y el PBI uno o dos como mucho. El bono va de −19,53 a 39,48; el PBI, de −1,85 a 2,30.",
+      "dice": true,
+      "cifras": [
+        "−19,53",
+        "39,48",
+        "−1,85",
+        "2,30"
+      ]
+    },
+    {
+      "id": "r5-4",
+      "lugar": "Pared del fondo, el cartel sellado",
+      "imagen": "En la pared, un cartel sellado con **cera roja** y un **candado**, fechado antes del partido. Debajo, sentado, el **Dado** (el p-valor): todavía no lo tiraron.",
+      "frase": "Escrito antes, p-valor después.",
+      "dato": "El método quedó escrito antes de calcular un solo p-valor (qué bono, qué período, qué pruebas), para que el resultado no se acomode a lo que se quería encontrar.",
+      "dice": true,
+      "cifras": []
+    },
+    {
+      "id": "r5-5",
+      "lugar": "Puerta de salida de la sala",
+      "imagen": "Manu te espera en la puerta con una **balanza** bajo el brazo, mostrando la aguja. Le pasás el micrófono con una sonrisa.",
+      "frase": "Datos armados → la balanza de Manu.",
+      "dato": "Pase a Manu con una frase corta: con los datos armados, Manu cuenta qué estimaron. Ahí termina tu parte.",
+      "dice": true,
+      "cifras": []
+    }
+  ]
+}

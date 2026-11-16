@@ -1,0 +1,61 @@
+{
+  "n": 6,
+  "id": "balanzas",
+  "nombre": "Zona de balanzas",
+  "tema": "Estimadores e intervalos de confianza",
+  "diapositiva": "Descriptiva",
+  "quien": "Manu",
+  "resumen": "Media, desvío, error estándar, proporción e IC del 95 %.",
+  "historia": "AL se sube a la balanza: la aguja marca **2,52** pero tiembla **12,5** como una licuadora. Don Pibi se sube después: **0,13** y la aguja casi no se mueve. El cartel de la pared compara: AL es **quince veces** más nervioso. Una cinta métrica de 95 cm envuelve a cada uno y a los dos les entra el **cero** adentro. Al fondo, una canasta con 32 pelotas azules y 24 naranjas.",
+  "puerta": "Manu apoya la balanza y te señala el banco de press: ahí se pone la pendiente a prueba.",
+  "estaciones": [
+    {
+      "id": "r6-1",
+      "lugar": "Balanza de AL",
+      "imagen": "AL se sube a la balanza: la aguja marca **+2,52** pero **tiembla 12,5** para cada lado como si hubiera un terremoto. Sudor verde por todos lados.",
+      "frase": "AL: promedio 2,5, tiembla 12,5.",
+      "dato": "Var AL30D: media = 2,5158 % por mes; desvío estándar S = 12,5324; error estándar = 1,6747; mínimo −19,53 y máximo 39,48.",
+      "cifras": ["2,5158", "12,5324", "1,6747"]
+    },
+    {
+      "id": "r6-2",
+      "lugar": "Balanza de Don Pibi",
+      "imagen": "Don Pibi se sube con cuidado: la aguja marca **0,13** y no se mueve casi nada, **0,84**. Se baja y le da las gracias a la balanza.",
+      "frase": "Don Pibi: 0,13 y casi quieto.",
+      "dato": "Var PBI: media = 0,1326 % por mes; desvío estándar S = 0,8382; error estándar = 0,1120; mínimo −1,85 y máximo 2,30.",
+      "cifras": ["0,1326", "0,8382", "0,1120"]
+    },
+    {
+      "id": "r6-3",
+      "lugar": "Cartel comparativo de la pared",
+      "imagen": "En la pared, un cartel gigante con un **×15** pintado. A un lado AL con los brazos revoleando; al otro Don Pibi con el termo. **Quince veces más nervioso**.",
+      "frase": "Quince veces más nervioso.",
+      "dato": "El bono es unas 15 veces más volátil que el PBI: desvío de 12,53 pp contra 0,84 pp. Con esa diferencia ya se intuye que la actividad sola difícilmente explique los movimientos del bono.",
+      "cifras": ["15 veces", "12,53", "0,84"]
+    },
+    {
+      "id": "r6-4",
+      "lugar": "Cinta métrica de 95 cm",
+      "imagen": "Una cinta métrica de **95 cm** abraza a AL: va de **−0,84** a **+5,87**, y el **cero** queda adentro del abrazo. Cartel: **IC con Cero = Imposible Concluir**.",
+      "frase": "IC con cero adentro: imposible concluir.",
+      "dato": "IC 95 % de la media: bono [−0,8404 ; 5,8720] y PBI [−0,0919 ; 0,3570]. Los dos incluyen el cero: con estos datos no se puede afirmar que hayan crecido en promedio por mes. Fórmula: media ± t · S/√n, con t = 2,0040 (55 gl).",
+      "cifras": ["−0,8404", "5,8720", "−0,0919", "0,3570", "2,0040"]
+    },
+    {
+      "id": "r6-5",
+      "lugar": "Silla de la balanza",
+      "imagen": "En la balanza hay **una silla menos** que gente: **n − 1**. Cuando falta una silla nadie se queda corto al promediar el desorden.",
+      "frase": "Resto uno para no quedarme corto.",
+      "dato": "Estimadores insesgados: S² se calcula dividiendo por n − 1 y no por n para que no subestime la varianza. El error estándar de la media es S/√n.",
+      "cifras": []
+    },
+    {
+      "id": "r6-6",
+      "lugar": "Canasta de pelotas de básquet",
+      "imagen": "Una canasta con **32 pelotas azules** (meses de suba) y **24 naranjas** (de baja). Un cartel pegado: 32 sobre 56 es **0,5714**. La cinta marca de 0,44 a 0,70 y **incluye el 0,5**.",
+      "frase": "Treinta y dos de cincuenta y seis.",
+      "dato": "Proporción de meses con suba del bono: p̂ = 32/56 = 0,5714, IC 95 % [0,4418 ; 0,7010]. Incluye 0,5: no se puede afirmar que el bono haya subido más veces de las que bajó.",
+      "cifras": ["0,5714", "0,4418", "0,7010"]
+    }
+  ]
+}

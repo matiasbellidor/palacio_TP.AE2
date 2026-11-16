@@ -1,0 +1,745 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Palacio mental · TP AE2</title>
+<meta name="description" content="Palacio mental del trabajo práctico de Análisis Estadístico 2 (Grupo 1): el trabajo entero, caminando un gimnasio. Material de estudio.">
+<meta name="theme-color" content="#0e1424">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230e1424'/%3E%3Cpath d='M7 27V15a9 9 0 0 1 18 0v12' fill='none' stroke='%2362bceb' stroke-width='2.6' stroke-linecap='round'/%3E%3Cpath d='M10.5 20h11' stroke='%23dce1ee' stroke-width='2.2' stroke-linecap='round'/%3E%3Crect x='8.8' y='17.4' width='2.6' height='5.2' rx='.8' fill='%23b9a6f2'/%3E%3Crect x='20.6' y='17.4' width='2.6' height='5.2' rx='.8' fill='%23b9a6f2'/%3E%3C/svg%3E">
+<style>
+/* Palacio mental del TP AE2. Tokens primero: nada de valores sueltos más abajo.
+   Reglas de color: celeste = el resto del trabajo; violeta = lo que dice Mati (mismo violeta que su guion en Recursos);
+   azul de acción solo para botones principales. 60-30-10: noche, paneles, acentos. */
+:root {
+  color-scheme: dark;
+  --bg: #0e1424; --panel: #141c30; --panel-2: #1a2440; --linea: #2a3654; --linea-2: #3a4a72;
+  --tx: #dce1ee; --blanco: #fff; --tenue: #a3adc4;
+  --azul: #62bceb; --azul-fondo: rgba(98, 188, 235, .1);
+  --violeta: #b9a6f2; --violeta-fondo: rgba(185, 166, 242, .13); --violeta-borde: rgba(185, 166, 242, .55);
+  --accion: #2667cc; --ok: #6fdc9a; --error: #ff8a7a; --error-fondo: #3a1d1d;
+  --serif: "Times New Roman", Tinos, Times, "Liberation Serif", serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+  --e1: 4px; --e2: 8px; --e3: 12px; --e4: 16px; --e5: 24px; --e6: 32px; --e7: 48px; --e8: 64px; --e9: 96px;
+  --t-1: 12px; --t-2: 14px; --t-3: 16px; --t-4: 20px; --t-5: 24px; --t-6: 32px; --t-7: 48px;
+  --r-1: 10px; --r-2: 14px; --r-pill: 999px;
+  --curva: cubic-bezier(.2, .8, .2, 1); --rapido: .18s; --medio: .26s;
+  --sombra: 0 18px 50px rgba(0, 0, 0, .35);
+  --ancho: 1120px;
+}
+* { box-sizing: border-box; }
+html { background: var(--bg); scroll-padding-top: 88px; }
+body { margin: 0; min-height: 100dvh; background: var(--bg); color: var(--tx); font: var(--t-3)/1.55 var(--sans); -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, p, ol, ul, dl, dd, figure, blockquote { margin: 0; }
+ol, ul { padding: 0; list-style: none; }
+button { font: inherit; color: inherit; }
+a { color: var(--azul); }
+:focus-visible { outline: 2px solid var(--azul); outline-offset: 3px; border-radius: 6px; }
+[hidden] { display: none !important; }
+main:focus { outline: none; }
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.saltar { position: absolute; left: var(--e4); top: -64px; z-index: 60; padding: var(--e2) var(--e4); background: var(--panel); color: var(--blanco); border-radius: var(--r-1); }
+.saltar:focus { top: var(--e4); }
+strong { color: var(--blanco); font-weight: 700; }
+
+/* Barras de scroll con la identidad del sitio (cápsula, sin flechas) */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--linea-2); border: 2px solid var(--bg); border-radius: var(--r-pill); }
+::-webkit-scrollbar-thumb:hover { background: #4b5e8f; }
+::-webkit-scrollbar-button { display: none; }
+@supports not selector(::-webkit-scrollbar) { html, * { scrollbar-color: var(--linea-2) transparent; scrollbar-width: thin; } }
+
+/* Intro de marca: corta, no bloquea nada (el contenido ya está debajo) */
+.intro { position: fixed; inset: 0; z-index: 100; display: none; place-items: center; background: var(--bg); pointer-events: none; }
+.intro svg { width: 96px; height: 96px; fill: none; stroke-linecap: round; }
+.intro__arco { stroke: var(--azul); stroke-width: 4.5; }
+.intro__barra { stroke: var(--tx); stroke-width: 3.6; }
+.intro__disco { fill: var(--violeta); stroke: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .js .intro { display: grid; animation: intro-sale .9s var(--curva) .2s both; }
+  .js .intro__arco, .js .intro__barra { stroke-dasharray: 1; stroke-dashoffset: 1; animation: intro-traza .5s var(--curva) .05s forwards; }
+  .js .intro__disco { opacity: 0; animation: intro-aparece .25s var(--curva) .35s forwards; }
+  @keyframes intro-traza { to { stroke-dashoffset: 0; } }
+  @keyframes intro-aparece { to { opacity: 1; } }
+  @keyframes intro-sale { 0%, 55% { opacity: 1; } 100% { opacity: 0; visibility: hidden; } }
+}
+
+/* Cabecera */
+.cab { position: sticky; top: 0; z-index: 30; display: flex; align-items: center; gap: var(--e4); padding: var(--e2) max(var(--e4), calc((100% - var(--ancho)) / 2)); background: color-mix(in srgb, var(--bg) 92%, transparent); border-bottom: 1px solid var(--linea); backdrop-filter: blur(8px); }
+.cab__marca { display: inline-flex; align-items: center; gap: var(--e2); min-height: 44px; color: var(--blanco); text-decoration: none; font: 700 var(--t-3)/1 var(--serif); }
+.cab__marca svg { width: 28px; height: 28px; color: var(--azul); }
+.cab__nav { display: flex; gap: var(--e1); margin-left: auto; }
+.cab__nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 var(--e3); border-radius: var(--r-pill); color: var(--tx); text-decoration: none; font-size: var(--t-2); font-weight: 600; }
+.cab__nav a:hover { background: var(--panel-2); }
+.cab__nav a[aria-current="page"] { background: var(--panel-2); color: var(--blanco); }
+.cab__avance { font-size: var(--t-1); color: var(--tenue); white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+main { display: block; width: 100%; max-width: var(--ancho); margin: 0 auto; padding: var(--e6) var(--e4) var(--e8); }
+
+/* Botones */
+.boton { display: inline-flex; align-items: center; justify-content: center; gap: var(--e2); min-height: 44px; padding: 0 var(--e5); border: 1px solid var(--linea-2); border-radius: var(--r-pill); background: transparent; color: var(--tx); font-weight: 600; font-size: var(--t-2); text-decoration: none; cursor: pointer; transition: background-color var(--rapido), border-color var(--rapido), transform var(--rapido); }
+.boton:hover { background: var(--panel-2); border-color: var(--azul); }
+.boton:active { transform: scale(.98); }
+.boton--primario { background: var(--accion); border-color: var(--accion); color: #fff; }
+.boton--primario:hover { background: #2f74e0; border-color: #2f74e0; }
+.boton--violeta { border-color: var(--violeta-borde); color: var(--violeta); }
+.boton--violeta:hover { background: var(--violeta-fondo); border-color: var(--violeta); }
+.boton--borrar { min-height: 44px; border-color: #7a3b3b; color: var(--error); }
+.boton--borrar:hover { background: var(--error-fondo); border-color: var(--error); }
+.boton[disabled] { opacity: .45; pointer-events: none; }
+.boton svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Etiquetas */
+.chip { display: inline-flex; align-items: center; gap: var(--e1); padding: 2px var(--e3); border: 1px solid var(--linea-2); border-radius: var(--r-pill); font-size: var(--t-1); font-weight: 600; letter-spacing: .02em; color: var(--tenue); }
+.chip--violeta { color: var(--violeta); background: var(--violeta-fondo); border-color: var(--violeta-borde); }
+.chip--azul { color: var(--azul); background: var(--azul-fondo); border-color: rgba(98, 188, 235, .4); }
+.kicker { font: 700 var(--t-1)/1.3 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--azul); }
+
+/* Inicio */
+.hero { display: grid; gap: var(--e4); padding: var(--e6) 0 var(--e5); }
+.hero h1 { font: 700 clamp(32px, 6.2vw, 56px)/1.05 var(--serif); letter-spacing: -.02em; color: var(--blanco); max-width: 20ch; }
+.portada { display: grid; gap: var(--e5); }
+@media (min-width: 1000px) { .portada { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: center; gap: var(--e7); } .portada .tuparte { margin: 0; } }
+.hero p { color: var(--tx); max-width: 62ch; font-size: var(--t-4); line-height: 1.45; }
+.hero__acciones { display: flex; flex-wrap: wrap; gap: var(--e3); margin-top: var(--e2); }
+.leyenda { display: flex; flex-wrap: wrap; gap: var(--e2) var(--e5); margin-top: var(--e2); font-size: var(--t-2); color: var(--tenue); }
+.leyenda span { display: inline-flex; align-items: center; gap: var(--e2); }
+.leyenda i { width: 14px; height: 14px; border-radius: 4px; }
+.leyenda .i-v { background: var(--violeta); } .leyenda .i-a { background: var(--azul); }
+
+.tuparte { display: grid; gap: var(--e3); margin: var(--e6) 0 var(--e7); padding: var(--e5); background: var(--violeta-fondo); border: 1px solid var(--violeta-borde); border-radius: var(--r-2); }
+.tuparte h2 { font: 700 var(--t-5)/1.2 var(--serif); color: var(--blanco); }
+.tuparte p { max-width: 64ch; color: var(--tx); }
+.tuparte__reloj { font: 700 var(--t-6)/1 var(--serif); color: var(--violeta); font-variant-numeric: tabular-nums; }
+.tuparte__acciones { display: flex; flex-wrap: wrap; gap: var(--e3); margin-top: var(--e1); }
+
+.seccion { margin-top: var(--e8); }
+.seccion > h2 { font: 700 var(--t-6)/1.15 var(--serif); color: var(--blanco); margin-bottom: var(--e2); }
+.seccion > .bajada { color: var(--tenue); max-width: 64ch; margin-bottom: var(--e5); }
+
+/* Mapa del gimnasio */
+.mapa { --gap: var(--e4); position: relative; display: grid; gap: var(--gap); padding: var(--e4); background: var(--panel); border: 1px solid var(--linea); border-radius: var(--r-2); }
+.mapa__fila { display: flex; gap: var(--gap); }
+.mapa__fila--inversa { flex-direction: row-reverse; }
+.mapa--lineal .mapa__ruta { display: none; }
+.mapa__ruta { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.mapa__ruta path { fill: none; stroke: var(--linea-2); stroke-width: 2; stroke-dasharray: 2 7; stroke-linecap: round; }
+.sala { position: relative; flex: 0 0 calc((100% - (var(--cols, 5) - 1) * var(--gap)) / var(--cols, 5)); min-width: 0; display: grid; gap: var(--e1); align-content: start; padding: var(--e3) var(--e3) var(--e4); background: var(--panel-2); border: 1px solid var(--linea); border-radius: var(--r-1); color: var(--tx); text-decoration: none; transition: border-color var(--rapido), transform var(--rapido), background-color var(--rapido); }
+.sala:hover { border-color: var(--azul); transform: translateY(-2px); }
+.sala--violeta { background: color-mix(in srgb, var(--violeta) 13%, var(--panel-2)); border-color: var(--violeta-borde); }
+.sala--violeta:hover { border-color: var(--violeta); }
+.sala__num { font: 700 var(--t-5)/1 var(--serif); color: var(--azul); font-variant-numeric: tabular-nums; }
+.sala--violeta .sala__num { color: var(--violeta); }
+.sala__nombre { font-weight: 700; color: var(--blanco); font-size: var(--t-3); line-height: 1.2; }
+.sala__tema { font-size: var(--t-1); color: var(--tenue); line-height: 1.35; }
+.sala__quien { font-size: var(--t-1); font-weight: 600; color: var(--tenue); }
+.sala--violeta .sala__quien { color: var(--violeta); }
+.sala__barra { height: 4px; border-radius: var(--r-pill); background: var(--linea); overflow: hidden; margin-top: var(--e2); }
+.sala__barra i { display: block; height: 100%; width: calc(var(--p, 0) * 1%); background: var(--azul); transition: width var(--medio) var(--curva); }
+.sala--violeta .sala__barra i { background: var(--violeta); }
+.mapa__puerta { align-self: center; color: var(--tenue); font-size: var(--t-1); text-align: center; margin: 0; }
+
+/* Elenco */
+.elenco { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: var(--e4); }
+.personaje { display: grid; gap: var(--e1); align-content: start; padding: var(--e4); background: var(--panel); border: 1px solid var(--linea); border-radius: var(--r-1); }
+.personaje h3 { font: 700 var(--t-4)/1.2 var(--serif); color: var(--blanco); }
+.personaje p { font-size: var(--t-2); color: var(--tenue); }
+.personaje .rol { color: var(--azul); font-weight: 700; font-size: var(--t-2); }
+
+/* Preguntas frecuentes (acordeón) */
+.faq { display: grid; gap: var(--e2); }
+.faq details { background: var(--panel); border: 1px solid var(--linea); border-radius: var(--r-1); }
+.faq summary { display: flex; align-items: center; justify-content: space-between; gap: var(--e3); min-height: 52px; padding: var(--e3) var(--e4); cursor: pointer; font-weight: 600; color: var(--blanco); list-style: none; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: ""; width: 10px; height: 10px; border-right: 2px solid var(--tenue); border-bottom: 2px solid var(--tenue); transform: rotate(45deg); transition: transform var(--rapido); flex: none; }
+.faq details[open] summary::after { transform: rotate(-135deg); }
+.faq details p { padding: 0 var(--e4) var(--e4); color: var(--tx); max-width: 72ch; }
+
+/* Sala */
+.sala-cab { display: grid; gap: var(--e3); margin-bottom: var(--e5); }
+.sala-nav { display: flex; align-items: center; gap: var(--e2); flex-wrap: wrap; }
+.sala-nav__pos { color: var(--tenue); font-size: var(--t-2); font-variant-numeric: tabular-nums; margin: 0 var(--e2); }
+.sala-nav .boton { padding: 0 var(--e4); }
+.sala-nav__espacio { margin-left: auto; }
+.sala-cab h1 { font: 700 clamp(28px, 5vw, 44px)/1.1 var(--serif); color: var(--blanco); letter-spacing: -.015em; }
+.sala-cab h1:focus { outline: none; }
+.sala-cab__tema { font-size: var(--t-4); color: var(--tx); max-width: 60ch; }
+.sala-cab__chips { display: flex; flex-wrap: wrap; gap: var(--e2); }
+.sala-cab__como { color: var(--tenue); font-size: var(--t-2); max-width: 64ch; }
+
+.pestanas { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--e1); padding: var(--e1); margin: var(--e5) 0; background: var(--panel); border: 1px solid var(--linea); border-radius: var(--r-pill); }
+.pestanas button { min-height: 44px; border: 0; border-radius: var(--r-pill); background: transparent; color: var(--tenue); font-weight: 600; font-size: var(--t-2); cursor: pointer; transition: background-color var(--rapido), color var(--rapido); }
+.pestanas button:hover { color: var(--blanco); }
+.pestanas button[aria-selected="true"] { background: var(--panel-2); color: var(--blanco); box-shadow: inset 0 0 0 1px var(--linea-2); }
+.pestanas--violeta button[aria-selected="true"] { box-shadow: inset 0 0 0 1px var(--violeta-borde); }
+
+.estaciones { display: grid; gap: var(--e4); counter-reset: est; }
+.est { --c: var(--azul); --cf: var(--azul-fondo); position: relative; display: grid; gap: var(--e3); padding: var(--e5) var(--e5) var(--e5) var(--e6); background: var(--panel); border: 1px solid var(--linea); border-radius: var(--r-2); }
+.est::before { content: ""; position: absolute; left: 0; top: var(--e4); bottom: var(--e4); width: 4px; border-radius: 0 4px 4px 0; background: var(--c); }
+.est--dice { --c: var(--violeta); --cf: var(--violeta-fondo); background: color-mix(in srgb, var(--violeta) 6%, var(--panel)); border-color: var(--violeta-borde); }
+.est__cab { display: flex; align-items: center; gap: var(--e3); flex-wrap: wrap; }
+.est__num { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--cf); border: 1px solid var(--c); color: var(--c); font: 800 var(--t-2)/1 var(--sans); font-variant-numeric: tabular-nums; flex: none; }
+.est__lugar { font: 700 var(--t-4)/1.25 var(--serif); color: var(--blanco); flex: 1 1 200px; }
+.est__imagen { max-width: 68ch; }
+.est__frase { display: block; padding: var(--e3) var(--e4); background: var(--cf); border-radius: var(--r-1); font: italic 700 var(--t-4)/1.3 var(--serif); color: var(--blanco); max-width: 68ch; }
+.est__frase::before { content: "“"; color: var(--c); }
+.est__frase::after { content: "”"; color: var(--c); }
+.est__dato { padding-top: var(--e3); border-top: 1px solid var(--linea); color: var(--tenue); font-size: var(--t-2); max-width: 76ch; }
+.est__dato b { display: block; margin-bottom: var(--e1); color: var(--c); font: 700 var(--t-1)/1.3 var(--sans); letter-spacing: .08em; text-transform: uppercase; }
+.est__acciones { display: flex; flex-wrap: wrap; gap: var(--e2); }
+.est__sabe { min-height: 44px; padding: 0 var(--e4); border: 1px solid var(--linea-2); border-radius: var(--r-pill); background: transparent; color: var(--tenue); font-weight: 600; font-size: var(--t-2); cursor: pointer; }
+.est__sabe:hover { border-color: var(--ok); color: var(--ok); }
+.est__sabe[aria-pressed="true"] { background: rgba(111, 220, 154, .14); border-color: var(--ok); color: var(--ok); }
+.est__sabe[aria-pressed="true"]::before { content: "✓ "; }
+
+.guion { margin: 0; padding: var(--e4) var(--e5); background: #0b1020; border-left: 4px solid var(--violeta); border-radius: 0 var(--r-1) var(--r-1) 0; font: var(--t-4)/1.6 var(--serif); color: #eceffa; max-width: 68ch; }
+.guion small { display: block; margin-bottom: var(--e2); font: 700 var(--t-1)/1.3 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--violeta); }
+.guion .pausa { display: inline-block; margin: 0 2px; padding: 0 var(--e2); border-radius: var(--r-pill); background: rgba(255, 196, 107, .14); border: 1px solid rgba(255, 196, 107, .35); color: #ffd38a; font: 600 var(--t-1)/1.7 var(--sans); vertical-align: 2px; }
+
+/* Ensayo: lo que hay que recordar queda tapado hasta que se pide */
+.est--ensayo .est__cuerpo { display: grid; gap: var(--e3); }
+.est__tapa { display: grid; gap: var(--e2); justify-items: start; padding: var(--e4); background: repeating-linear-gradient(135deg, var(--panel-2) 0 10px, var(--panel) 10px 20px); border: 1px dashed var(--linea-2); border-radius: var(--r-1); color: var(--tenue); font-size: var(--t-2); }
+.est__tapa strong { color: var(--tx); }
+
+/* Panel del guion textual con código (solo en las salas de Mati) */
+.cerrojo { display: grid; gap: var(--e3); margin: 0 0 var(--e5); padding: var(--e4) var(--e5); background: var(--panel); border: 1px dashed var(--violeta-borde); border-radius: var(--r-2); }
+.cerrojo__cab { display: flex; align-items: center; gap: var(--e3); }
+.cerrojo__cab svg { width: 24px; height: 24px; fill: none; stroke: var(--violeta); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.cerrojo h2 { font: 700 var(--t-4)/1.25 var(--serif); color: var(--blanco); }
+.cerrojo p { font-size: var(--t-2); color: var(--tenue); max-width: 62ch; }
+.cerrojo--abierto { border-style: solid; background: var(--violeta-fondo); }
+.cerrojo .codigo { max-width: 340px; padding-top: var(--e2); }
+.cerrojo__acciones { display: flex; gap: var(--e2); flex-wrap: wrap; }
+
+.puerta { margin-top: var(--e6); display: grid; gap: var(--e3); padding: var(--e5); background: var(--panel); border: 1px solid var(--linea); border-radius: var(--r-2); }
+.puerta h2 { font: 700 var(--t-1)/1.3 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--tenue); }
+.puerta p { font: italic var(--t-4)/1.45 var(--serif); color: var(--blanco); max-width: 64ch; }
+.puerta .boton { justify-self: start; }
+
+/* Historia */
+.historia { display: grid; gap: var(--e5); max-width: 70ch; }
+.historia p { font: var(--t-4)/1.6 var(--serif); }
+.historia .puente { font-style: italic; color: var(--tenue); padding-left: var(--e4); border-left: 2px solid var(--linea-2); }
+.historia-sala { display: grid; gap: var(--e3); padding: var(--e5); background: var(--panel); border: 1px solid var(--linea); border-radius: var(--r-2); }
+.historia-sala--violeta { background: var(--violeta-fondo); border-color: var(--violeta-borde); }
+.historia-sala h2 { display: flex; align-items: baseline; gap: var(--e3); font: 700 var(--t-5)/1.2 var(--serif); color: var(--blanco); }
+.historia-sala h2 span { font-size: var(--t-2); font-family: var(--sans); color: var(--azul); font-variant-numeric: tabular-nums; }
+.historia-sala--violeta h2 span { color: var(--violeta); }
+
+.pie { display: grid; gap: var(--e4); justify-items: start; max-width: var(--ancho); margin: 0 auto; padding: var(--e6) var(--e4) var(--e8); border-top: 1px solid var(--linea); color: var(--tenue); font-size: var(--t-2); }
+.pie p { max-width: 80ch; }
+
+/* Código de 3 casillas (pitch-web-kit) */
+.codigo { --cod-fondo: #0e1424; --cod-borde: #5f6e92; --cod-borde-hover: #7383aa; --cod-foco: var(--violeta); --cod-tinta: #fff; --cod-tenue: var(--tenue); --cod-ok: var(--ok); --cod-ok-fondo: #15302a; --cod-error: var(--error); --cod-error-fondo: var(--error-fondo); --cod-accion: var(--accion); --cod-radio: 10px; --cod-curva: var(--curva); }
+.codigo__cabecera { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.codigo__etiqueta { font-weight: 600; color: var(--cod-tinta); font-size: 15px; }
+.codigo__formato { font-size: 13px; color: var(--cod-tenue); }
+.codigo__casillas { display: grid; grid-template-columns: repeat(3, 64px); justify-content: start; gap: 12px; margin-top: 12px; }
+.codigo__casilla { width: 64px; height: 72px; padding: 0; text-align: center; font: 700 32px/1 system-ui, sans-serif; font-variant-numeric: tabular-nums; color: var(--cod-tinta); background: var(--cod-fondo); border: 2px solid var(--cod-borde); border-radius: var(--cod-radio); caret-color: var(--cod-foco); transition: border-color .18s, background-color .18s, box-shadow .18s; }
+.codigo__casilla:hover { border-color: var(--cod-borde-hover); }
+.codigo__casilla:focus { outline: none; border-color: var(--cod-foco); box-shadow: 0 0 0 4px color-mix(in srgb, var(--cod-foco) 22%, transparent); }
+.codigo__casilla:disabled { opacity: .6; }
+.codigo--error .codigo__casilla { border-color: var(--cod-error); background: var(--cod-error-fondo); }
+.codigo--ok .codigo__casilla { border-color: var(--cod-ok); background: var(--cod-ok-fondo); }
+.codigo__ayuda { margin-top: 12px; font-size: 13px; color: var(--cod-tenue); min-height: 20px; }
+.codigo__error { margin-top: 8px; font-size: 14px; color: var(--cod-error); }
+.codigo__error:empty { display: none; }
+.codigo__abrir { display: block; width: 100%; min-height: 48px; margin-top: 16px; border: 0; border-radius: 999px; background: var(--cod-accion); color: #fff; font-weight: 600; font-size: 15px; cursor: pointer; }
+.codigo__abrir:hover { filter: brightness(1.08); }
+.codigo__abrir:disabled { opacity: .55; cursor: default; filter: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .codigo--sacude .codigo__casillas { animation: codigo-sacude .32s var(--cod-curva) 1; }
+  @keyframes codigo-sacude { 20% { transform: translateX(-8px); } 45% { transform: translateX(7px); } 70% { transform: translateX(-4px); } 90% { transform: translateX(2px); } }
+  .view { animation: vista-entra .26s var(--curva) both; }
+  @keyframes vista-entra { from { opacity: 0; transform: translateY(6px); } }
+}
+
+/* Pantallas chicas */
+@media (max-width: 1000px) { .cab__avance { display: none; } }
+@media (max-width: 640px) {
+  main { padding-top: var(--e5); }
+  .cab { gap: var(--e2); }
+  .cab__marca span { display: none; }
+  .cab__nav { margin-left: 0; }
+  .cab__nav a { padding: 0 var(--e2); }
+  .mapa { --gap: var(--e3); padding: var(--e3); }
+  .sala { padding: var(--e3) var(--e2) var(--e3); }
+  .sala__tema { display: none; }
+  .est { padding: var(--e4) var(--e4) var(--e4) var(--e5); }
+  .sala-nav .txt { display: none; }
+  .sala-nav .boton:has(.txt) { padding: 0; width: 44px; }
+  .codigo__casillas { grid-template-columns: repeat(3, 56px); }
+  .codigo__casilla { width: 56px; height: 66px; }
+}
+@media (max-width: 380px) {
+  .sala__nombre { font-size: var(--t-2); }
+  .hero p { font-size: var(--t-3); }
+}
+@media (hover: none) { .sala:hover { transform: none; } }
+@media print {
+  :root { --bg: #fff; --panel: #fff; --panel-2: #fff; --linea: #ccd2dc; --tx: #111; --blanco: #000; --tenue: #444; --azul: #0b5c8a; --violeta: #4b2ea8; }
+  body { background: #fff; color: #111; }
+  .cab, .intro, .pestanas, .sala-nav, .boton, .est__sabe, .cerrojo, .pie button { display: none !important; }
+}
+
+</style>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+<div class="intro" aria-hidden="true">
+  <svg viewBox="0 0 64 64" focusable="false">
+    <path class="intro__arco" pathLength="1" d="M12 54V30a20 20 0 0 1 40 0v24"/>
+    <path class="intro__barra" pathLength="1" d="M22 40h20"/>
+    <rect class="intro__disco" x="17" y="34" width="5" height="12" rx="1.5"/>
+    <rect class="intro__disco" x="42" y="34" width="5" height="12" rx="1.5"/>
+  </svg>
+</div>
+<header class="cab">
+  <a class="cab__marca" href="#/" aria-label="Palacio mental: ir al mapa">
+    <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M12 54V30a20 20 0 0 1 40 0v24" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M22 40h20" stroke="var(--tx)" stroke-width="4" stroke-linecap="round"/><rect x="17" y="34" width="5" height="12" rx="1.5" fill="var(--violeta)"/><rect x="42" y="34" width="5" height="12" rx="1.5" fill="var(--violeta)"/></svg>
+    <span>Palacio AE2</span>
+  </a>
+  <nav class="cab__nav" aria-label="Principal">
+    <a href="#/" data-nav="inicio">Mapa</a>
+    <a href="#/historia" data-nav="historia">Historia completa</a>
+  </nav>
+  <p class="cab__avance" data-avance aria-live="polite"></p>
+</header>
+<main id="contenido" tabindex="-1"></main>
+<footer class="pie">
+  <p>Material de estudio del Grupo 1 para el TP de Análisis Estadístico 2 (FCE-UBA, Cátedra Tito Lasanta). Los datos y números salen del trabajo del grupo: <a href="https://matiasbellidor.github.io/trabajo_practico_AE2/" rel="noopener">ver el trabajo</a>. Los datos originales pertenecen a Data912 y al INDEC. No hay cuentas, cookies ni analítica: el progreso queda solo en este dispositivo.</p>
+  <button class="boton boton--borrar" type="button" data-borrar>Borrar mi progreso</button>
+</footer>
+<p class="sr-only" role="status" aria-live="polite" data-anuncio></p>
+<script type="application/json" id="datos">{"meta":{"titulo":"Palacio mental del TP de Análisis Estadístico 2","bajada":"El trabajo entero, caminando un gimnasio: {salas} salas, {estaciones} estaciones y una historia que las une. En violeta, lo que decís vos.","tuParte":{"desde":"2:10","hasta":"4:00","segundos":110,"salas":[4,5],"texto":"Después de Luka y antes de Manu. Empieza con «Mati, contales vos» y termina pasándole la palabra a Manu."},"elenco":[{"nombre":"AL","rol":"El bono AL30D","imagen":"Culturista gigante con remera «30 D», billetes verdes en las mangas. Sube y baja decenas de puntos: es muy nervioso."},{"nombre":"Don Pibi","rol":"El PBI real","imagen":"Abuelito del tamaño de un termo que abre el diario del INDEC cada tres meses. Se mueve uno o dos puntos como mucho."},{"nombre":"El Dado","rol":"El p-valor","imagen":"Un dado gigante. La p es de Puro azar: si cae en un número alto, el azar alcanza para explicarlo."},{"nombre":"La Cinta","rol":"El intervalo de confianza","imagen":"Una cinta métrica de 95 cm. Si el cero queda adentro, es imposible concluir."},{"nombre":"La Cero","rol":"La hipótesis nula H0","imagen":"Una medalla dorada con forma de 0. H0: Hay Cero relación."}],"como":[{"q":"¿Cómo funciona un palacio mental?","a":"Elegís un lugar que conocés de memoria y lo recorrés siempre en el mismo orden. En cada punto del recorrido dejás una imagen exagerada, absurda o graciosa que guarda un dato. Para recordar, caminás el lugar con la cabeza y las imágenes aparecen una detrás de otra. Acá el lugar es un gimnasio: lo conocés, tiene zonas en orden y cada máquina es un buen punto de anclaje."},{"q":"¿Cómo lo uso, paso a paso?","a":"1. Leé la historia de la sala (pestaña Historia). 2. Pasá por cada estación en la pestaña Recorrido: imaginá la escena con todos los sentidos y decí la frase en voz alta. 3. Pasá a Ensayo: las imágenes quedan tapadas, vos recordás y después destapás. 4. Marcá «Lo sé» solo cuando te salga sin mirar. 5. Al final, caminá las 15 salas de memoria."},{"q":"¿Y si mi gimnasio tiene otra forma?","a":"Mejor todavía. Reemplazá los lugares de cada estación por los de tu gimnasio real: lo único que importa es que el orden del recorrido sea siempre el mismo. Si no tenés bar de proteínas, usá cualquier rincón donde puedas imaginar una heladera."},{"q":"¿Qué significan los colores?","a":"Violeta: lo que decís vos en la exposición (salas 4 y 5, más el «¡Hola!» del grupo). Celeste: el resto del trabajo, que tenés que saber por si te preguntan o por si tenés que cubrir a alguien. Las estaciones violetas de las salas 4 y 5 tienen tus frases textuales, que se abren con el código del grupo."},{"q":"¿Qué pasa con mis datos?","a":"Nada sale de tu navegador. El progreso («Lo sé») se guarda solo en este dispositivo y lo podés borrar cuando quieras con el botón del pie de página. No hay cuentas, cookies de seguimiento ni analítica."}]},"salas":[{"n":1,"id":"recepcion","nombre":"Recepción","tema":"La pregunta del trabajo","diapositiva":"Portada","quien":"Luka","resumen":"Qué es el AL30D, qué es el PBI y qué pregunta hacemos.","historia":"Empujás la puerta de vidrio y los cinco gritan **¡Hola!**. Arriba, el neón pregunta si **AL** sigue a **Don Pibi**. En el torniquete un culturista enorme con remera «30 D» te frena con la tarjeta que vence en 2030. En el mostrador, un abuelito diminuto, Don Pibi, abre el diario del INDEC una vez cada tres meses. En la pizarra alguien dibujó con tiza: crece, recauda, paga, ¿sube? Y un cartel te recuerda: se mira, no se empuja.","puerta":"Pasás por la puerta de los vestuarios y el olor a candado nuevo te avisa: ahí se guardan las reglas antes de jugar.","estaciones":[{"id":"r1-1","lugar":"Puerta de vidrio","imagen":"Empujás la puerta y los cinco, alineados detrás del mostrador, gritan **¡Hola!** a la vez. Vos mirás al público, no a la pantalla, y levantás una mano.","frase":"Los cinco, de frente, a la vez.","dato":"Apertura de 10 segundos: el grupo entero de frente al público. Después de la pausa, Luka da un paso adelante.","dice":true,"cifras":[]},{"id":"r1-2","lugar":"Cartel de neón sobre la puerta","imagen":"En letras de neón: **¿El bono argentino sigue al PBI?** Debajo, un culturista (AL) camina detrás de un abuelito diminuto (Don Pibi) y no lo mira ni una vez.","frase":"¿AL sigue a Don Pibi?","dato":"Pregunta del trabajo: cuando la economía argentina crece, ¿el bono AL30D sube? Análisis Estadístico 2, Cátedra Tito Lasanta, FCE-UBA, segundo cuatrimestre de 2026. Grupo 1.","cifras":["2026"]},{"id":"r1-3","lugar":"Torniquete de entrada","imagen":"Un culturista gigante bloquea el torniquete con una remera que dice **30 D**. De la manga le cuelgan billetes verdes. Te muestra una tarjeta: **VENCE 2030**.","frase":"AL30D: Deuda en Dólares que vence al 30.","dato":"El AL30D es un bono de la deuda del Estado argentino, en dólares, que vence en 2030. Su precio sube cuando el mercado confía más en que el Estado va a pagar y baja cuando confía menos.","cifras":["2030"]},{"id":"r1-4","lugar":"Mostrador de recepción","imagen":"Detrás del mostrador, **Don Pibi**, un abuelito del tamaño de un termo, abre el diario del INDEC **cada tres meses** y le pasa un borrador a la inflación hasta dejarlo «real».","frase":"Don Pibi: real, trimestral y tranquilo.","dato":"El PBI mide todo lo que produce la economía. Usamos el PBI real (sin el efecto de la inflación) que publica el INDEC cada tres meses.","cifras":[]},{"id":"r1-5","lugar":"Pizarra de tiza de la pared","imagen":"Con tiza, cuatro dibujos encadenados con flechas: una planta que **crece**, una caja que **recauda**, una mano que **paga**, un signo de pregunta que dice **¿sube?**","frase":"Crece, recauda, paga… ¿sube?","dato":"La intuición que pusimos a prueba: si la economía crece, el Estado recauda más y debería pagar su deuda con más facilidad, así que el bono podría subir.","cifras":[]},{"id":"r1-6","lugar":"Cartelito pegado en el mostrador","imagen":"Un cartelito en el vidrio: **SE MIRA, NO SE EMPUJA**. Podés mirar si AL y Don Pibi caminan juntos; no podés probar que uno empuja al otro.","frase":"Se mira, no se empuja.","dato":"Asociación, no causalidad: buscamos si las dos variables se mueven juntas. Aunque lo hicieran, eso solo no probaría que una mueve a la otra, porque los datos son observacionales.","cifras":[]}]},{"n":2,"id":"vestuario","nombre":"Vestuario","tema":"Hipótesis y reglas fijadas de antemano","diapositiva":"Hipótesis","quien":"Luka","resumen":"El modelo, H0 y H1, el 0,05, las tres hipótesis y la caja fuerte del config.","historia":"En el vestuario abrís el primer locker y hay una regla de madera apoyada: arranca en beta cero y se inclina en beta uno. De su candado cuelga una medalla con forma de **0**: **Hay Cero** relación. En el banco, una torta de veinte porciones con una sola mordida. En la pared, tres perchas con tres remeras: Principal, Adelante y Profes. Al fondo, la caja fuerte del config, cerrada antes de que nadie mire nada.","puerta":"Salís del vestuario con la regla de madera bajo el brazo y entrás a la zona de pesas libres, donde esa regla va a quedar apoyada sobre 56 discos.","estaciones":[{"id":"r2-1","lugar":"Locker número 1","imagen":"Abrís el locker y adentro hay una **regla de madera** apoyada: el pie de la regla marca de dónde arranca (**β0**) y el ángulo con el piso es cuánto se inclina (**β1**).","frase":"Beta-cero arranca, beta-uno inclina.","dato":"Modelo: Var AL30D = β0 + β1 · Var PBI + error. Todo se juega en β1, la pendiente: cuántos puntos se mueve el bono por cada punto que se mueve el PBI.","cifras":[]},{"id":"r2-2","lugar":"Candado del locker","imagen":"Del candado cuelga una medalla con forma de **cero** gigante, dorada. En el grabado se lee: **H0, Hay Cero**. Una segunda medalla, más chica y torcida, dice H1: distinto de cero.","frase":"H0: Hay Cero.","dato":"H0: β1 = 0 (no hay asociación, el PBI no ayuda a predecir el bono). H1: β1 ≠ 0 (hay asociación, positiva o negativa). Contraste bilateral.","cifras":[]},{"id":"r2-3","lugar":"Banco de madera","imagen":"Sobre el banco, una torta partida en **20 porciones** y le falta una sola: **una de veinte**. Un cartel: «riesgo que acepto: 0,05».","frase":"Una de veinte es mi riesgo.","dato":"Nivel de significación α = 0,05: el riesgo que aceptamos de rechazar H0 por error. Equivale a trabajar con 95 % de confianza.","cifras":["0,05"]},{"id":"r2-4","lugar":"Tres perchas en la pared","imagen":"Tres remeras colgadas: una dice **Principal** (la regresión simple), otra tiene una flecha hacia adelante y un **+1** (**Adelante**), y la tercera lleva un sello con la fecha **22/10** (**Profes**).","frase":"Principal, Adelante, Profes.","dato":"Hipótesis principal: regresión simple del bono contra el PBI del mismo mes. Extensión: con el PBI del mes siguiente, ¿el bono se anticipa? Hipótesis enviada a los docentes el 22/10: ¿el PBI crece distinto en los meses en que el bono sube que en los que baja? (diferencia de medias).","cifras":["22/10"]},{"id":"r2-5","lugar":"Caja fuerte del fondo","imagen":"Una caja fuerte con **config.yaml** grabado en la puerta. El Dado (el p-valor) espera sentado afuera, sin tirarse, porque la caja se cierra **antes**.","frase":"Primero cierro, después miro.","dato":"Todas las decisiones de método (qué bono, qué ventana, cómo tratar el PBI, qué pruebas son principales y cuáles exploratorias) se fijaron en config.yaml antes de calcular cualquier p-valor, para que el resultado no se acomode a lo que se quería encontrar.","cifras":[]}]},{"n":3,"id":"pesas-libres","nombre":"Zona de pesas libres","tema":"La recta casi plana (Figura 4)","diapositiva":"Figura 4","quien":"Luka","resumen":"56 puntos, una recta de mínimos cuadrados casi horizontal.","historia":"En el rack cuelgan **56 discos**, uno por mes, repartidos como una nube. Apoyás la regla de madera y el entrenador la acomoda con un metro hasta que la suma de distancias al cuadrado sea la mínima. Queda **casi horizontal**: AL no sigue a Don Pibi. Un silencio de un segundo frente al espejo y, en el pasillo, Luka te señala el cartel con tu nombre.","puerta":"Luka te da el pase: al fondo del pasillo huele a licuado y se prende un cartel con tu nombre. Entrás al bar de proteínas.","estaciones":[{"id":"r3-1","lugar":"Rack de sentadillas","imagen":"En el rack cuelgan **56 discos** de colores como medallas, cada uno rotulado con un mes. Por la altura se ve cuánto subió el bono; por la posición, cuánto creció el PBI.","frase":"Cada disco, un mes.","dato":"Diagrama de dispersión: cada punto es un mes. Eje horizontal: variación del PBI. Eje vertical: variación del bono. n = 56 meses.","cifras":["56"]},{"id":"r3-2","lugar":"Espejo largo de la pared","imagen":"El entrenador apoya tu regla de madera sobre los discos y con un metro mide las distancias, las eleva al cuadrado y las suma, moviendo la regla hasta que la suma **sea la mínima posible**.","frase":"La regla que menos se aleja de los discos.","dato":"Mínimos cuadrados (MCO): la recta que hace mínima la suma de los errores al cuadrado. Es el método con el que se estima la pendiente β1.","cifras":[]},{"id":"r3-3","lugar":"Barra apoyada en el rack","imagen":"La regla queda **casi horizontal**, plana como una mesa. AL (el culturista) pasa por debajo sin agacharse: no hay inclinación que seguir.","frase":"Regla plana: AL no sigue a Don Pibi.","dato":"La recta ajustada está casi plana: β1 = 0,0154. Si el bono acompañara al PBI, la nube estaría inclinada, para arriba o para abajo, y no lo está.","cifras":["0,0154"]},{"id":"r3-4","lugar":"Cartel luminoso del pasillo","imagen":"Al final del pasillo, un cartel luminoso con tu nombre, y un megáfono que Luka te acerca. El cartel pregunta: **¿de dónde salen estos 56 meses?**","frase":"Mati, contales vos.","dato":"Luka cierra su bloque preguntando de dónde salen esos 56 meses y te pasa la palabra: «Mati, contales vos». Esa es tu señal de entrada.","cifras":["56"]}]},{"n":4,"id":"bar-de-proteinas","nombre":"Bar de proteínas","tema":"Metodología y recolección de datos","diapositiva":"Fuentes","quien":"Mati","tuParte":true,"tiempo":"2:10 a 3:10 · 60 s","como":"Contalo como una receta: fuentes, problema y solución, en ese orden.","resumen":"Tu primera parte: dos fuentes, un problema (diario contra trimestral) y la receta para armar 56 meses.","historia":"Luka te pasa un shaker por la barra y vos mostrás **dos frascos** públicos. En la **heladera 1** AL suda billetes y deja un cierre por día. En la **heladera 2** Don Pibi tirita con una botella cada tres meses. El **reloj de pared** corre todos los días y se atasca cada tres meses. Metés el PBI en la **licuadora STL** y tirás por la ventana lo que se repite cada año. Una **cinta flexible** toca todos los clavos trimestrales y los vuelve curva. Sobre el mostrador, una bandeja con **56 porciones**: la consigna pedía 50.","puerta":"Con la bandeja de 56 porciones en las manos pasás a la sala de cardio: dos pantallas esperan para mostrar qué cocinaste.","estaciones":[{"id":"r4-1","lugar":"Barra de entrada del bar","imagen":"Luka te desliza un **shaker** por la barra y dice «gracias» con la cabeza. Vos lo agarrás y mostrás **dos frascos transparentes** pegados con la etiqueta PÚBLICO.","frase":"Dos frascos, los dos públicos.","dato":"Entrás agradeciéndole a Luka y anunciás que usaron dos fuentes públicas.","dice":true,"cifras":[]},{"id":"r4-2","lugar":"Heladera 1 (la del bono)","imagen":"Dentro de la heladera, **AL** el culturista suda billetes verdes. Pegada en la puerta, una planilla con **una fila por día**. Una etiqueta: **Data912**.","frase":"AL, un cierre por día, en dólares.","dato":"Bono: precios de cierre diarios del AL30D, en dólares, de Data912. De ahí sale la variación de cada mes (se acumulan las variaciones diarias del mes).","dice":true,"cifras":[]},{"id":"r4-3","lugar":"Heladera 2 (la de la economía)","imagen":"En la segunda heladera, **Don Pibi** tirita con una sola botella en la mano. En la puerta, un cartel azul: **INDEC, PBI real**.","frase":"Don Pibi: una botella cada tres meses.","dato":"Economía: PBI real del INDEC (a precios de 2004).","dice":true,"cifras":[]},{"id":"r4-4","lugar":"Reloj de pared","imagen":"Un reloj con dos agujas: el segundero (el bono) corre **todos los días**, tic-tic-tic. La otra aguja (el INDEC) salta **cada tres meses**: CLONK. Las agujas no se encuentran nunca.","frase":"Todos los días contra cada tres meses.","dato":"El problema, con énfasis y despacio: el INDEC publica cada tres meses y el bono cotiza todos los días.","dice":true,"cifras":[]},{"id":"r4-5","lugar":"Licuadora STL","imagen":"Metés el PBI en una licuadora con tres picos de salida: **tendencia**, **estacionalidad** y **resto**. Abrís la ventana y tirás por ahí el pico de estacionalidad: el patrón que se repite cada año.","frase":"STL: separa y tira lo que se repite.","dato":"Primer paso de la solución: quitar la estacionalidad con STL, que separa tendencia, estacionalidad y resto. El PBI repite un patrón cada año (el segundo trimestre siempre es alto). Los factores coinciden con los del PIB desestacionalizado del INDEC.","dice":true,"cifras":[]},{"id":"r4-6","lugar":"Cinta métrica flexible sobre el mostrador","imagen":"Una cinta de modista pasa **por encima de cada clavo trimestral** clavado en el mostrador y dibuja una curva suave que sigue a todos: el **spline cúbico**. Entre clavo y clavo se marcan los meses.","frase":"Spline: la cinta que toca todos los clavos.","dato":"Segundo paso: pasar a meses con un spline cúbico, una curva suave que respeta el dato de cada trimestre.","dice":true,"cifras":[]},{"id":"r4-7","lugar":"Bandeja del plato final","imagen":"Una bandeja con **56 porciones** ordenadas, rotuladas de **octubre de 2021** a **mayo de 2026**. Un cartel clavado al costado: **pide 50**. Vos sonreís: servís 56.","frase":"Cincuenta pide, cincuenta y seis sirve.","dato":"Resultado: 56 meses, de octubre de 2021 a mayo de 2026. La consigna pide al menos 50 observaciones, por eso la muestra principal es mensual.","dice":true,"cifras":["56","50"]},{"id":"r4-8","lugar":"Cartel de cupones en la puerta de la heladera 1","imagen":"AL tose cinco veces y escupe un cupón cada vez; el precio cae un tercio de golpe. Un cartel: **5 días, valor cero**.","frase":"Cinco veces paga: cero ese día.","dato":"Para saberlo si te preguntan: en los 5 días en que el bono pagó cupón y amortización su precio cae de 7 a 13 % solo por el pago. A esos días se les asigna variación 0, para no confundir un pago con una pérdida.","cifras":["5 días","7 a 13 %"]},{"id":"r4-9","lugar":"Estante de libros del rincón","imagen":"Un estante con una carpeta enorme rotulada **1.243 ruedas**. Dos auditores comparan el libro con una copia, línea por línea, y tachan con tilde verde.","frase":"Mil doscientas cuarenta y tres ruedas, todas verificadas.","dato":"Para saberlo si te preguntan: el archivo del AL30D tiene 1.243 ruedas. Un test compara los datos ordenados por el grupo contra descargas independientes de Data912 y datos.gob.ar, valor por valor.","cifras":["1.243"]}]},{"n":5,"id":"sala-de-cardio","nombre":"Sala de cardio","tema":"Las dos series (Figura 1)","diapositiva":"Figura 1","quien":"Mati","tuParte":true,"tiempo":"3:10 a 4:00 · 50 s","como":"Señalá las dos pantallas; los números de la figura no hace falta leerlos.","resumen":"Tu segunda parte: las dos series, la escala y la promesa de dejar todo escrito antes.","historia":"En la sala de cardio hay dos pantallas apiladas. En la **de arriba**, AL corre: barras azules cuando sube, naranjas cuando baja. En la **de abajo**, Don Pibi camina suave. Entre las dos, una **regla gigante pintada en el piso**: AL mide decenas, Don Pibi uno o dos. En la pared del fondo, un cartel sellado por escribano con un candado: escrito **antes**. Al salir, Manu te espera con una balanza.","puerta":"Manu te recibe en la puerta con una balanza de gimnasio bajo el brazo: «Con los datos armados, te cuento qué estimamos».","estaciones":[{"id":"r5-1","lugar":"Cinta de correr 1 (pantalla de arriba)","imagen":"En la pantalla de arriba corre **AL**. Cuando sube, deja barras **azules** como botellas de agua; cuando baja, barras **naranjas** como zanahorias. Vos señalás la pantalla con el dedo.","frase":"Arriba AL: azul sube, naranja baja.","dato":"Señalar el panel de arriba: variación mensual del bono, azul cuando sube y naranja cuando baja.","dice":true,"cifras":[]},{"id":"r5-2","lugar":"Cinta de correr 2 (pantalla de abajo)","imagen":"En la pantalla de abajo camina **Don Pibi**, tranquilo: una línea azul suave, ondulada, que apenas sube y baja. Vos bajás el dedo a esa pantalla.","frase":"Abajo Don Pibi, tranquilo.","dato":"Señalar el panel de abajo: la variación del PBI (mensualizado).","dice":true,"cifras":[]},{"id":"r5-3","lugar":"Regla gigante pintada en el piso","imagen":"Entre las cintas, una **regla gigante** en el piso. A la izquierda AL salta de −19 a +39: **decenas**. A la derecha Don Pibi apenas pasa de **uno o dos**. Pausa de un segundo y frase firme.","frase":"Decenas contra uno o dos.","dato":"Pausa de 1 s y frase firme sobre la escala: el bono se mueve decenas de puntos en un mes y el PBI uno o dos como mucho. El bono va de −19,53 a 39,48; el PBI, de −1,85 a 2,30.","dice":true,"cifras":["−19,53","39,48","−1,85","2,30"]},{"id":"r5-4","lugar":"Pared del fondo, el cartel sellado","imagen":"En la pared, un cartel sellado con **cera roja** y un **candado**, fechado antes del partido. Debajo, sentado, el **Dado** (el p-valor): todavía no lo tiraron.","frase":"Escrito antes, p-valor después.","dato":"El método quedó escrito antes de calcular un solo p-valor (qué bono, qué período, qué pruebas), para que el resultado no se acomode a lo que se quería encontrar.","dice":true,"cifras":[]},{"id":"r5-5","lugar":"Puerta de salida de la sala","imagen":"Manu te espera en la puerta con una **balanza** bajo el brazo, mostrando la aguja. Le pasás el micrófono con una sonrisa.","frase":"Datos armados → la balanza de Manu.","dato":"Pase a Manu con una frase corta: con los datos armados, Manu cuenta qué estimaron. Ahí termina tu parte.","dice":true,"cifras":[]}]},{"n":6,"id":"balanzas","nombre":"Zona de balanzas","tema":"Estimadores e intervalos de confianza","diapositiva":"Descriptiva","quien":"Manu","resumen":"Media, desvío, error estándar, proporción e IC del 95 %.","historia":"AL se sube a la balanza: la aguja marca **2,52** pero tiembla **12,5** como una licuadora. Don Pibi se sube después: **0,13** y la aguja casi no se mueve. El cartel de la pared compara: AL es **quince veces** más nervioso. Una cinta métrica de 95 cm envuelve a cada uno y a los dos les entra el **cero** adentro. Al fondo, una canasta con 32 pelotas azules y 24 naranjas.","puerta":"Manu apoya la balanza y te señala el banco de press: ahí se pone la pendiente a prueba.","estaciones":[{"id":"r6-1","lugar":"Balanza de AL","imagen":"AL se sube a la balanza: la aguja marca **+2,52** pero **tiembla 12,5** para cada lado como si hubiera un terremoto. Sudor verde por todos lados.","frase":"AL: promedio 2,5, tiembla 12,5.","dato":"Var AL30D: media = 2,5158 % por mes; desvío estándar S = 12,5324; error estándar = 1,6747; mínimo −19,53 y máximo 39,48.","cifras":["2,5158","12,5324","1,6747"]},{"id":"r6-2","lugar":"Balanza de Don Pibi","imagen":"Don Pibi se sube con cuidado: la aguja marca **0,13** y no se mueve casi nada, **0,84**. Se baja y le da las gracias a la balanza.","frase":"Don Pibi: 0,13 y casi quieto.","dato":"Var PBI: media = 0,1326 % por mes; desvío estándar S = 0,8382; error estándar = 0,1120; mínimo −1,85 y máximo 2,30.","cifras":["0,1326","0,8382","0,1120"]},{"id":"r6-3","lugar":"Cartel comparativo de la pared","imagen":"En la pared, un cartel gigante con un **×15** pintado. A un lado AL con los brazos revoleando; al otro Don Pibi con el termo. **Quince veces más nervioso**.","frase":"Quince veces más nervioso.","dato":"El bono es unas 15 veces más volátil que el PBI: desvío de 12,53 pp contra 0,84 pp. Con esa diferencia ya se intuye que la actividad sola difícilmente explique los movimientos del bono.","cifras":["15 veces","12,53","0,84"]},{"id":"r6-4","lugar":"Cinta métrica de 95 cm","imagen":"Una cinta métrica de **95 cm** abraza a AL: va de **−0,84** a **+5,87**, y el **cero** queda adentro del abrazo. Cartel: **IC con Cero = Imposible Concluir**.","frase":"IC con cero adentro: imposible concluir.","dato":"IC 95 % de la media: bono [−0,8404 ; 5,8720] y PBI [−0,0919 ; 0,3570]. Los dos incluyen el cero: con estos datos no se puede afirmar que hayan crecido en promedio por mes. Fórmula: media ± t · S/√n, con t = 2,0040 (55 gl).","cifras":["−0,8404","5,8720","−0,0919","0,3570","2,0040"]},{"id":"r6-5","lugar":"Silla de la balanza","imagen":"En la balanza hay **una silla menos** que gente: **n − 1**. Cuando falta una silla nadie se queda corto al promediar el desorden.","frase":"Resto uno para no quedarme corto.","dato":"Estimadores insesgados: S² se calcula dividiendo por n − 1 y no por n para que no subestime la varianza. El error estándar de la media es S/√n.","cifras":[]},{"id":"r6-6","lugar":"Canasta de pelotas de básquet","imagen":"Una canasta con **32 pelotas azules** (meses de suba) y **24 naranjas** (de baja). Un cartel pegado: 32 sobre 56 es **0,5714**. La cinta marca de 0,44 a 0,70 y **incluye el 0,5**.","frase":"Treinta y dos de cincuenta y seis.","dato":"Proporción de meses con suba del bono: p̂ = 32/56 = 0,5714, IC 95 % [0,4418 ; 0,7010]. Incluye 0,5: no se puede afirmar que el bono haya subido más veces de las que bajó.","cifras":["0,5714","0,4418","0,7010"]}]},{"n":7,"id":"banco-de-press","nombre":"Banco de press","tema":"Regresión lineal simple: el resultado central","diapositiva":"Regresión mensual","quien":"Manu","resumen":"β1, el test t, las sumas de cuadrados, R², el IC y el p-valor.","historia":"En el banco de press, la barra carga un disco chiquito arriba y uno enorme abajo: **poquito sobre muchísimo, casi cero**. Un cartel cuelga del techo en **±2,0049** y el **t** del test ni le roza las rodillas. Una balanza de tres platos pesa una **pluma** contra un **camión**. El Dado cae en **0,9940**. La cinta de medir se estira cuatro para cada lado con el cero en el medio. Y el cartel final: **no se rechaza**.","puerta":"Salís del banco con la barra descargada y te cruzás con cuatro cintas de correr inclinadas distinto: ahí se proyecta.","estaciones":[{"id":"r7-1","lugar":"Barra olímpica con dos discos","imagen":"En un extremo, un disco chiquito con **0,5967**; en el otro, uno enorme con **38,6396**. Los dividís: sale **0,0154**. Una pluma sobre la barra en la que se lee **β0 = 2,5138**.","frase":"Poquito sobre muchísimo: casi cero.","dato":"Estimación por mínimos cuadrados: β̂1 = Sxy / Sxx = 0,5967 / 38,6396 = 0,0154, y β̂0 = media de Y − β̂1 · media de X = 2,5138 (media de X = 0,1326, media de Y = 2,5158).","cifras":["0,5967","38,6396","0,0154","2,5138"]},{"id":"r7-2","lugar":"Soporte del banco (el test t)","imagen":"Un cartel colgado del techo a **±2,0049**. El **t** del test (0,0076) es un enano que ni le roza las rodillas. En el soporte: **54 grados de libertad**.","frase":"t = 0,0076: ni roza el 2.","dato":"Test t sobre la pendiente, con n − 2 = 54 gl: s² = 159,97; EE(β̂1) = 2,0347; t = 0,0076. El valor crítico es ±2,0049: si |t| lo supera se rechaza H0. Acá no.","cifras":["159,97","2,0347","0,0076","2,0049"]},{"id":"r7-3","lugar":"Balanza de tres platos","imagen":"Tres platos: en el de arriba, un camión (**SCT = 8.638,37**). Abajo se reparte en una **pluma** (SCR = **0,0092**, lo que explica la recta) y casi todo el camión (SCE = 8.638,37, el error). R² **0,0000**.","frase":"Una pluma contra un camión.","dato":"SCT = SCR + SCE. Regresión (lo que explica el PBI) 0,0092, error 8.638,37, total 8.638,37. R² = SCR/SCT = 0,0000: el PBI explica el 0,0 % de la variación del bono. F = 0,0001 con (1; 54) gl y F = t², así que da el mismo p-valor.","cifras":["8.638,37","0,0092","0,0001"]},{"id":"r7-4","lugar":"Dado gigante sobre el banco","imagen":"Tirás el **Dado** y cae en **0,9940**, casi cien. El dado tiene la **p** de **P**uro azar: con valor así el azar alcanza y sobra. Muy lejos del 0,05 colgado en la pared.","frase":"p alto: el azar alcanza.","dato":"p-valor = 0,9940, muy por encima de 0,05: no se rechaza H0. El p-valor es la probabilidad de ver un resultado igual o más extremo que el observado si en realidad no hubiera relación.","cifras":["0,9940"]},{"id":"r7-5","lugar":"Cinta métrica sobre el banco","imagen":"La cinta se estira **cuatro hacia cada lado** con el **cero justo en el medio**: de **−4,06** a **+4,09**. Un cartel: **cero adentro, no hay evidencia**.","frase":"Cuatro para cada lado, cero en el medio.","dato":"IC 95 % de β1: [−4,0639 ; 4,0948]. Contiene el cero, que es lo mismo que dice el test t. Fórmula: β̂1 ± t crítico (n − 2 gl) · EE(β̂1).","cifras":["−4,0639","4,0948"]},{"id":"r7-6","lugar":"Cartel de veredicto","imagen":"Un cartel enorme con letras rojas: **NO SE RECHAZA**. Debajo, en letra chica: «no es lo mismo que **es cero**». Dos jueces asienten.","frase":"No se rechaza no es «es cero».","dato":"No se rechaza H0. No rechazar H0 no prueba que la relación sea cero: los datos no alcanzan para afirmarla. Por eso los intervalos importan: dicen qué tamaños de relación quedan descartados.","cifras":[]}]},{"n":8,"id":"cintas-inclinadas","nombre":"Cintas inclinadas","tema":"Proyección por escenarios y desfases","diapositiva":"Informe, sección 5.1","quien":"Manu","resumen":"Cuatro escenarios de PBI, el intervalo de predicción, el mes siguiente y los desfases.","historia":"Cuatro cintas de correr, inclinadas distinto: recesión, estancamiento, crecimiento y crecimiento fuerte. AL corre siempre a **2,5** km/h en las cuatro. Alrededor, una franja amarilla de **26** a cada lado. Un mensajero de Don Pibi llega **un mes tarde** y AL no lo escucha. Al fondo, siete carteles de desfase: uno solo se prende, el de **−2**, y la luz parpadea porque probaron muchos.","puerta":"Seguís por el pasillo y suena una campana: la sala de boxeo pregunta si los datos se parecen a una Normal.","estaciones":[{"id":"r8-1","lugar":"Las cuatro cintas de correr","imagen":"Cuatro cintas con inclinaciones distintas (**−1, 0, +1, +2**). AL las corre todas **a la misma velocidad**: +2,50, +2,51, +2,53, +2,54. La inclinación no le cambia nada.","frase":"Inclinás la cinta, AL va igual.","dato":"Proyección con la recta estimada: Var PBI −1,00 % → +2,50 %; 0,00 % → +2,51 %; +1,00 % → +2,53 %; +2,00 % → +2,54 %. Escenarios dentro del rango observado (−1,85 % a 2,30 %) para no extrapolar.","cifras":["2,50","2,51","2,53","2,54"]},{"id":"r8-2","lugar":"Franja amarilla alrededor de las cintas","imagen":"Una franja amarilla de **26** a cada lado de cada cinta. AL salta dentro de esa franja sin que importe cuánto se incline la cinta.","frase":"Más o menos veintiséis, siempre.","dato":"Intervalo de predicción al 95 % de un mes concreto: unos ±26 pp en todos los escenarios. Conocer el PBI no reduce la incertidumbre sobre el bono.","cifras":["26"]},{"id":"r8-3","lugar":"Puerta de la cinta 3 (el mes siguiente)","imagen":"Don Pibi manda un **mensajero** con el PBI del mes que viene. AL lo ve llegar pero **no se da vuelta**. En la gorra del mensajero: **+1**.","frase":"¿AL se adelanta? Treinta y seis por ciento: no.","dato":"Extensión (d = +1, declarada antes de ver los datos): con el PBI del mes siguiente, β1 = 1,8997, IC 95 % [−2,2037 ; 6,0030], p = 0,3573, n = 55. No hay evidencia de que el bono se anticipe.","cifras":["1,8997","0,3573"]},{"id":"r8-4","lugar":"Siete carteles de desfase en la pared","imagen":"Siete carteles numerados de **−3 a +3**. Dos con candado (**0 y +1**, declarados). Los otros cinco con cinta de «exploratorio». Se prende uno solo, el **−2**, y parpadea.","frase":"Siete carteles, uno parpadea: casualidad.","dato":"Exploración con desfases de −3 a +3 (2 declarados y 5 exploratorios), juzgados con umbral 0,01 porque son varias pruebas. Pasa d = −2: β1 = −5,8701, p = 0,0025. Queda como pista para otro trabajo, no como resultado.","cifras":["−5,8701","0,0025"]}]},{"n":9,"id":"sala-de-boxeo","nombre":"Sala de boxeo","tema":"Bondad de ajuste: χ² y Shapiro-Wilk","diapositiva":"Informe 5.7 (se menciona en Regresión mensual)","quien":"Manu","resumen":"¿Los datos se parecen a una Normal? Ocho rounds y un juez.","historia":"Colgada del techo, una **campana** de boxeo: la Normal. Los datos pelean **8 rounds**; se esperaban 7 golpes por round. AL aguanta (6,86) y Don Pibi se cae (19,43). El juez **Wilk** levanta una tarjeta con la **W**: ninguno saca 1. Aunque los golpes del bono sean extremos, **56** alcanza para aguantarlos.","puerta":"Cruzás el ring y llegás a la sala funcional: dos cuerdas de TRX cuelgan, una por variable.","estaciones":[{"id":"r9-1","lugar":"Campana colgada del techo","imagen":"Una **campana de boxeo** con forma de campana de Gauss. Cada vez que los datos la golpean, suena o no suena: ¿son Normales? El test t y los IC suponen que sí.","frase":"¿Suena como Normal?","dato":"Por qué: el test t y los intervalos suponen que los datos (o los errores) siguen una distribución Normal. La bondad de ajuste lo verifica; la consigna la pide.","cifras":[]},{"id":"r9-2","lugar":"Ring de ocho rounds","imagen":"El ring tiene **8 rounds** (8 clases). En cada round esperabas **7 golpes** (56 dividido 8). AL saca un chi de **6,86**: bien. Don Pibi saca **19,43**: knockout. Línea roja en **11,07**.","frase":"Ocho rounds, siete golpes cada uno.","dato":"Test χ²: k = 8 clases equiprobables, esperadas 7,0 por clase, 5 gl (se pierden 2 por estimar media y desvío), valor crítico 11,0705. Bono: χ² = 6,8571, p = 0,2315 (pasa). PBI: χ² = 19,4286, p = 0,0016 (no pasa).","cifras":["6,8571","0,2315","19,4286","0,0016","11,0705"]},{"id":"r9-3","lugar":"Silla del juez","imagen":"El juez **Wilk** levanta tarjetas con una **W**: AL recibe **0,9390** y Don Pibi **0,9542**. Un 1 sería perfecto; nadie lo saca. Debajo, los p-valores: **0,0070** y **0,0327**, los dos bajo 0,05.","frase":"Wilk castiga a los dos: bajo 0,05.","dato":"Shapiro-Wilk: bono W = 0,9390 (p = 0,0070); PBI W = 0,9542 (p = 0,0327); residuos de la regresión principal W = 0,9390 (p = 0,0070). W vale 1 si el ajuste es perfecto. Con muestras chicas detecta desvíos que el χ² pasa por alto.","cifras":["0,9390","0,0070","0,9542","0,0327"]},{"id":"r9-4","lugar":"Guantes colgados en la pared","imagen":"Los guantes de AL están marcados con **−19,5** y **+39,5**: golpes extremos. Pero el ring aguanta: un cartel dice **56 alcanzan**, y un paraguas robusto (HAC) cubre a todos.","frase":"Cincuenta y seis aguantan el golpe.","dato":"Las series no son exactamente Normales: el bono tiene meses extremos, de −19,5 % a +39,5 %. Con n = 56, los tests sobre medias y coeficientes siguen siendo aproximadamente válidos por el teorema central del límite, y los errores robustos llegan a la misma conclusión.","cifras":["−19,5 %","+39,5 %"]}]},{"n":10,"id":"sala-funcional","nombre":"Sala funcional (TRX)","tema":"Regresión múltiple y el control por CCL","diapositiva":"Sensibilidad","quien":"María","resumen":"Dos variables explicativas: PBI y dólar CCL. VIF, F global, R² ajustado.","historia":"Del techo cuelgan **dos cuerdas de TRX**: una es el PBI, la otra el dólar CCL. Si sostenés una quieta, ¿la otra mueve a AL? En un espejo se refleja el mismo billete en **dos monedas**: sale el CCL. Un tablero muestra las dos cuerdas: la del PBI marca **0,91**, la del CCL **0,18**. Las dos cuerdas cuelgan **paralelas**, sin enredarse: **VIF 1**. Y en la balanza, apenas 3,4 % de explicación.","puerta":"Dejás las cuerdas y entrás a la clase grupal: tres filas de gente con remeras de colores esperan que las cuenten.","estaciones":[{"id":"r10-1","lugar":"Las dos cuerdas del TRX","imagen":"Dos cuerdas: una con una etiqueta **PBI** y otra con **CCL**. Si **sostenés una quieta**, mirás qué hace la otra. Las dos tiran de AL; las separás con una **X** en forma de matriz.","frase":"Dos cuerdas: sostengo una, miro la otra.","dato":"Modelo: Var AL30D = β0 + β1 · Var PBI + β2 · Var CCL implícito + error. Se mide la relación con el PBI manteniendo constante el CCL. Estimación matricial: β̂ = (XᵀX)⁻¹Xᵀy, con n − k − 1 = 53 gl.","cifras":["53"]},{"id":"r10-2","lugar":"Espejo de los dos billetes","imagen":"Un mismo billete verde reflejado en dos espejos: en uno aparece con etiqueta **pesos** (AL30) y en otro con **cable** (AL30C). Comparás los reflejos: la diferencia es el **CCL**.","frase":"Mismo bono, dos monedas: sale el CCL.","dato":"El AL30D cotiza en dólares, así que se mueve también con el tipo de cambio. El CCL implícito sale de comparar el mismo bono en pesos (AL30) y en dólares cable (AL30C). Lo propuso Mati al principio y quedó fijado como control antes de ver resultados.","cifras":[]},{"id":"r10-3","lugar":"Tablero de coeficientes","imagen":"En el tablero de la pared: la cuerda del **PBI** marca **−0,22** con luz roja apagada (**p 0,91**); la del **CCL** marca **−0,22** también con luz apagada (**p 0,18**). La constante: **3,53**, p 0,06.","frase":"El PBI sigue mudo: 0,91.","dato":"Constante 3,5270 (p = 0,0623); Var PBI −0,2222 (EE 2,0258; t = −0,1097; p = 0,9131; IC [−4,2854 ; 3,8411]); Var CCL implícito −0,2240 (EE 0,1634; t = −1,3703; p = 0,1764; IC [−0,5518 ; 0,1039]). Ni con el control aparece relación con el PBI.","cifras":["3,5270","−0,2222","0,9131","−0,2240","0,1764"]},{"id":"r10-4","lugar":"Balanza del modelo completo","imagen":"Una balanza con dos platos: **295,58** explicado y **8.342,79** sin explicar. La aguja marca **3,4 %**. Una etiqueta: **R² ajustado −0,0022**: sumar una cuerda no ayudó, hasta restó.","frase":"3,4 % explicado, ajustado en negativo.","dato":"Test F global por sumas de cuadrados: regresión 295,58 (2 gl), error 8.342,79 (53 gl); F = 0,9389, p = 0,3975. R² = 0,0342; R² ajustado = −0,0022 (negativo: sumar variables no mejora la explicación). Valor crítico de F con (2; 53) gl = 3,17.","cifras":["295,58","8.342,79","0,9389","0,3975","0,0342","−0,0022"]},{"id":"r10-5","lugar":"Cuerdas paralelas","imagen":"Las dos cuerdas cuelgan **paralelas, sin enredarse**: un cartel dice **VIF 1,01** y **1,01**. Si estuvieran trenzadas valdría más de 5 y habría que desenredarlas.","frase":"Cuerdas sin enredo: VIF uno.","dato":"VIF = 1 / (1 − R²j). Valores mayores a 5 o 10 preocupan; acá dan 1,01 y 1,01: las dos variables casi no se mueven juntas y el modelo puede separar lo que aporta cada una.","cifras":["1,01"]}]},{"n":11,"id":"clase-grupal","nombre":"Clase grupal","tema":"ANOVA de un factor por terciles del PBI","diapositiva":"Sensibilidad","quien":"Manu","resumen":"Tres grupos de meses, medias distintas a simple vista y un F que no llega.","historia":"La clase grupal tiene tres filas de gente con remeras de colores: **19** de baja, **18** de media, **19** de alta. En el pizarrón, tres promedios: **3,44**, **3,34** y **0,81**. La instructora corta una torta enorme: el bocadito de **entre** y todo el resto **dentro**. El F pesa **0,26** y no llega al cartel de **3,17**. Y la torta dice: **1 %**.","puerta":"Cuando termina la clase salís a la cancha: dos equipos tiran de una soga y no se mueve.","estaciones":[{"id":"r11-1","lugar":"Tres filas con remeras","imagen":"Tres filas en el salón: **bajo** (19 personas con remera azul oscuro), **medio** (18, celeste) y **alto** (19, blanca). Cada fila es un tercio de los meses por crecimiento del PBI.","frase":"Tres tercios: diecinueve, dieciocho, diecinueve.","dato":"Grupos por terciles de la Var PBI: bajo −1,85 % a 0,07 % (19 meses); medio 0,09 % a 0,27 % (18); alto 0,30 % a 2,30 % (19). H0: la variación media del bono es igual en los tres. H1: al menos un grupo difiere.","cifras":["19 meses","18"]},{"id":"r11-2","lugar":"Pizarrón de promedios","imagen":"En el pizarrón, tres promedios con marcador: **+3,44**, **+3,34** y **+0,81**. A simple vista parecen distintos; la instructora levanta una ceja.","frase":"Dos parecidos arriba y uno abajo.","dato":"Variación media del bono: bajo +3,44 %; medio +3,34 %; alto +0,81 %. A simple vista las medias se ven distintas; hay que ver si esa diferencia es mayor que la variación dentro de cada grupo.","cifras":["+3,44","+3,34","+0,81"]},{"id":"r11-3","lugar":"Torta de la instructora","imagen":"Una torta enorme: el bocadito de **entre** grupos pesa **83,32**; todo el resto, **dentro**, pesa **8.555,05**. La torta entera pesa **8.638,37**.","frase":"Entre es un bocadito; dentro es la torta.","dato":"SC total = SC entre + SC dentro: 8.638,37 = 83,32 + 8.555,05. La diferencia entre grupos es chica al lado de lo que varía el bono adentro de cada grupo.","cifras":["83,32","8.555,05","8.638,37"]},{"id":"r11-4","lugar":"Balanza F junto a la puerta","imagen":"Una balanza con un cociente: **41,66 / 161,42 = 0,26**. Cuelga un cartel de **3,17**. El F ni se acerca.","frase":"F de 0,26: no llega a 3,17.","dato":"F = CM entre / CM dentro = 41,66 / 161,42 = 0,2581, con (2; 53) gl. Valor crítico al 95 % 3,1716. p = 0,7735: no se rechaza H0.","cifras":["41,66","161,42","0,2581","3,1716","0,7735"]},{"id":"r11-5","lugar":"Cartel de tamaño del efecto","imagen":"En el espejo, un solo punto rojo del tamaño de una moneda: el **1 %**. El grupo de crecimiento explica apenas una moneda de toda la torta. Al lado, un checklist con **Levene 0,0518**.","frase":"Un uno por ciento de torta.","dato":"Tamaño del efecto η² = SC entre / SC total = 0,0096: el grupo de crecimiento del PBI explica el 1,0 % de la variación del bono. Supuestos: igualdad de varianzas (Levene) p = 0,0518; normalidad por grupo (Shapiro-Wilk): bajo p = 0,6217, medio p = 0,0088, alto p = 0,0407.","cifras":["0,0096","0,0518","0,6217","0,0088","0,0407"]}]},{"n":12,"id":"cancha-de-la-soga","nombre":"Cancha de la soga","tema":"Diferencia de medias: meses de suba contra meses de baja","diapositiva":"Sensibilidad","quien":"Manu","resumen":"La hipótesis enviada a los docentes: 32 meses de suba contra 24 de baja.","historia":"En la cancha, un equipo de **32** (suba) tira de la soga contra uno de **24** (baja). Antes del juego, un árbitro verifica si las varianzas son parejas: sí, **0,9357**, se usa la agrupada. La soga queda **clavada en el medio**: la cinta roja se corre apenas **−0,0112**. Una lupa mide si cabrían diferencias más chicas: solo ve de **0,65** para arriba.","puerta":"Recogés la soga y cruzás la puerta del encargado: ahí hay una pared de checklists para ver si todo lo anterior se sostiene.","estaciones":[{"id":"r12-1","lugar":"Los dos equipos en la cancha","imagen":"Dos equipos tirando de una soga: **32** jugadores con remera azul (meses de **suba** del bono) contra **24** con remera naranja (meses de **baja**). Entre los dos, el PBI.","frase":"Treinta y dos tiran, veinticuatro tiran.","dato":"La hipótesis original, enviada a los docentes el 22/10, mira la relación desde el otro lado: separa los meses según lo que hizo el bono y compara cuánto creció el PBI. Suba: 32 meses; baja: 24 meses. H0: μ suba = μ baja.","cifras":["32 meses","24 meses","22/10"]},{"id":"r12-2","lugar":"Árbitro con silbato","imagen":"Antes de empezar, el árbitro pesa a los dos equipos: **F = 1,04**, equipos parejos (**p = 0,9357**). Entonces se usa la **soga agrupada**, la de la regla de la cátedra.","frase":"Parejos: soga agrupada, no Welch.","dato":"Prueba F de igualdad de varianzas: F = 1,0401 con (31; 23) gl, p = 0,9357: no se rechaza la igualdad, así que corresponde el t con varianza agrupada (la regla de la cátedra: agrupado si no se rechaza; Welch si se rechaza). S1 = 0,8529, S2 = 0,8363, Sp = 0,8459.","cifras":["1,0401","0,9357","0,8459"]},{"id":"r12-3","lugar":"Cinta roja en el medio de la soga","imagen":"La soga tiene una **cinta roja** en el centro. Después de tirar, se corrió **0,0112** a un lado: nada. El marcador dice **−0,0112 pp** y **t = −0,0491**.","frase":"La soga no se movió: menos un centésimo.","dato":"PBI medio con el bono en suba: 0,1277; en baja: 0,1390. Diferencia = −0,0112 pp, error estándar 0,2284, t = −0,0491 con 54 gl.","cifras":["−0,0112","−0,0491","0,2284"]},{"id":"r12-4","lugar":"Tablero del partido","imagen":"En el tablero: IC **[−0,47 ; +0,45]** con el cero adentro; el Dado cae en **0,9610**. Un segundo dado, **Welch**, cae en **0,9609**, casi igual.","frase":"Dado en 0,96; Welch dice lo mismo.","dato":"IC 95 % de la diferencia: [−0,4692 ; 0,4467]; p = 0,9610. Con Welch, como control, p = 0,9609. No se rechaza H0: la economía creció prácticamente lo mismo en los meses de suba y de baja.","cifras":["−0,4692","0,4467","0,9610","0,9609"]},{"id":"r12-5","lugar":"Lupa colgada del arco","imagen":"Una lupa que solo distingue objetos de **0,65** cm o más. Lo más chico queda borroso: **no se puede descartar**. Cartel: **80 %** de potencia.","frase":"La lupa ve de sesenta y cinco para arriba.","dato":"Potencia: la diferencia mínima que el test detectaría con 80 % de probabilidad es 0,65 pp (0,6516). Una diferencia de ese tamaño o mayor probablemente se habría detectado; una menor no se puede descartar.","cifras":["0,65","0,6516"]}]},{"n":13,"id":"control-de-calidad","nombre":"Oficina del encargado","tema":"Controles: supuestos y sensibilidades","diapositiva":"Sensibilidad","quien":"María","resumen":"¿El resultado se sostiene? Cuatro inspectores y siete perillas.","historia":"En la oficina del encargado, cuatro inspectores con chaleco. **Breusch-Pagan** mide si la varianza es pareja: pasa **por poco**, 0,0586. **Durbin-Watson** marca **1,94**, cerca de 2. **Breusch-Godfrey** da 0,83. Y el **paraguas HAC** cubre a todos: 0,9455. Al fondo, una consola con perillas rotuladas **A, B, C, D, F, G, H**: la E se perdió. Giraste todas y la decisión no se movió.","puerta":"Cuando la última perilla vuelve a su lugar, te llaman desde otra sala: hay una máquina con solo 19 discos y una luz roja que prende.","estaciones":[{"id":"r13-1","lugar":"Inspector Breusch-Pagan","imagen":"Un inspector con chaleco revisa si todos los alumnos tienen **brazos parejos** (varianza constante). Pasa raspando: **0,0586**, a un pelo del 0,05.","frase":"Brazos parejos, por poco: 0,0586.","dato":"Breusch-Pagan testea si la varianza de los errores cambia con X: p = 0,0586. No rechaza homocedasticidad, aunque queda cerca del umbral.","cifras":["0,0586"]},{"id":"r13-2","lugar":"Inspector Durbin-Watson","imagen":"Un segundo inspector sostiene un cartel con **1,94**: «el ideal es cerca de **2**, dos pies, dos independientes». Al lado, el compañero Breusch-Godfrey marca **0,83**.","frase":"Cerca de dos: sin eco entre meses.","dato":"Durbin-Watson = 1,94 (el ideal es cerca de 2) y Breusch-Godfrey p = 0,8349: no hay autocorrelación de los errores.","cifras":["1,94","0,8349"]},{"id":"r13-3","lugar":"Paraguas en el perchero","imagen":"Un **paraguas robusto** con las siglas **HAC** (Newey-West) cubre a los cuatro inspectores bajo el aguacero de supuestos. Cartel: **0,9455**, misma decisión.","frase":"Con paraguas HAC: 0,9455.","dato":"Errores robustos Newey-West (HAC, 3 rezagos), que no suponen varianza constante ni ausencia de autocorrelación: el coeficiente del PBI da p = 0,9455. Misma conclusión.","cifras":["0,9455"]},{"id":"r13-4","lugar":"Consola de perillas, fila superior","imagen":"Cuatro perillas: **A** (bono sin ajuste de pagos, 0,8915), **B** (PBI sin desestacionalizar, 0,5218), **D** (spline not-a-knot, 0,9943), **H** (PIB desestacionalizado del INDEC, 0,8208). Todas giran y la luz sigue apagada.","frase":"A, B, D, H: giro y no cambia.","dato":"Sensibilidades de la regresión simple, una decisión por vez: (a) bono sin ajuste ex-pago p = 0,8915; (b) PBI sin desestacionalizar p = 0,5218; (d) spline con not-a-knot p = 0,9943; (h) PBI desestacionalizado por el INDEC p = 0,8208.","cifras":["0,8915","0,5218","0,9943","0,8208"]},{"id":"r13-5","lugar":"Consola de perillas, fila inferior","imagen":"Tres perillas: **C** (ANOVA con umbrales ±0,5 %, 0,7404), **F** (múltiple con HAC, 0,9455) y **G** (CCL con cierres operados, 0,8499 y 0,1544). Un hueco en la fila: **falta la E**.","frase":"C, F, G… la E se perdió.","dato":"(c) ANOVA con umbrales ±0,5 % (n por grupo 10/32/14) p = 0,7404; (f) múltiple con errores HAC, β de Var PBI p = 0,9455; (g) múltiple con CCL de cierres operados (AL30C con volumen > 0): β de Var PBI p = 0,8499 y β de Var CCL p = 0,1544. Ninguna cambia la decisión.","cifras":["0,7404","0,8499","0,1544"]}]},{"n":14,"id":"diecinueve-discos","nombre":"Máquina de los 19 discos","tema":"La excepción: la muestra trimestral","diapositiva":"Muestra trimestral","quien":"Meli","resumen":"Con 19 trimestres sin interpolar el resultado cambia, pero depende de uno solo.","historia":"La máquina tiene solo **19 discos** y la barra se inclina hacia abajo. Se prende una luz roja: **p = 0,0142**. Pero un cartel dice: **19 es menos de 50**. Sacás un disco, el de **2024Q1**, y la luz se apaga: **0,0527**. Los cinco discos de la caída del PBI tienen al bono arriba. Un sello al costado: **agregado después de ver los resultados**.","puerta":"Apagás la máquina y subís a la terraza: es la hora de decir qué sacamos de todo esto.","estaciones":[{"id":"r14-1","lugar":"Máquina con diecinueve discos","imagen":"Una máquina con solo **19 discos** (trimestres) y la barra apoyada **hacia abajo**, inclinada al revés. Se prende una luz roja: **p = 0,0142**, β1 = −4,54.","frase":"Diecinueve discos y la barra se inclina al revés.","dato":"Muestra trimestral sin interpolar (n = 19): β̂1 = −4,5407, IC 95 % [−8,0455 ; −1,0359], p = 0,0142: se rechaza H0, y el signo es opuesto al de la estimación mensual.","cifras":["−4,5407","−8,0455","−1,0359","0,0142"]},{"id":"r14-2","lugar":"Cartel de la consigna","imagen":"Un cartel de «**mínimo 50**» le tapa media luz a la máquina. Con 19 discos no llega. Es una limitación **de la consigna**, no una prueba de que el resultado sea falso.","frase":"Diecinueve no llega a cincuenta.","dato":"No se toma como resultado por dos razones: son menos de las 50 observaciones que pide la consigna (esto es una limitación respecto de la consigna y no demuestra que sea falso) y depende de un solo período.","cifras":["50"]},{"id":"r14-3","lugar":"Disco que se saca (2024Q1)","imagen":"Sacás de la barra un disco con **2024Q1** grabado, y la luz roja se **apaga**: **0,0527**. Probás sacar los otros 18, uno por uno: la luz sigue prendida. Solo ese disco la apaga.","frase":"Sin 2024Q1, la luz se apaga: 0,0527.","dato":"Leave-one-out: al sacar un período por vez la decisión se mantiene en 18 de 19 casos; sin 2024Q1 el p-valor pasa a 0,0527 y deja de ser significativo. Es el único trimestre cuya exclusión cambia la decisión.","cifras":["0,0527","18 de 19"]},{"id":"r14-4","lugar":"Cinco discos de la caída","imagen":"Cinco discos con el PBI **cayendo**: en los **cinco** el bono subió. Otros catorce con PBI en suba: en **siete** subió el bono, la mitad. Etiquetas: 2022Q4 a 2024Q1.","frase":"Cinco de cinco, siete de catorce.","dato":"En los 5 trimestres en que cayó el PBI, el bono subió en 5; en los 14 en que creció, subió en 7. Están entre 2022Q4 y 2024Q1 (la sequía de 2023, las elecciones y el cambio de gobierno de diciembre de 2023). Los dos con mayor suba del bono: 2024Q1 (+42,88 % con el PBI en −3,33 %) y 2022Q4 (+32,58 % con −2,34 %).","cifras":["+42,88 %","−3,33 %","+32,58 %","−2,34 %"]},{"id":"r14-5","lugar":"Sello al costado de la máquina","imagen":"Un sello rojo en la máquina: **«agregado después de ver los resultados»**. Al lado, un cartel de **d = −2**: la pista exploratoria que también apunta hacia abajo (**0,0025**).","frase":"Pista, no resultado.","dato":"La influencia de cada período (distancia de Cook) se agregó después de ver los resultados y se rotula como tal. El desfase exploratorio d = −2 (β1 = −5,8701; p = 0,0025) apunta al mismo signo, pero es exploratorio y comparte la limitación del spline. Señal para mirar, no resultado.","cifras":["−5,8701","0,0025"]}]},{"n":15,"id":"terraza","nombre":"Terraza","tema":"Conclusión, limitaciones y próximos pasos","diapositiva":"Limitaciones, Conclusiones y Futuro","quien":"Meli","resumen":"La frase central, qué no se puede decir, lo que falta y cómo cerrar.","historia":"En la terraza, un cartel de madera con la **frase central**: los datos no muestran asociación. Debajo, uno más chico: **no rechazar no es probar cero**. Una balancita con 3,4 contra 12,5. En la baranda, cuatro candados: el spline, la ventana corta, las muchas pruebas y el CCL. Mirando al horizonte, cuatro caminos: otros bonos, una hipótesis previa, variables fiscales, más trimestres. Y en la puerta, una cartulina: **¿Tienen alguna pregunta?**","puerta":"Cerrás la puerta de la terraza. El recorrido termina donde empezó: la recepción, el neón, AL y Don Pibi. Volvé a empezar.","estaciones":[{"id":"r15-1","lugar":"Cartel de madera de la entrada a la terraza","imagen":"Un cartel de madera tallado con la **frase central**. Un foco ilumina: «Entre **octubre de 2021** y **mayo de 2026**, los datos **no muestran asociación**». AL y Don Pibi, de espaldas, caminan por separado.","frase":"AL y Don Pibi caminan por separado.","dato":"Entre octubre de 2021 y mayo de 2026, los datos no muestran asociación entre la variación mensual del PBI y la del AL30D. β1 = 0,0154, p = 0,9940, n = 56. Las otras dos hipótesis y las demás herramientas llegan al mismo resultado.","cifras":["0,9940","56"]},{"id":"r15-2","lugar":"Cartel más chico debajo","imagen":"Debajo del cartel grande, uno más chico: **«No rechazar H0 no prueba que la relación sea cero»**. Un detective con lupa aclara: «no se ve», no «no existe».","frase":"No se ve no es no existe.","dato":"No rechazar H0 no prueba que la relación sea cero: significa que los datos no alcanzan para afirmarla. Lo que sí se puede decir es que, si existe, es chica.","cifras":[]},{"id":"r15-3","lugar":"Balancita junto a la baranda","imagen":"Una balancita de cocina: de un lado un **3,4** y del otro el **12,5**. Aun en el peor extremo del IC, un movimiento típico del PBI (0,84) mueve al bono **tres puntos y medio**: casi nada frente al **12,5** del bono.","frase":"Tres coma cuatro contra doce coma cinco.","dato":"Aun en el extremo del IC de β1, un desvío estándar del PBI (0,84 pp) se asociaría con unos 3,4 pp de variación del bono, cuando el bono se mueve típicamente 12,5 pp por mes. Si la relación existe, explica una parte chica de lo que hace el bono.","cifras":["3,4 pp","12,5 pp"]},{"id":"r15-4","lugar":"Cuatro candados en la baranda","imagen":"Cuatro candados con carteles. **Spline**: solo 20 trimestres reales y el futuro sirve para fijar cada mes. **Ventana corta**: 2021-2026. **Muchas pruebas**: siete desfases, umbral 0,01. **CCL**: no operó en 67 % de las ruedas de 2022.","frase":"Spline, ventana, pruebas, CCL.","dato":"Limitaciones: (1) PBI mensualizado: unos 20 trimestres reales en la ventana, el n efectivo es menor que 56; el spline y la desestacionalización usan trimestres posteriores. (2) Período corto: pocos ciclos completos. (3) Muchas pruebas: siete desfases y varias especificaciones; los exploratorios se juzgan con umbral 0,01. (4) CCL implícito: parte de su relación con el AL30D es mecánica y el AL30C no operó en el 67 % de las ruedas de 2022.","cifras":["20 trimestres","67 %","0,01"]},{"id":"r15-5","lugar":"Mirador del horizonte","imagen":"Cuatro caminos en el horizonte. **Otros bonos o riesgo país** (una curva larga). **Una hipótesis previa** (flecha hacia abajo, β1 < 0). **Variables fiscales** (reservas, resultado primario). **Más trimestres** (calendario con hojas arrancadas).","frase":"Más bonos, más datos, más variables.","dato":"Próximos pasos: repetir con una serie de bonos soberanos en dólares más larga (como el riesgo país), que dé más de 50 trimestres sin interpolar; plantear de antemano la hipótesis que sugiere la muestra trimestral (β1 < 0) y contrastarla con datos que no se usaron para formularla; sumar variables de solvencia (resultado fiscal, reservas). Lectura posible no contrastada: el bono parece seguir más las expectativas sobre la capacidad de pago del Estado que la actividad del período.","cifras":["50"]},{"id":"r15-6","lugar":"Puerta de salida con cartulina","imagen":"En la puerta, una cartulina grande: **¿Tienen alguna pregunta?** Los cinco, juntos, sonríen y esperan al público con las manos abiertas.","frase":"Eso es todo, gracias, ¿preguntas?","dato":"Cierre con energía: agradecer y abrir a preguntas. Si te preguntan algo que no sabés, volvé a la sala donde está el tema y caminá hasta ahí en tu cabeza.","cifras":[]}]}]}</script>
+<script type="application/json" id="guion-cifrado">{"v": 1, "kdf": "PBKDF2-SHA256", "iteraciones": 250000, "cifrado": "AES-GCM-256", "sal": "Kvp4RV8Sx4m0G4WuIle4hw==", "iv": "QmCPo5/gu9+lVj4K", "datos": "UuyBKM43oqwPkJx0R+Q3ONosPAW0+yNsmZw+i4JJLtDe0hy/oKfxETGEPjdB7oUHhL/C3e246LfjHfLMTUjt//kIoiDr6V7Iqc5ZkLqYXzh5AU0qx7EfLTsmjHGh/8BwKu1D+nDmSK/o1dk5oV931k8Ky2cPg4zODiN2TL+Y9QGsTyyL1QQaF7tAKBukVgJ4A0fivxi16wd9Gpo4gqVLCtbpF8Y1cnzaatez32rOV2UastjeYOVi+S2shRm9kY5EXxFynWjb4S8DpadmjQvuyxXBgFd+xdNsodLENwgQ9pLadRadur75M8zLNgROgtUoQJLcLp925LVtg5mpxWcnF7hIPVYNSFe3DmjcBY8ewfXgjVo35u8HrrU0/aXhhL3/yleyt6zPUpnFhEGwJk4SnASE80wFXxWkBki9AF9xkTMLee3pobiOLmQjgflldIYJmVCXt3BOQz+hG1XCuBeP9iqED7AoQvdrWMbYFGnGXyph2tePKXfqMJUdsdlv2mznteAZbagnuVwM+Xp5XQ3nXSi2pdMnOl67xTIDgPMDE9UFYoZIK9RTWmdi9qlhUkxDV+o+YZMBYXD2Zfxi0uRq9TT4UlUXxHHwyPgJPOcGelcMSMRum9ooe/6gMTvmOSa1+4Ygjz1uol5BrvXSf4stz3iZpHaDZedvrO20HtP1fqGKeK3G64RS0V6Rl3ODgeTTml79o9sYg5ryQPAK2Ml9fx6KccCP3clzMKFuRRxTvdGRF4ezv6CuN6FB5gZZrOpShNxV/TxF+6n08lY3TbmhJ8NyGzonwTEPpyG3lnORz0sDLdsAcGutA1gHBPmh27vwkTki0USnF85IiBdjDg8WETCJ3g3vi9GMqgita1qQv7izlW7kstD5m4gJmOqcE0CHbmhRdGMe4eRiHTB+NezYIKA7BGJxrs3StkCtf+8P845zbWovD2zmwOlxTJGynJQT0PG+1FAEUjJ8dZl9Icz8+5FhtnUVl2UhkPac0JcadDLfv25fwn5Hr59dgKtc95l+h6Dy2PQJVC/4KuY1NQTmhuT07DEm4Ak8f3pOv5uTYbMwjZ+dX3RDXxAKOvZwWXe0AH7kHHVzs5wHJiFBaX9NO3Do4u8WWiJWS+jg1HcVgr+NKl9dmb7YcZuxZbqku3I9cNE8pXeHiryG2gYEk7nMQgYQP18EpGc1b46G+7MpMZkuAL+82P4IE+xC0Llbt2PgFSOP0pb5i8mCgcY6SaVcvA9vQwhZDEJ9Wqh+rRGOy6vb31oQBDUFCrdNZdzoBe88DNxr+KrTIS0Q2uarNpLGfwUn6K5KSuUiCjroaJEJE3HB7TUta8BhfBlsq77z/x4et8YEEVs+Db3BmBDD1Q/b5XlPw2vOVfLg96RsI3oTR8I+OM5RmSDr1aH+EjmB90ITNqYYW59dYi7/TgR/CF6kWb5U0AuY3edM5J8oguWSOmM+xm2iRmbitSB9KXOeWkUra8HJZGBOM07k/PRAFd3YalFev18JZQde6bsJqZatJkECIZcdX4O80WVcOlAVZGySDyLpHlv3qjyojlfLTeVaSXFgvXM8RFPW8RkhwMBM0FVYWlOyhtG2KiD+7PB1c5RCKFQe8OCCOg4zWsoI4aMgJkm4LOt86ah+X9d6aLgK6rbv3LJu1Sp4+3LYpSUrTcxUIn7gOyK48VXsPwv/Rl3WLi3tt5gUUVd4PZJcPlFfwBY/b+72ojh9+zCoa/NbU3V+AV1PFeS7OGX2TAleOaYqlbGS20YF8sU28HBuwW+kSwrZrfQWeIihDPlaPIJNTPnRS1Ui9LZ2LfmvJEF4JOekZoVM79Laf035lQAanhuUXMfXF27lTG++J1wwj24u4A=="}</script>
+<script>
+/* Código de N casillas (pitch-web-kit). Una casilla por dígito: avanza sola, Backspace vuelve, flechas, pegar,
+   error junto a las casillas y envío automático al completar.
+
+   HTML mínimo (ver ejemplo.html):
+     <form data-codigo novalidate>
+       <label id="cod-et" for="cod-1">Código</label> <span id="cod-fmt">3 números</span>
+       <div role="group" aria-labelledby="cod-et cod-fmt">
+         <input data-casilla id="cod-1" inputmode="numeric" maxlength="1" autocomplete="off" aria-label="Número 1 de 3" aria-describedby="cod-ayuda cod-error">
+         … una por dígito …
+       </div>
+       <p id="cod-ayuda" data-ayuda>…</p><p id="cod-error" data-error role="alert"></p>
+       <button type="submit" data-abrir>Abrir</button>
+     </form>
+
+   Uso:
+     CodigoCasillas.montar(form, {
+       verificar: async (codigo) => { … devolver lo descifrado o lanzar un error si el código no sirve … },
+       alAbrir: (resultado, codigo) => { … mostrar el contenido … },
+       error: "Ese código no abre el contenido. Revisalo con el grupo.",
+     });
+   CodigoCasillas.descifrar(cifrado, codigo) descifra lo que generó scripts/cifrar_json.py. */
+(() => {
+  "use strict";
+
+  async function descifrar(c, codigo) {
+    if (!window.crypto || !crypto.subtle) throw new Error("sin-webcrypto");
+    const deB64 = (s) => Uint8Array.from(atob(s), (ch) => ch.charCodeAt(0));
+    const base = await crypto.subtle.importKey("raw", new TextEncoder().encode(codigo), "PBKDF2", false, ["deriveKey"]);
+    const clave = await crypto.subtle.deriveKey({ name: "PBKDF2", salt: deB64(c.sal), iterations: c.iteraciones, hash: "SHA-256" },
+      base, { name: "AES-GCM", length: 256 }, false, ["decrypt"]);
+    const plano = await crypto.subtle.decrypt({ name: "AES-GCM", iv: deB64(c.iv) }, clave, deB64(c.datos));
+    return JSON.parse(new TextDecoder().decode(plano));
+  }
+
+  function montar(form, opciones) {
+    const casillas = Array.from(form.querySelectorAll("[data-casilla]"));
+    const ayuda = form.querySelector("[data-ayuda]");
+    const error = form.querySelector("[data-error]");
+    const abrir = form.querySelector("[data-abrir]");
+    const reducido = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const textoAyuda = ayuda ? ayuda.textContent : "";
+    const largo = casillas.length;
+    let ocupado = false;
+
+    const codigo = () => casillas.map((c) => c.value).join("");
+    function limpiar() {
+      if (error) error.textContent = "";
+      form.classList.remove("codigo--error");
+      casillas.forEach((c) => c.removeAttribute("aria-invalid"));
+    }
+    function fallar(texto) {
+      if (error) error.textContent = texto;
+      form.classList.add("codigo--error");
+      form.classList.remove("codigo--sacude");
+      void form.offsetWidth;
+      form.classList.add("codigo--sacude");
+      casillas.forEach((c) => c.setAttribute("aria-invalid", "true"));
+    }
+    form.addEventListener("animationend", () => form.classList.remove("codigo--sacude"));
+
+    function repartir(desde, digitos) {
+      for (let i = 0; i < digitos.length && desde + i < largo; i++) casillas[desde + i].value = digitos[i];
+      casillas[Math.min(desde + digitos.length, largo - 1)].focus();
+      if (codigo().length === largo) intentar();
+    }
+
+    async function intentar() {
+      const cod = codigo();
+      if (ocupado || !new RegExp(`^\\d{${largo}}$`).test(cod)) return;
+      ocupado = true;
+      casillas.forEach((c) => { c.disabled = true; });
+      if (abrir) abrir.disabled = true;
+      const espera = setTimeout(() => { if (ayuda) ayuda.textContent = "Verificando…"; }, 600);
+      try {
+        const resultado = await opciones.verificar(cod);
+        clearTimeout(espera);
+        form.classList.add("codigo--ok");
+        if (ayuda) ayuda.textContent = "Código correcto.";
+        setTimeout(() => opciones.alAbrir(resultado, cod), reducido ? 0 : 280);
+      } catch (err) {
+        clearTimeout(espera);
+        if (ayuda) ayuda.textContent = textoAyuda;
+        casillas.forEach((c) => { c.disabled = false; c.value = ""; });
+        if (abrir) abrir.disabled = false;
+        fallar(err && err.message === "sin-webcrypto"
+          ? "Esta página se abre desde https o localhost, no como archivo."
+          : (opciones.error || "Ese código no es correcto."));
+        casillas[0].focus();
+      } finally {
+        ocupado = false;
+      }
+    }
+
+    casillas.forEach((c, i) => {
+      c.addEventListener("focus", () => c.select());
+      c.addEventListener("input", () => {
+        const d = c.value.replace(/\D/g, "");
+        limpiar();
+        if (!d) { c.value = ""; return; }
+        c.value = d[0];
+        if (d.length > 1) { repartir(i, d); return; } // autocompletado o teclados que mandan varios dígitos juntos
+        if (i < largo - 1) casillas[i + 1].focus();
+        else if (codigo().length === largo) intentar();
+      });
+      c.addEventListener("keydown", (e) => {
+        if (e.key === "Backspace" && !c.value && i > 0) { e.preventDefault(); casillas[i - 1].value = ""; casillas[i - 1].focus(); }
+        else if (e.key === "ArrowLeft" && i > 0) { e.preventDefault(); casillas[i - 1].focus(); }
+        else if (e.key === "ArrowRight" && i < largo - 1) { e.preventDefault(); casillas[i + 1].focus(); }
+        else if (e.key.length === 1 && /\D/.test(e.key) && !e.ctrlKey && !e.metaKey) e.preventDefault();
+      });
+      c.addEventListener("paste", (e) => {
+        const d = ((e.clipboardData || window.clipboardData).getData("text") || "").replace(/\D/g, "").slice(0, largo);
+        e.preventDefault();
+        if (!d) return;
+        limpiar();
+        casillas.forEach((x) => { x.value = ""; });
+        repartir(0, d);
+      });
+    });
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (codigo().length < largo) {
+        fallar(`Faltan números: el código tiene ${largo}.`);
+        (casillas.find((c) => !c.value) || casillas[0]).focus();
+        return;
+      }
+      intentar();
+    });
+    return { intentar, limpiar };
+  }
+
+  window.CodigoCasillas = { montar, descifrar };
+})();
+
+</script>
+<script>
+/* Palacio mental del TP AE2: mapa, salas con estaciones, ensayo y guion textual con código.
+   Todo corre en el navegador; el progreso se guarda solo en este dispositivo (localStorage, con respaldo en memoria). */
+(() => {
+  "use strict";
+  document.documentElement.classList.add("js");
+
+  const D = JSON.parse(document.getElementById("datos").textContent);
+  let CIF = null;
+  try { const c = JSON.parse(document.getElementById("guion-cifrado").textContent); CIF = c && c.datos ? c : null; } catch (e) { CIF = null; }
+  const SALAS = D.salas, META = D.meta;
+  const TOTAL = SALAS.reduce((a, s) => a + s.estaciones.length, 0);
+  const CLAVE = "palacio-ae2-progreso";
+
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const md = (s) => esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+  const guionHTML = (s) => md(s).replace(/\[pausa ([\d,]+) s\]/g, '<span class="pausa">pausa $1 s</span>');
+  const reducido = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const main = $("#contenido");
+
+  /* ── Progreso ── */
+  let memoria = {};
+  try { memoria = JSON.parse(localStorage.getItem(CLAVE) || "{}") || {}; } catch (e) { memoria = {}; }
+  const guardar = () => { try { localStorage.setItem(CLAVE, JSON.stringify(memoria)); } catch (e) { /* sin almacenamiento: queda en memoria */ } };
+  const hechas = (s) => s.estaciones.filter((e) => memoria[e.id]).length;
+  const hechasTotal = () => SALAS.reduce((a, s) => a + hechas(s), 0);
+  function pintarAvance() {
+    $("[data-avance]").textContent = `${hechasTotal()} de ${TOTAL} estaciones que sabés`;
+  }
+
+  /* ── Estado de la vista ── */
+  let guion = null;               // guion textual descifrado (solo en memoria; no se recuerda el código)
+  const reveladas = new Set();    // estaciones destapadas en el ensayo
+  let modoActual = "recorrido";
+
+  /* ── Rutas: #/  ·  #/sala/N[/ensayo|/historia]  ·  #/historia ── */
+  function leerRuta() {
+    const p = location.hash.replace(/^#\/?/, "").split("/");
+    if (p[0] === "sala") {
+      const n = Number(p[1]);
+      if (n >= 1 && n <= SALAS.length) return { vista: "sala", n, modo: ["ensayo", "historia"].includes(p[2]) ? p[2] : "recorrido" };
+    }
+    if (p[0] === "historia") return { vista: "historia" };
+    return { vista: "inicio" };
+  }
+
+  /* ── Inicio ── */
+  const columnas = () => (matchMedia("(min-width: 1000px)").matches ? 5 : matchMedia("(min-width: 640px)").matches ? 3 : 2);
+
+  function salaTile(s) {
+    const h = hechas(s), t = s.estaciones.length;
+    return `<a class="sala${s.tuParte ? " sala--violeta" : ""}" href="#/sala/${s.n}" data-sala="${s.n}" aria-label="Sala ${s.n}: ${esc(s.nombre)}. ${esc(s.tema)}. ${h} de ${t} estaciones sabidas${s.tuParte ? ". La decís vos" : ""}">` +
+      `<span class="sala__num">${s.n}</span><span class="sala__nombre">${esc(s.nombre)}</span><span class="sala__tema">${esc(s.tema)}</span>` +
+      `<span class="sala__quien">${s.tuParte ? "La decís vos" : esc(s.quien)}</span>` +
+      `<span class="sala__barra" aria-hidden="true"><i style="--p:${Math.round((h / t) * 100)}"></i></span></a>`;
+  }
+
+  function mapaHTML() {
+    const cols = columnas();
+    const filas = [];
+    for (let i = 0; i < SALAS.length; i += cols) filas.push(SALAS.slice(i, i + cols));
+    return `<div class="mapa${cols === 5 ? "" : " mapa--lineal"}" data-mapa style="--cols:${cols}"><svg class="mapa__ruta" aria-hidden="true" focusable="false"><path d=""/></svg>` +
+      filas.map((f, i) => `<div class="mapa__fila${i % 2 && cols === 5 ? " mapa__fila--inversa" : ""}">${f.map(salaTile).join("")}</div>`).join("") + `</div>`;
+  }
+
+  function trazarRuta() {
+    const mapa = $("[data-mapa]");
+    if (!mapa || columnas() !== 5) return;  // el camino punteado solo se dibuja con el serpenteo de escritorio
+    const r = mapa.getBoundingClientRect();
+    const pts = SALAS.map((s) => {
+      const el = $(`[data-sala="${s.n}"]`, mapa);
+      const b = el.getBoundingClientRect();
+      return [b.left - r.left + b.width / 2, b.top - r.top + b.height / 2];
+    });
+    $("path", mapa).setAttribute("d", pts.map((p, i) => `${i ? "L" : "M"}${p[0].toFixed(1)} ${p[1].toFixed(1)}`).join(" "));
+  }
+
+  function inicioHTML() {
+    const t = META.tuParte;
+    const bajada = META.bajada.replace("{salas}", SALAS.length).replace("{estaciones}", TOTAL);
+    const primera = SALAS.find((s) => hechas(s) < s.estaciones.length) || SALAS[0];
+    return `<div class="portada"><section class="hero"><p class="kicker">Trabajo práctico · Análisis Estadístico 2 · Grupo 1</p>` +
+      `<h1>${esc(META.titulo)}</h1><p>${esc(bajada)}</p>` +
+      `<div class="hero__acciones"><a class="boton boton--primario" href="#/sala/${primera.n}">${hechasTotal() ? "Seguir el recorrido" : "Empezar el recorrido"}</a>` +
+      `<a class="boton" href="#/historia">Leer la historia completa</a></div>` +
+      `<p class="leyenda" aria-label="Colores"><span><i class="i-v"></i>Violeta: lo que decís vos</span><span><i class="i-a"></i>Celeste: el resto del trabajo</span></p></section>` +
+      `<section class="tuparte" aria-labelledby="tp-t"><p class="kicker" style="color:var(--violeta)">Tu parte</p>` +
+      `<h2 id="tp-t">Lo que decís vos: <span class="tuparte__reloj">${esc(t.desde)} a ${esc(t.hasta)}</span> · ${t.segundos} s</h2>` +
+      `<p>${esc(t.texto)}</p><div class="tuparte__acciones">${t.salas.map((n) => { const s = SALAS[n - 1]; return `<a class="boton boton--violeta" href="#/sala/${n}">Sala ${n}: ${esc(s.nombre)}</a>`; }).join("")}</div></section></div>` +
+      `<section class="seccion" aria-labelledby="mapa-t"><h2 id="mapa-t">El mapa del gimnasio</h2><p class="bajada">Recorrelo siempre en este orden, de la sala 1 a la ${SALAS.length}${columnas() === 5 ? ". La línea punteada es el camino" : ""}.</p>${mapaHTML()}</section>` +
+      `<section class="seccion" aria-labelledby="el-t"><h2 id="el-t">Los personajes que se repiten</h2><p class="bajada">Aparecen en casi todas las salas. Si los conocés bien, cada estación se arma sola.</p>` +
+      `<div class="elenco">${META.elenco.map((p) => `<div class="personaje"><h3>${esc(p.nombre)}</h3><p class="rol">${esc(p.rol)}</p><p>${esc(p.imagen)}</p></div>`).join("")}</div></section>` +
+      `<section class="seccion" aria-labelledby="faq-t"><h2 id="faq-t">Cómo se usa</h2><div class="faq">${META.como.map((c, i) => `<details${i === 0 ? " open" : ""}><summary>${esc(c.q)}</summary><p>${esc(c.a)}</p></details>`).join("")}</div></section>`;
+  }
+
+  /* ── Sala ── */
+  function cerrojoHTML(s) {
+    if (!s.estaciones.some((e) => e.dice && /^r[45]-/.test(e.id)) || !CIF) return "";
+    const lock = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 11V8a5 5 0 0 1 10 0v3"/><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M12 15v2"/></svg>';
+    if (guion) {
+      return `<div class="cerrojo cerrojo--abierto" data-cerrojo>` +
+        `<div class="cerrojo__cab">${lock}<h2>Tu guion textual está abierto</h2></div>` +
+        `<p>Debajo de cada estación violeta aparecen tus frases exactas. Leelas en voz alta caminando la sala.</p>` +
+        `<div class="cerrojo__acciones"><button class="boton" type="button" data-bloquear>Volver a bloquear</button></div></div>`;
+    }
+    const casillas = [1, 2, 3].map((i) => `<input class="codigo__casilla" id="cod-${i}" data-casilla type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" autocomplete="off" autocorrect="off" spellcheck="false" aria-label="Número ${i} de 3" aria-describedby="cod-ayuda cod-error">`).join("");
+    return `<div class="cerrojo" data-cerrojo><div class="cerrojo__cab">${lock}<h2>Tu guion textual, con código</h2></div>` +
+      `<p>Tus frases exactas para memorizarlas. No están en el texto de la página: se abren con el código del grupo.</p>` +
+      `<form class="codigo" data-codigo novalidate><div class="codigo__cabecera"><label class="codigo__etiqueta" id="cod-et" for="cod-1">Código del grupo</label><span class="codigo__formato" id="cod-fmt">3 números</span></div>` +
+      `<div class="codigo__casillas" role="group" aria-labelledby="cod-et cod-fmt">${casillas}</div>` +
+      `<p class="codigo__ayuda" id="cod-ayuda" data-ayuda>Se abre solo al completar las tres casillas. También podés pegarlo.</p>` +
+      `<p class="codigo__error" id="cod-error" data-error role="alert"></p><button class="codigo__abrir" type="submit" data-abrir>Abrir mi guion</button></form></div>`;
+  }
+
+  function montarCerrojo() {
+    const form = $("[data-codigo]");
+    if (!form || !window.CodigoCasillas) return;
+    CodigoCasillas.montar(form, {
+      verificar: (cod) => CodigoCasillas.descifrar(CIF, cod),
+      alAbrir: (g) => { guion = g; renderSala(leerRuta()); const c = $("[data-cerrojo] h2"); if (c) { c.setAttribute("tabindex", "-1"); c.focus(); } },
+      error: "Ese código no abre el guion. Revisalo con el grupo.",
+    });
+  }
+
+  function estHTML(s, e, i, modo) {
+    const dice = !!e.dice;
+    const sabe = !!memoria[e.id];
+    const priv = dice && guion && guion.lineas && guion.lineas[e.id]
+      ? `<blockquote class="guion"><small>Lo que decís, textual</small>${guion.lineas[e.id].map((l) => `<p>${guionHTML(l)}</p>`).join("")}</blockquote>` : "";
+    const cuerpo = `<p class="est__imagen">${md(e.imagen)}</p><p class="est__frase">${esc(e.frase)}</p>` +
+      `<div class="est__dato"><b>${dice ? "Qué cubrís vos" : "Qué hay que saber"}</b>${md(e.dato)}</div>${priv}`;
+    const acciones = `<div class="est__acciones"><button class="est__sabe" type="button" data-sabe="${e.id}" aria-pressed="${sabe}">Lo sé</button></div>`;
+    const cab = `<div class="est__cab"><span class="est__num" aria-hidden="true">${i + 1}</span><h3 class="est__lugar"><span class="sr-only">Estación ${i + 1}: </span>${esc(e.lugar)}</h3>${dice ? '<span class="chip chip--violeta">Lo decís vos</span>' : ""}</div>`;
+    if (modo === "ensayo" && !reveladas.has(e.id)) {
+      return `<li class="est est--ensayo${dice ? " est--dice" : ""}" data-est="${e.id}">${cab}<div class="est__tapa"><p>Cerrá los ojos y pararte en <strong>${esc(e.lugar)}</strong>. ¿Qué imagen dejaste y qué dato guarda?</p>` +
+        `<button class="boton${dice ? " boton--violeta" : ""}" type="button" data-mostrar="${e.id}">Mostrame</button></div></li>`;
+    }
+    return `<li class="est${modo === "ensayo" ? " est--ensayo" : ""}${dice ? " est--dice" : ""}" data-est="${e.id}">${cab}<div class="est__cuerpo">${cuerpo}</div>${acciones}</li>`;
+  }
+
+  function cuerpoSala(s, modo) {
+    if (modo === "historia") {
+      return `<div class="historia"><p>${md(s.historia)}</p><p class="puente">${md(s.puerta)}</p></div>`;
+    }
+    const barra = modo === "ensayo"
+      ? `<div class="est__acciones" style="margin-bottom:var(--e4)"><button class="boton" type="button" data-todo="tapar">Tapar todo</button><button class="boton" type="button" data-todo="mostrar">Mostrar todo</button></div>` : "";
+    const sig = s.n < SALAS.length
+      ? `<a class="boton boton--primario" href="#/sala/${s.n + 1}">Sala ${s.n + 1}: ${esc(SALAS[s.n].nombre)}</a>`
+      : `<a class="boton boton--primario" href="#/">Volver al mapa</a>`;
+    return `${barra}<ol class="estaciones">${s.estaciones.map((e, i) => estHTML(s, e, i, modo)).join("")}</ol>` +
+      `<div class="puerta"><h2>${s.n < SALAS.length ? "La puerta a la siguiente sala" : "Fin del recorrido"}</h2><p>${md(s.puerta)}</p>${sig}</div>`;
+  }
+
+  function salaHTML(s, modo) {
+    const ant = s.n > 1 ? `<a class="boton" href="#/sala/${s.n - 1}" aria-label="Sala anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg><span class="txt">Anterior</span></a>` : "";
+    const sgt = s.n < SALAS.length ? `<a class="boton" href="#/sala/${s.n + 1}" aria-label="Sala siguiente"><span class="txt">Siguiente</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>` : "";
+    const tab = (id, txt) => `<button type="button" role="tab" id="tab-${id}" aria-selected="${modo === id}" aria-controls="cuerpo" data-modo="${id}" tabindex="${modo === id ? 0 : -1}">${txt}</button>`;
+    return `<div class="sala-cab"><nav class="sala-nav" aria-label="Salas"><a class="boton" href="#/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>Mapa</a>` +
+      `<span class="sala-nav__pos">Sala ${s.n} de ${SALAS.length}</span><span class="sala-nav__espacio"></span>${ant}${sgt}</nav>` +
+      `<p class="kicker"${s.tuParte ? ' style="color:var(--violeta)"' : ""}>Sala ${s.n} · ${esc(s.diapositiva)}</p>` +
+      `<h1 tabindex="-1" data-foco>${esc(s.nombre)}</h1><p class="sala-cab__tema">${esc(s.tema)}</p>` +
+      `<div class="sala-cab__chips">${s.tuParte ? `<span class="chip chip--violeta">La decís vos · ${esc(s.tiempo)}</span>` : `<span class="chip chip--azul">Lo dice ${esc(s.quien)}</span>`}<span class="chip">${s.estaciones.length} estaciones</span></div>` +
+      `<p class="sala-cab__como">${esc(s.como || s.resumen)}</p></div>` +
+      cerrojoHTML(s) +
+      `<div class="pestanas${s.tuParte ? " pestanas--violeta" : ""}" role="tablist" aria-label="Cómo estudiar esta sala">${tab("recorrido", "Recorrido")}${tab("ensayo", "Ensayo")}${tab("historia", "Historia")}</div>` +
+      `<div id="cuerpo" role="tabpanel" aria-labelledby="tab-${modo}" data-cuerpo>${cuerpoSala(s, modo)}</div>`;
+  }
+
+  function renderSala(r, conFoco) {
+    const s = SALAS[r.n - 1];
+    modoActual = r.modo;
+    main.innerHTML = `<div class="view">${salaHTML(s, r.modo)}</div>`;
+    document.title = `Sala ${s.n}: ${s.nombre} · Palacio AE2`;
+    montarCerrojo();
+    if (conFoco) $("[data-foco]").focus({ preventScroll: true });
+  }
+
+  function cambiarModo(modo) {
+    const r = leerRuta();
+    const s = SALAS[r.n - 1];
+    modoActual = modo;
+    history.replaceState(null, "", `#/sala/${s.n}${modo === "recorrido" ? "" : "/" + modo}`);
+    $("[data-cuerpo]").innerHTML = cuerpoSala(s, modo);
+    $("[data-cuerpo]").setAttribute("aria-labelledby", `tab-${modo}`);
+    $$("[data-modo]").forEach((b) => { const a = b.dataset.modo === modo; b.setAttribute("aria-selected", String(a)); b.tabIndex = a ? 0 : -1; });
+  }
+
+  /* ── Historia completa ── */
+  function historiaHTML() {
+    return `<section class="hero" style="padding-bottom:var(--e4)"><p class="kicker">Historia completa</p><h1>La película de todo el trabajo</h1>` +
+      `<p>Leela de corrido y en voz alta, una vez por día. Es el hilo que une las ${SALAS.length} salas: si la película te sale entera, las estaciones salen solas.</p></section>` +
+      `<div class="historia">${SALAS.map((s) => `<section class="historia-sala${s.tuParte ? " historia-sala--violeta" : ""}"><h2><span>Sala ${s.n}</span><a href="#/sala/${s.n}" style="color:inherit;text-decoration:none">${esc(s.nombre)}</a></h2>` +
+        `<p>${md(s.historia)}</p><p class="puente">${md(s.puerta)}</p></section>`).join("")}</div>`;
+  }
+
+  /* ── Render general ── */
+  let primera = true;
+  function render() {
+    const r = leerRuta();
+    $$("[data-nav]").forEach((a) => {
+      const activo = (a.dataset.nav === "historia") === (r.vista === "historia");
+      if (activo) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+    });
+    if (r.vista === "sala") renderSala(r, !primera);
+    else if (r.vista === "historia") {
+      main.innerHTML = `<div class="view">${historiaHTML()}</div>`;
+      document.title = "Historia completa · Palacio AE2";
+    } else {
+      main.innerHTML = `<div class="view">${inicioHTML()}</div>`;
+      document.title = "Palacio mental · TP AE2";
+      trazarRuta();
+    }
+    pintarAvance();
+    if (!primera) {
+      window.scrollTo({ top: 0, behavior: "instant" });
+      if (r.vista !== "sala") main.focus({ preventScroll: true });
+      $("[data-anuncio]").textContent = document.title;
+    }
+    primera = false;
+  }
+
+  /* ── Eventos ── */
+  main.addEventListener("click", (e) => {
+    const b = e.target.closest("button");
+    if (!b) return;
+    if (b.dataset.sabe) {
+      const id = b.dataset.sabe;
+      if (memoria[id]) delete memoria[id]; else memoria[id] = 1;
+      guardar();
+      b.setAttribute("aria-pressed", String(!!memoria[id]));
+      pintarAvance();
+    } else if (b.dataset.mostrar) {
+      reveladas.add(b.dataset.mostrar);
+      const r = leerRuta();
+      const y = window.scrollY;
+      $("[data-cuerpo]").innerHTML = cuerpoSala(SALAS[r.n - 1], "ensayo");
+      window.scrollTo({ top: y, behavior: "instant" });
+      const nuevo = $(`[data-sabe="${b.dataset.mostrar}"]`);
+      if (nuevo) nuevo.focus({ preventScroll: true });
+    } else if (b.dataset.todo) {
+      const r = leerRuta();
+      const s = SALAS[r.n - 1];
+      s.estaciones.forEach((e2) => (b.dataset.todo === "mostrar" ? reveladas.add(e2.id) : reveladas.delete(e2.id)));
+      $("[data-cuerpo]").innerHTML = cuerpoSala(s, "ensayo");
+    } else if (b.dataset.modo) {
+      cambiarModo(b.dataset.modo);
+    } else if (b.hasAttribute("data-bloquear")) {
+      guion = null;
+      renderSala(leerRuta());
+    }
+  });
+  main.addEventListener("keydown", (e) => {
+    const t = e.target.closest('[role="tab"]');
+    if (!t || !["ArrowLeft", "ArrowRight"].includes(e.key)) return;
+    const tabs = $$('[role="tab"]');
+    const nuevo = tabs[(tabs.indexOf(t) + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length];
+    nuevo.focus();
+    cambiarModo(nuevo.dataset.modo);
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.altKey || e.ctrlKey || e.metaKey || e.target.closest("input, textarea, select, [role='tab']")) return;
+    const r = leerRuta();
+    if (r.vista !== "sala") return;
+    if (e.key === "ArrowRight" && r.n < SALAS.length) location.hash = `#/sala/${r.n + 1}`;
+    else if (e.key === "ArrowLeft" && r.n > 1) location.hash = `#/sala/${r.n - 1}`;
+  });
+  $("[data-borrar]").addEventListener("click", () => {
+    if (!confirm("¿Borrar el progreso guardado en este dispositivo? Las estaciones que marcaste como sabidas se van a desmarcar.")) return;
+    memoria = {};
+    reveladas.clear();
+    try { localStorage.removeItem(CLAVE); } catch (e) { /* nada que borrar */ }
+    render();
+  });
+  window.addEventListener("hashchange", render);
+  let temporizador = 0;
+  let colsAntes = columnas();
+  window.addEventListener("resize", () => {
+    clearTimeout(temporizador);
+    temporizador = setTimeout(() => {
+      if (leerRuta().vista !== "inicio") return;
+      if (columnas() !== colsAntes) { colsAntes = columnas(); render(); } else trazarRuta();
+    }, 120);
+  });
+  render();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (leerRuta().vista === "inicio") trazarRuta(); });
+})();
+
+</script>
+</body>
+</html>

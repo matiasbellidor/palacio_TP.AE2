@@ -1,0 +1,40 @@
+{
+  "titulo": "Palacio mental del TP de Análisis Estadístico 2",
+  "bajada": "El trabajo entero, caminando un gimnasio: {salas} salas, {estaciones} estaciones y una historia que las une. En violeta, lo que decís vos.",
+  "tuParte": {
+    "desde": "2:10",
+    "hasta": "4:00",
+    "segundos": 110,
+    "salas": [4, 5],
+    "texto": "Después de Luka y antes de Manu. Empieza con «Mati, contales vos» y termina pasándole la palabra a Manu."
+  },
+  "elenco": [
+    {"nombre": "AL", "rol": "El bono AL30D", "imagen": "Culturista gigante con remera «30 D», billetes verdes en las mangas. Sube y baja decenas de puntos: es muy nervioso."},
+    {"nombre": "Don Pibi", "rol": "El PBI real", "imagen": "Abuelito del tamaño de un termo que abre el diario del INDEC cada tres meses. Se mueve uno o dos puntos como mucho."},
+    {"nombre": "El Dado", "rol": "El p-valor", "imagen": "Un dado gigante. La p es de Puro azar: si cae en un número alto, el azar alcanza para explicarlo."},
+    {"nombre": "La Cinta", "rol": "El intervalo de confianza", "imagen": "Una cinta métrica de 95 cm. Si el cero queda adentro, es imposible concluir."},
+    {"nombre": "La Cero", "rol": "La hipótesis nula H0", "imagen": "Una medalla dorada con forma de 0. H0: Hay Cero relación."}
+  ],
+  "como": [
+    {
+      "q": "¿Cómo funciona un palacio mental?",
+      "a": "Elegís un lugar que conocés de memoria y lo recorrés siempre en el mismo orden. En cada punto del recorrido dejás una imagen exagerada, absurda o graciosa que guarda un dato. Para recordar, caminás el lugar con la cabeza y las imágenes aparecen una detrás de otra. Acá el lugar es un gimnasio: lo conocés, tiene zonas en orden y cada máquina es un buen punto de anclaje."
+    },
+    {
+      "q": "¿Cómo lo uso, paso a paso?",
+      "a": "1. Leé la historia de la sala (pestaña Historia). 2. Pasá por cada estación en la pestaña Recorrido: imaginá la escena con todos los sentidos y decí la frase en voz alta. 3. Pasá a Ensayo: las imágenes quedan tapadas, vos recordás y después destapás. 4. Marcá «Lo sé» solo cuando te salga sin mirar. 5. Al final, caminá las 15 salas de memoria."
+    },
+    {
+      "q": "¿Y si mi gimnasio tiene otra forma?",
+      "a": "Mejor todavía. Reemplazá los lugares de cada estación por los de tu gimnasio real: lo único que importa es que el orden del recorrido sea siempre el mismo. Si no tenés bar de proteínas, usá cualquier rincón donde puedas imaginar una heladera."
+    },
+    {
+      "q": "¿Qué significan los colores?",
+      "a": "Violeta: lo que decís vos en la exposición (salas 4 y 5, más el «¡Hola!» del grupo). Celeste: el resto del trabajo, que tenés que saber por si te preguntan o por si tenés que cubrir a alguien. Las estaciones violetas de las salas 4 y 5 tienen tus frases textuales, que se abren con el código del grupo."
+    },
+    {
+      "q": "¿Qué pasa con mis datos?",
+      "a": "Nada sale de tu navegador. El progreso («Lo sé») se guarda solo en este dispositivo y lo podés borrar cuando quieras con el botón del pie de página. No hay cuentas, cookies de seguimiento ni analítica."
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "n": 15,
+  "id": "terraza",
+  "nombre": "Terraza",
+  "tema": "Conclusión, limitaciones y próximos pasos",
+  "diapositiva": "Limitaciones, Conclusiones y Futuro",
+  "quien": "Meli",
+  "resumen": "La frase central, qué no se puede decir, lo que falta y cómo cerrar.",
+  "historia": "En la terraza, un cartel de madera con la **frase central**: los datos no muestran asociación. Debajo, uno más chico: **no rechazar no es probar cero**. Una balancita con 3,4 contra 12,5. En la baranda, cuatro candados: el spline, la ventana corta, las muchas pruebas y el CCL. Mirando al horizonte, cuatro caminos: otros bonos, una hipótesis previa, variables fiscales, más trimestres. Y en la puerta, una cartulina: **¿Tienen alguna pregunta?**",
+  "puerta": "Cerrás la puerta de la terraza. El recorrido termina donde empezó: la recepción, el neón, AL y Don Pibi. Volvé a empezar.",
+  "estaciones": [
+    {
+      "id": "r15-1",
+      "lugar": "Cartel de madera de la entrada a la terraza",
+      "imagen": "Un cartel de madera tallado con la **frase central**. Un foco ilumina: «Entre **octubre de 2021** y **mayo de 2026**, los datos **no muestran asociación**». AL y Don Pibi, de espaldas, caminan por separado.",
+      "frase": "AL y Don Pibi caminan por separado.",
+      "dato": "Entre octubre de 2021 y mayo de 2026, los datos no muestran asociación entre la variación mensual del PBI y la del AL30D. β1 = 0,0154, p = 0,9940, n = 56. Las otras dos hipótesis y las demás herramientas llegan al mismo resultado.",
+      "cifras": ["0,9940", "56"]
+    },
+    {
+      "id": "r15-2",
+      "lugar": "Cartel más chico debajo",
+      "imagen": "Debajo del cartel grande, uno más chico: **«No rechazar H0 no prueba que la relación sea cero»**. Un detective con lupa aclara: «no se ve», no «no existe».",
+      "frase": "No se ve no es no existe.",
+      "dato": "No rechazar H0 no prueba que la relación sea cero: significa que los datos no alcanzan para afirmarla. Lo que sí se puede decir es que, si existe, es chica.",
+      "cifras": []
+    },
+    {
+      "id": "r15-3",
+      "lugar": "Balancita junto a la baranda",
+      "imagen": "Una balancita de cocina: de un lado un **3,4** y del otro el **12,5**. Aun en el peor extremo del IC, un movimiento típico del PBI (0,84) mueve al bono **tres puntos y medio**: casi nada frente al **12,5** del bono.",
+      "frase": "Tres coma cuatro contra doce coma cinco.",
+      "dato": "Aun en el extremo del IC de β1, un desvío estándar del PBI (0,84 pp) se asociaría con unos 3,4 pp de variación del bono, cuando el bono se mueve típicamente 12,5 pp por mes. Si la relación existe, explica una parte chica de lo que hace el bono.",
+      "cifras": ["3,4 pp", "12,5 pp"]
+    },
+    {
+      "id": "r15-4",
+      "lugar": "Cuatro candados en la baranda",
+      "imagen": "Cuatro candados con carteles. **Spline**: solo 20 trimestres reales y el futuro sirve para fijar cada mes. **Ventana corta**: 2021-2026. **Muchas pruebas**: siete desfases, umbral 0,01. **CCL**: no operó en 67 % de las ruedas de 2022.",
+      "frase": "Spline, ventana, pruebas, CCL.",
+      "dato": "Limitaciones: (1) PBI mensualizado: unos 20 trimestres reales en la ventana, el n efectivo es menor que 56; el spline y la desestacionalización usan trimestres posteriores. (2) Período corto: pocos ciclos completos. (3) Muchas pruebas: siete desfases y varias especificaciones; los exploratorios se juzgan con umbral 0,01. (4) CCL implícito: parte de su relación con el AL30D es mecánica y el AL30C no operó en el 67 % de las ruedas de 2022.",
+      "cifras": ["20 trimestres", "67 %", "0,01"]
+    },
+    {
+      "id": "r15-5",
+      "lugar": "Mirador del horizonte",
+      "imagen": "Cuatro caminos en el horizonte. **Otros bonos o riesgo país** (una curva larga). **Una hipótesis previa** (flecha hacia abajo, β1 < 0). **Variables fiscales** (reservas, resultado primario). **Más trimestres** (calendario con hojas arrancadas).",
+      "frase": "Más bonos, más datos, más variables.",
+      "dato": "Próximos pasos: repetir con una serie de bonos soberanos en dólares más larga (como el riesgo país), que dé más de 50 trimestres sin interpolar; plantear de antemano la hipótesis que sugiere la muestra trimestral (β1 < 0) y contrastarla con datos que no se usaron para formularla; sumar variables de solvencia (resultado fiscal, reservas). Lectura posible no contrastada: el bono parece seguir más las expectativas sobre la capacidad de pago del Estado que la actividad del período.",
+      "cifras": ["50"]
+    },
+    {
+      "id": "r15-6",
+      "lugar": "Puerta de salida con cartulina",
+      "imagen": "En la puerta, una cartulina grande: **¿Tienen alguna pregunta?** Los cinco, juntos, sonríen y esperan al público con las manos abiertas.",
+      "frase": "Eso es todo, gracias, ¿preguntas?",
+      "dato": "Cierre con energía: agradecer y abrir a preguntas. Si te preguntan algo que no sabés, volvé a la sala donde está el tema y caminá hasta ahí en tu cabeza.",
+      "cifras": []
+    }
+  ]
+}
