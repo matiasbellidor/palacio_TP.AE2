@@ -15,7 +15,9 @@
       "imagen": "En el rack cuelgan **56 discos** de colores como medallas, cada uno rotulado con un mes. Por la altura se ve cuánto subió el bono; por la posición, cuánto creció el PBI.",
       "frase": "Cada disco, un mes.",
       "dato": "Diagrama de dispersión: cada punto es un mes. Eje horizontal: variación del PBI. Eje vertical: variación del bono. n = 56 meses.",
-      "cifras": ["56"]
+      "cifras": [
+        "56"
+      ]
     },
     {
       "id": "r3-2",
@@ -31,7 +33,9 @@
       "imagen": "La regla queda **casi horizontal**, plana como una mesa. AL (el culturista) pasa por debajo sin agacharse: no hay inclinación que seguir.",
       "frase": "Regla plana: AL no sigue a Don Pibi.",
       "dato": "La recta ajustada está casi plana: β1 = 0,0154. Si el bono acompañara al PBI, la nube estaría inclinada, para arriba o para abajo, y no lo está.",
-      "cifras": ["0,0154"]
+      "cifras": [
+        "0,0154"
+      ]
     },
     {
       "id": "r3-4",
@@ -39,7 +43,15 @@
       "imagen": "Al final del pasillo, un cartel luminoso con tu nombre, y un megáfono que Luka te acerca. El cartel pregunta: **¿de dónde salen estos 56 meses?**",
       "frase": "Mati, contales vos.",
       "dato": "Luka cierra su bloque preguntando de dónde salen esos 56 meses y te pasa la palabra: «Mati, contales vos». Esa es tu señal de entrada.",
-      "cifras": ["56"]
+      "cifras": [
+        "56"
+      ]
     }
+  ],
+  "diapositivas": [
+    3
+  ],
+  "diapositivasId": [
+    "figura-4"
   ]
 }

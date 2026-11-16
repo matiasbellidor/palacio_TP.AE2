@@ -15,7 +15,12 @@
       "imagen": "Una máquina con solo **19 discos** (trimestres) y la barra apoyada **hacia abajo**, inclinada al revés. Se prende una luz roja: **p = 0,0142**, β1 = −4,54.",
       "frase": "Diecinueve discos y la barra se inclina al revés.",
       "dato": "Muestra trimestral sin interpolar (n = 19): β̂1 = −4,5407, IC 95 % [−8,0455 ; −1,0359], p = 0,0142: se rechaza H0, y el signo es opuesto al de la estimación mensual.",
-      "cifras": ["−4,5407", "−8,0455", "−1,0359", "0,0142"]
+      "cifras": [
+        "−4,5407",
+        "−8,0455",
+        "−1,0359",
+        "0,0142"
+      ]
     },
     {
       "id": "r14-2",
@@ -23,7 +28,9 @@
       "imagen": "Un cartel de «**mínimo 50**» le tapa media luz a la máquina. Con 19 discos no llega. Es una limitación **de la consigna**, no una prueba de que el resultado sea falso.",
       "frase": "Diecinueve no llega a cincuenta.",
       "dato": "No se toma como resultado por dos razones: son menos de las 50 observaciones que pide la consigna (esto es una limitación respecto de la consigna y no demuestra que sea falso) y depende de un solo período.",
-      "cifras": ["50"]
+      "cifras": [
+        "50"
+      ]
     },
     {
       "id": "r14-3",
@@ -31,7 +38,10 @@
       "imagen": "Sacás de la barra un disco con **2024Q1** grabado, y la luz roja se **apaga**: **0,0527**. Probás sacar los otros 18, uno por uno: la luz sigue prendida. Solo ese disco la apaga.",
       "frase": "Sin 2024Q1, la luz se apaga: 0,0527.",
       "dato": "Leave-one-out: al sacar un período por vez la decisión se mantiene en 18 de 19 casos; sin 2024Q1 el p-valor pasa a 0,0527 y deja de ser significativo. Es el único trimestre cuya exclusión cambia la decisión.",
-      "cifras": ["0,0527", "18 de 19"]
+      "cifras": [
+        "0,0527",
+        "18 de 19"
+      ]
     },
     {
       "id": "r14-4",
@@ -39,7 +49,12 @@
       "imagen": "Cinco discos con el PBI **cayendo**: en los **cinco** el bono subió. Otros catorce con PBI en suba: en **siete** subió el bono, la mitad. Etiquetas: 2022Q4 a 2024Q1.",
       "frase": "Cinco de cinco, siete de catorce.",
       "dato": "En los 5 trimestres en que cayó el PBI, el bono subió en 5; en los 14 en que creció, subió en 7. Están entre 2022Q4 y 2024Q1 (la sequía de 2023, las elecciones y el cambio de gobierno de diciembre de 2023). Los dos con mayor suba del bono: 2024Q1 (+42,88 % con el PBI en −3,33 %) y 2022Q4 (+32,58 % con −2,34 %).",
-      "cifras": ["+42,88 %", "−3,33 %", "+32,58 %", "−2,34 %"]
+      "cifras": [
+        "+42,88 %",
+        "−3,33 %",
+        "+32,58 %",
+        "−2,34 %"
+      ]
     },
     {
       "id": "r14-5",
@@ -47,7 +62,16 @@
       "imagen": "Un sello rojo en la máquina: **«agregado después de ver los resultados»**. Al lado, un cartel de **d = −2**: la pista exploratoria que también apunta hacia abajo (**0,0025**).",
       "frase": "Pista, no resultado.",
       "dato": "La influencia de cada período (distancia de Cook) se agregó después de ver los resultados y se rotula como tal. El desfase exploratorio d = −2 (β1 = −5,8701; p = 0,0025) apunta al mismo signo, pero es exploratorio y comparte la limitación del spline. Señal para mirar, no resultado.",
-      "cifras": ["−5,8701", "0,0025"]
+      "cifras": [
+        "−5,8701",
+        "0,0025"
+      ]
     }
+  ],
+  "diapositivas": [
+    9
+  ],
+  "diapositivasId": [
+    "agregacion"
   ]
 }

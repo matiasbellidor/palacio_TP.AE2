@@ -15,7 +15,11 @@
       "imagen": "Dos equipos tirando de una soga: **32** jugadores con remera azul (meses de **suba** del bono) contra **24** con remera naranja (meses de **baja**). Entre los dos, el PBI.",
       "frase": "Treinta y dos tiran, veinticuatro tiran.",
       "dato": "La hipótesis original, enviada a los docentes el 22/10, mira la relación desde el otro lado: separa los meses según lo que hizo el bono y compara cuánto creció el PBI. Suba: 32 meses; baja: 24 meses. H0: μ suba = μ baja.",
-      "cifras": ["32 meses", "24 meses", "22/10"]
+      "cifras": [
+        "32 meses",
+        "24 meses",
+        "22/10"
+      ]
     },
     {
       "id": "r12-2",
@@ -23,7 +27,11 @@
       "imagen": "Antes de empezar, el árbitro pesa a los dos equipos: **F = 1,04**, equipos parejos (**p = 0,9357**). Entonces se usa la **soga agrupada**, la de la regla de la cátedra.",
       "frase": "Parejos: soga agrupada, no Welch.",
       "dato": "Prueba F de igualdad de varianzas: F = 1,0401 con (31; 23) gl, p = 0,9357: no se rechaza la igualdad, así que corresponde el t con varianza agrupada (la regla de la cátedra: agrupado si no se rechaza; Welch si se rechaza). S1 = 0,8529, S2 = 0,8363, Sp = 0,8459.",
-      "cifras": ["1,0401", "0,9357", "0,8459"]
+      "cifras": [
+        "1,0401",
+        "0,9357",
+        "0,8459"
+      ]
     },
     {
       "id": "r12-3",
@@ -31,7 +39,11 @@
       "imagen": "La soga tiene una **cinta roja** en el centro. Después de tirar, se corrió **0,0112** a un lado: nada. El marcador dice **−0,0112 pp** y **t = −0,0491**.",
       "frase": "La soga no se movió: menos un centésimo.",
       "dato": "PBI medio con el bono en suba: 0,1277; en baja: 0,1390. Diferencia = −0,0112 pp, error estándar 0,2284, t = −0,0491 con 54 gl.",
-      "cifras": ["−0,0112", "−0,0491", "0,2284"]
+      "cifras": [
+        "−0,0112",
+        "−0,0491",
+        "0,2284"
+      ]
     },
     {
       "id": "r12-4",
@@ -39,7 +51,12 @@
       "imagen": "En el tablero: IC **[−0,47 ; +0,45]** con el cero adentro; el Dado cae en **0,9610**. Un segundo dado, **Welch**, cae en **0,9609**, casi igual.",
       "frase": "Dado en 0,96; Welch dice lo mismo.",
       "dato": "IC 95 % de la diferencia: [−0,4692 ; 0,4467]; p = 0,9610. Con Welch, como control, p = 0,9609. No se rechaza H0: la economía creció prácticamente lo mismo en los meses de suba y de baja.",
-      "cifras": ["−0,4692", "0,4467", "0,9610", "0,9609"]
+      "cifras": [
+        "−0,4692",
+        "0,4467",
+        "0,9610",
+        "0,9609"
+      ]
     },
     {
       "id": "r12-5",
@@ -47,7 +64,17 @@
       "imagen": "Una lupa que solo distingue objetos de **0,65** cm o más. Lo más chico queda borroso: **no se puede descartar**. Cartel: **80 %** de potencia.",
       "frase": "La lupa ve de sesenta y cinco para arriba.",
       "dato": "Potencia: la diferencia mínima que el test detectaría con 80 % de probabilidad es 0,65 pp (0,6516). Una diferencia de ese tamaño o mayor probablemente se habría detectado; una menor no se puede descartar.",
-      "cifras": ["0,65", "0,6516"]
+      "cifras": [
+        "0,65",
+        "0,6516"
+      ]
     }
-  ]
+  ],
+  "diapositivas": [
+    8
+  ],
+  "diapositivasId": [
+    "sensibilidad"
+  ],
+  "diapositivaNota": "Diferencia de medias: tercera fila de la tabla de la diapositiva 8."
 }

@@ -25,6 +25,9 @@
   const guardar = () => { try { localStorage.setItem(CLAVE, JSON.stringify(memoria)); } catch (e) { /* sin almacenamiento: queda en memoria */ } };
   const hechas = (s) => s.estaciones.filter((e) => memoria[e.id]).length;
   const hechasTotal = () => SALAS.reduce((a, s) => a + hechas(s), 0);
+  /* Qué diapositiva del deck corresponde a cada sala (los números salen del orden real del deck) */
+  const diapoLarga = (s) => { const d = s.diapositivas || []; return !d.length ? "Sin diapositiva propia" : d.length === 1 ? `Diapositiva ${d[0]}` : `Diapositivas ${d[0]} a ${d[d.length - 1]}`; };
+  const diapoCorta = (s) => { const d = s.diapositivas || []; return !d.length ? "Sin diapositiva" : d.length === 1 ? `Diap. ${d[0]}` : `Diap. ${d[0]} a ${d[d.length - 1]}`; };
   function pintarAvance() {
     $("[data-avance]").textContent = `${hechasTotal()} de ${TOTAL} estaciones que sabés`;
   }
@@ -50,8 +53,8 @@
 
   function salaTile(s) {
     const h = hechas(s), t = s.estaciones.length;
-    return `<a class="sala${s.tuParte ? " sala--violeta" : ""}" href="#/sala/${s.n}" data-sala="${s.n}" aria-label="Sala ${s.n}: ${esc(s.nombre)}. ${esc(s.tema)}. ${h} de ${t} estaciones sabidas${s.tuParte ? ". La decís vos" : ""}">` +
-      `<span class="sala__num">${s.n}</span><span class="sala__nombre">${esc(s.nombre)}</span><span class="sala__tema">${esc(s.tema)}</span>` +
+    return `<a class="sala${s.tuParte ? " sala--violeta" : ""}" href="#/sala/${s.n}" data-sala="${s.n}" aria-label="Sala ${s.n}: ${esc(s.nombre)}. ${esc(s.tema)}. ${diapoLarga(s)}. ${h} de ${t} estaciones sabidas${s.tuParte ? ". La decís vos" : ""}">` +
+      `<span class="sala__cab"><span class="sala__num">${s.n}</span><span class="sala__diapo">${diapoCorta(s)}</span></span><span class="sala__nombre">${esc(s.nombre)}</span><span class="sala__tema">${esc(s.tema)}</span>` +
       `<span class="sala__quien">${s.tuParte ? "La decís vos" : esc(s.quien)}</span>` +
       `<span class="sala__barra" aria-hidden="true"><i style="--p:${Math.round((h / t) * 100)}"></i></span></a>`;
   }
@@ -158,10 +161,10 @@
     const tab = (id, txt) => `<button type="button" role="tab" id="tab-${id}" aria-selected="${modo === id}" aria-controls="cuerpo" data-modo="${id}" tabindex="${modo === id ? 0 : -1}">${txt}</button>`;
     return `<div class="sala-cab"><nav class="sala-nav" aria-label="Salas"><a class="boton" href="#/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>Mapa</a>` +
       `<span class="sala-nav__pos">Sala ${s.n} de ${SALAS.length}</span><span class="sala-nav__espacio"></span>${ant}${sgt}</nav>` +
-      `<p class="kicker"${s.tuParte ? ' style="color:var(--violeta)"' : ""}>Sala ${s.n} · ${esc(s.diapositiva)}</p>` +
+      `<p class="kicker"${s.tuParte ? ' style="color:var(--violeta)"' : ""}>Sala ${s.n} · ${esc(diapoLarga(s))} · ${esc(s.diapositiva)}</p>` +
       `<h1 tabindex="-1" data-foco>${esc(s.nombre)}</h1><p class="sala-cab__tema">${esc(s.tema)}</p>` +
-      `<div class="sala-cab__chips">${s.tuParte ? `<span class="chip chip--violeta">La decís vos · ${esc(s.tiempo)}</span>` : `<span class="chip chip--azul">Lo dice ${esc(s.quien)}</span>`}<span class="chip">${s.estaciones.length} estaciones</span></div>` +
-      `<p class="sala-cab__como">${esc(s.como || s.resumen)}</p></div>` +
+      `<div class="sala-cab__chips">${s.tuParte ? `<span class="chip chip--violeta">La decís vos · ${esc(s.tiempo)}</span>` : `<span class="chip chip--azul">Lo dice ${esc(s.quien)}</span>`}<span class="chip chip--diapo">${esc(diapoLarga(s))}</span><span class="chip">${s.estaciones.length} estaciones</span></div>` +
+      `<p class="sala-cab__como">${esc(s.como || s.resumen)}</p>${s.diapositivaNota ? `<p class="sala-cab__como">${esc(s.diapositivaNota)}</p>` : ""}</div>` +
       cerrojoHTML(s) +
       `<div class="pestanas${s.tuParte ? " pestanas--violeta" : ""}" role="tablist" aria-label="Cómo estudiar esta sala">${tab("recorrido", "Recorrido")}${tab("ensayo", "Ensayo")}${tab("historia", "Historia")}</div>` +
       `<div id="cuerpo" role="tabpanel" aria-labelledby="tab-${modo}" data-cuerpo>${cuerpoSala(s, modo)}</div>`;
@@ -190,7 +193,7 @@
   function historiaHTML() {
     return `<section class="hero" style="padding-bottom:var(--e4)"><p class="kicker">Historia completa</p><h1>La película de todo el trabajo</h1>` +
       `<p>Leela de corrido y en voz alta, una vez por día. Es el hilo que une las ${SALAS.length} salas: si la película te sale entera, las estaciones salen solas.</p></section>` +
-      `<div class="historia">${SALAS.map((s) => `<section class="historia-sala${s.tuParte ? " historia-sala--violeta" : ""}"><h2><span>Sala ${s.n}</span><a href="#/sala/${s.n}" style="color:inherit;text-decoration:none">${esc(s.nombre)}</a></h2>` +
+      `<div class="historia">${SALAS.map((s) => `<section class="historia-sala${s.tuParte ? " historia-sala--violeta" : ""}"><h2><span>Sala ${s.n} · ${esc(diapoCorta(s))}</span><a href="#/sala/${s.n}" style="color:inherit;text-decoration:none">${esc(s.nombre)}</a></h2>` +
         `<p>${md(s.historia)}</p><p class="puente">${md(s.puerta)}</p></section>`).join("")}</div>`;
   }
 

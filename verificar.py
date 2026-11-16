@@ -42,11 +42,28 @@ def main() -> int:
     corpus = "\n".join(f.read_text(encoding="utf-8") for f in fuentes)
 
     errores, avisos = [], []
+    # Orden real del deck publicado: cada sala dice qué diapositiva le corresponde (número e id)
+    ids_deck: list[str] = []
+    deck = a.tp / "docs" / "presentacion" / "index.html"
+    m = re.search(r"window\.__PITCH__ = (\{.*?\});</script>", deck.read_text(encoding="utf-8")) if deck.exists() else None
+    if m:
+        ids_deck = [d["id"] for d in json.loads(m.group(1))["diapositivas"]]
+    else:
+        avisos.append("No encuentro el deck del TP: no se pudieron comprobar los números de diapositiva")
     salas = [json.loads(p.read_text(encoding="utf-8")) for p in sorted((AQUI / "contenido" / "salas").glob("*.json"))]
     ids, total = set(), 0
     for i, s in enumerate(salas, start=1):
         if s["n"] != i:
             errores.append(f"Sala {i}: n = {s['n']}")
+        nums, dids = s.get("diapositivas"), s.get("diapositivasId")
+        if nums is None or dids is None or len(nums) != len(dids):
+            errores.append(f"Sala {i}: falta diapositivas / diapositivasId (o no tienen el mismo largo)")
+        else:
+            if not nums and not s.get("diapositivaNota"):
+                errores.append(f"Sala {i}: sin diapositiva propia necesita una diapositivaNota")
+            for n, d in zip(nums, dids):
+                if ids_deck and (not 1 <= n <= len(ids_deck) or ids_deck[n - 1] != d):
+                    errores.append(f"Sala {i}: la diapositiva {n} no es «{d}» en el deck del TP")
         for campo in ("nombre", "tema", "quien", "historia", "puerta", "estaciones"):
             if not s.get(campo):
                 errores.append(f"Sala {i}: falta {campo}")

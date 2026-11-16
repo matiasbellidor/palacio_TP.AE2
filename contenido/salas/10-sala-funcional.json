@@ -15,7 +15,9 @@
       "imagen": "Dos cuerdas: una con una etiqueta **PBI** y otra con **CCL**. Si **sostenés una quieta**, mirás qué hace la otra. Las dos tiran de AL; las separás con una **X** en forma de matriz.",
       "frase": "Dos cuerdas: sostengo una, miro la otra.",
       "dato": "Modelo: Var AL30D = β0 + β1 · Var PBI + β2 · Var CCL implícito + error. Se mide la relación con el PBI manteniendo constante el CCL. Estimación matricial: β̂ = (XᵀX)⁻¹Xᵀy, con n − k − 1 = 53 gl.",
-      "cifras": ["53"]
+      "cifras": [
+        "53"
+      ]
     },
     {
       "id": "r10-2",
@@ -31,7 +33,13 @@
       "imagen": "En el tablero de la pared: la cuerda del **PBI** marca **−0,22** con luz roja apagada (**p 0,91**); la del **CCL** marca **−0,22** también con luz apagada (**p 0,18**). La constante: **3,53**, p 0,06.",
       "frase": "El PBI sigue mudo: 0,91.",
       "dato": "Constante 3,5270 (p = 0,0623); Var PBI −0,2222 (EE 2,0258; t = −0,1097; p = 0,9131; IC [−4,2854 ; 3,8411]); Var CCL implícito −0,2240 (EE 0,1634; t = −1,3703; p = 0,1764; IC [−0,5518 ; 0,1039]). Ni con el control aparece relación con el PBI.",
-      "cifras": ["3,5270", "−0,2222", "0,9131", "−0,2240", "0,1764"]
+      "cifras": [
+        "3,5270",
+        "−0,2222",
+        "0,9131",
+        "−0,2240",
+        "0,1764"
+      ]
     },
     {
       "id": "r10-4",
@@ -39,7 +47,14 @@
       "imagen": "Una balanza con dos platos: **295,58** explicado y **8.342,79** sin explicar. La aguja marca **3,4 %**. Una etiqueta: **R² ajustado −0,0022**: sumar una cuerda no ayudó, hasta restó.",
       "frase": "3,4 % explicado, ajustado en negativo.",
       "dato": "Test F global por sumas de cuadrados: regresión 295,58 (2 gl), error 8.342,79 (53 gl); F = 0,9389, p = 0,3975. R² = 0,0342; R² ajustado = −0,0022 (negativo: sumar variables no mejora la explicación). Valor crítico de F con (2; 53) gl = 3,17.",
-      "cifras": ["295,58", "8.342,79", "0,9389", "0,3975", "0,0342", "−0,0022"]
+      "cifras": [
+        "295,58",
+        "8.342,79",
+        "0,9389",
+        "0,3975",
+        "0,0342",
+        "−0,0022"
+      ]
     },
     {
       "id": "r10-5",
@@ -47,7 +62,16 @@
       "imagen": "Las dos cuerdas cuelgan **paralelas, sin enredarse**: un cartel dice **VIF 1,01** y **1,01**. Si estuvieran trenzadas valdría más de 5 y habría que desenredarlas.",
       "frase": "Cuerdas sin enredo: VIF uno.",
       "dato": "VIF = 1 / (1 − R²j). Valores mayores a 5 o 10 preocupan; acá dan 1,01 y 1,01: las dos variables casi no se mueven juntas y el modelo puede separar lo que aporta cada una.",
-      "cifras": ["1,01"]
+      "cifras": [
+        "1,01"
+      ]
     }
-  ]
+  ],
+  "diapositivas": [
+    8
+  ],
+  "diapositivasId": [
+    "sensibilidad"
+  ],
+  "diapositivaNota": "Regresión múltiple: primera fila de la tabla de la diapositiva 8."
 }

@@ -62,5 +62,11 @@
       "dice": true,
       "cifras": []
     }
+  ],
+  "diapositivas": [
+    5
+  ],
+  "diapositivasId": [
+    "figura-1"
   ]
 }

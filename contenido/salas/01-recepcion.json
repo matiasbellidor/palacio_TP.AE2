@@ -24,7 +24,9 @@
       "imagen": "En letras de neón: **¿El bono argentino sigue al PBI?** Debajo, un culturista (AL) camina detrás de un abuelito diminuto (Don Pibi) y no lo mira ni una vez.",
       "frase": "¿AL sigue a Don Pibi?",
       "dato": "Pregunta del trabajo: cuando la economía argentina crece, ¿el bono AL30D sube? Análisis Estadístico 2, Cátedra Tito Lasanta, FCE-UBA, segundo cuatrimestre de 2026. Grupo 1.",
-      "cifras": ["2026"]
+      "cifras": [
+        "2026"
+      ]
     },
     {
       "id": "r1-3",
@@ -32,7 +34,9 @@
       "imagen": "Un culturista gigante bloquea el torniquete con una remera que dice **30 D**. De la manga le cuelgan billetes verdes. Te muestra una tarjeta: **VENCE 2030**.",
       "frase": "AL30D: Deuda en Dólares que vence al 30.",
       "dato": "El AL30D es un bono de la deuda del Estado argentino, en dólares, que vence en 2030. Su precio sube cuando el mercado confía más en que el Estado va a pagar y baja cuando confía menos.",
-      "cifras": ["2030"]
+      "cifras": [
+        "2030"
+      ]
     },
     {
       "id": "r1-4",
@@ -58,5 +62,11 @@
       "dato": "Asociación, no causalidad: buscamos si las dos variables se mueven juntas. Aunque lo hicieran, eso solo no probaría que una mueve a la otra, porque los datos son observacionales.",
       "cifras": []
     }
+  ],
+  "diapositivas": [
+    1
+  ],
+  "diapositivasId": [
+    "portada"
   ]
 }

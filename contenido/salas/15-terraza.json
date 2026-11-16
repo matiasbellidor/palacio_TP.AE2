@@ -15,7 +15,10 @@
       "imagen": "Un cartel de madera tallado con la **frase central**. Un foco ilumina: «Entre **octubre de 2021** y **mayo de 2026**, los datos **no muestran asociación**». AL y Don Pibi, de espaldas, caminan por separado.",
       "frase": "AL y Don Pibi caminan por separado.",
       "dato": "Entre octubre de 2021 y mayo de 2026, los datos no muestran asociación entre la variación mensual del PBI y la del AL30D. β1 = 0,0154, p = 0,9940, n = 56. Las otras dos hipótesis y las demás herramientas llegan al mismo resultado.",
-      "cifras": ["0,9940", "56"]
+      "cifras": [
+        "0,9940",
+        "56"
+      ]
     },
     {
       "id": "r15-2",
@@ -31,7 +34,10 @@
       "imagen": "Una balancita de cocina: de un lado un **3,4** y del otro el **12,5**. Aun en el peor extremo del IC, un movimiento típico del PBI (0,84) mueve al bono **tres puntos y medio**: casi nada frente al **12,5** del bono.",
       "frase": "Tres coma cuatro contra doce coma cinco.",
       "dato": "Aun en el extremo del IC de β1, un desvío estándar del PBI (0,84 pp) se asociaría con unos 3,4 pp de variación del bono, cuando el bono se mueve típicamente 12,5 pp por mes. Si la relación existe, explica una parte chica de lo que hace el bono.",
-      "cifras": ["3,4 pp", "12,5 pp"]
+      "cifras": [
+        "3,4 pp",
+        "12,5 pp"
+      ]
     },
     {
       "id": "r15-4",
@@ -39,7 +45,11 @@
       "imagen": "Cuatro candados con carteles. **Spline**: solo 20 trimestres reales y el futuro sirve para fijar cada mes. **Ventana corta**: 2021-2026. **Muchas pruebas**: siete desfases, umbral 0,01. **CCL**: no operó en 67 % de las ruedas de 2022.",
       "frase": "Spline, ventana, pruebas, CCL.",
       "dato": "Limitaciones: (1) PBI mensualizado: unos 20 trimestres reales en la ventana, el n efectivo es menor que 56; el spline y la desestacionalización usan trimestres posteriores. (2) Período corto: pocos ciclos completos. (3) Muchas pruebas: siete desfases y varias especificaciones; los exploratorios se juzgan con umbral 0,01. (4) CCL implícito: parte de su relación con el AL30D es mecánica y el AL30C no operó en el 67 % de las ruedas de 2022.",
-      "cifras": ["20 trimestres", "67 %", "0,01"]
+      "cifras": [
+        "20 trimestres",
+        "67 %",
+        "0,01"
+      ]
     },
     {
       "id": "r15-5",
@@ -47,7 +57,9 @@
       "imagen": "Cuatro caminos en el horizonte. **Otros bonos o riesgo país** (una curva larga). **Una hipótesis previa** (flecha hacia abajo, β1 < 0). **Variables fiscales** (reservas, resultado primario). **Más trimestres** (calendario con hojas arrancadas).",
       "frase": "Más bonos, más datos, más variables.",
       "dato": "Próximos pasos: repetir con una serie de bonos soberanos en dólares más larga (como el riesgo país), que dé más de 50 trimestres sin interpolar; plantear de antemano la hipótesis que sugiere la muestra trimestral (β1 < 0) y contrastarla con datos que no se usaron para formularla; sumar variables de solvencia (resultado fiscal, reservas). Lectura posible no contrastada: el bono parece seguir más las expectativas sobre la capacidad de pago del Estado que la actividad del período.",
-      "cifras": ["50"]
+      "cifras": [
+        "50"
+      ]
     },
     {
       "id": "r15-6",
@@ -57,5 +69,15 @@
       "dato": "Cierre con energía: agradecer y abrir a preguntas. Si te preguntan algo que no sabés, volvé a la sala donde está el tema y caminá hasta ahí en tu cabeza.",
       "cifras": []
     }
+  ],
+  "diapositivas": [
+    10,
+    11,
+    12
+  ],
+  "diapositivasId": [
+    "limitaciones",
+    "conclusiones",
+    "futuro"
   ]
 }
