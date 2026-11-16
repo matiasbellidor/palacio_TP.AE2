@@ -12,43 +12,46 @@
     {
       "id": "r12-1",
       "lugar": "Los dos equipos en la cancha",
-      "imagen": "Dos equipos tirando de una soga: **32** jugadores con remera azul (meses de **suba** del bono) contra **24** con remera naranja (meses de **baja**). Entre los dos, el PBI.",
+      "imagen": "Entrás a la cancha. En el medio hay una soga y **dos equipos** que tiran de lados opuestos: a la **izquierda**, **32 jugadores con remera azul** (meses de **suba** del bono); a la **derecha**, **24 con remera naranja** (meses de **baja**). Cada jugador lleva en la espalda cuánto creció el PBI ese mes.",
       "frase": "Treinta y dos tiran, veinticuatro tiran.",
       "dato": "La hipótesis original, enviada a los docentes el 22/10, mira la relación desde el otro lado: separa los meses según lo que hizo el bono y compara cuánto creció el PBI. Suba: 32 meses; baja: 24 meses. H0: μ suba = μ baja.",
       "cifras": [
         "32 meses",
         "24 meses",
         "22/10"
-      ]
+      ],
+      "significa": "los dos equipos son los dos grupos de meses: 32 con el bono en suba y 24 con el bono en baja. Se compara cuánto creció el PBI en cada uno; es la hipótesis que se mandó a los docentes"
     },
     {
       "id": "r12-2",
       "lugar": "Árbitro con silbato",
-      "imagen": "Antes de empezar, el árbitro pesa a los dos equipos: **F = 1,04**, equipos parejos (**p = 0,9357**). Entonces se usa la **soga agrupada**, la de la regla de la cátedra.",
+      "imagen": "Antes de empezar, el **árbitro** pesa a los dos equipos en una balanza: **F = 1,04**, equipos parejos (**p = 0,9357**). Como están parejos, se usa la **soga agrupada** (la de la regla de la cátedra) y no la Welch.",
       "frase": "Parejos: soga agrupada, no Welch.",
       "dato": "Prueba F de igualdad de varianzas: F = 1,0401 con (31; 23) gl, p = 0,9357: no se rechaza la igualdad, así que corresponde el t con varianza agrupada (la regla de la cátedra: agrupado si no se rechaza; Welch si se rechaza). S1 = 0,8529, S2 = 0,8363, Sp = 0,8459.",
       "cifras": [
         "1,0401",
         "0,9357",
         "0,8459"
-      ]
+      ],
+      "significa": "el árbitro verifica si las varianzas de los dos grupos son iguales (prueba F: p = 0,9357, sí lo son). Eso decide qué t usar: con varianza agrupada si son iguales y Welch si no (regla de la cátedra)"
     },
     {
       "id": "r12-3",
       "lugar": "Cinta roja en el medio de la soga",
-      "imagen": "La soga tiene una **cinta roja** en el centro. Después de tirar, se corrió **0,0112** a un lado: nada. El marcador dice **−0,0112 pp** y **t = −0,0491**.",
+      "imagen": "La soga tiene una **cinta roja** atada justo en el centro. Tiran los dos equipos y la cinta se corre apenas **0,0112** hacia un lado: casi nada. El marcador dice **−0,0112 pp** y **t = −0,0491**.",
       "frase": "La soga no se movió: menos un centésimo.",
       "dato": "PBI medio con el bono en suba: 0,1277; en baja: 0,1390. Diferencia = −0,0112 pp, error estándar 0,2284, t = −0,0491 con 54 gl.",
       "cifras": [
         "−0,0112",
         "−0,0491",
         "0,2284"
-      ]
+      ],
+      "significa": "la cinta roja es la diferencia de medias del PBI entre los dos grupos: apenas −0,0112 puntos porcentuales, con t = −0,0491. Que la soga no se mueva es que no hay diferencia"
     },
     {
       "id": "r12-4",
       "lugar": "Tablero del partido",
-      "imagen": "En el tablero: IC **[−0,47 ; +0,45]** con el cero adentro; el Dado cae en **0,9610**. Un segundo dado, **Welch**, cae en **0,9609**, casi igual.",
+      "imagen": "Arriba de la cancha hay un tablero del partido. Muestra el intervalo **[−0,47 ; +0,45]**, con el cero adentro. Un dado cae en **0,9610**. Un segundo dado, **Welch**, cae en **0,9609**: casi igual.",
       "frase": "Dado en 0,96; Welch dice lo mismo.",
       "dato": "IC 95 % de la diferencia: [−0,4692 ; 0,4467]; p = 0,9610. Con Welch, como control, p = 0,9609. No se rechaza H0: la economía creció prácticamente lo mismo en los meses de suba y de baja.",
       "cifras": [
@@ -56,18 +59,20 @@
         "0,4467",
         "0,9610",
         "0,9609"
-      ]
+      ],
+      "significa": "el tablero es el intervalo y el p-valor de la diferencia: IC de −0,47 a 0,45, con el cero adentro, y p = 0,9610. Welch, usado como control, da lo mismo (0,9609)"
     },
     {
       "id": "r12-5",
       "lugar": "Lupa colgada del arco",
-      "imagen": "Una lupa que solo distingue objetos de **0,65** cm o más. Lo más chico queda borroso: **no se puede descartar**. Cartel: **80 %** de potencia.",
+      "imagen": "En el arco cuelga una **lupa** que solo permite ver objetos de **0,65** cm o más. Lo más chico queda **borroso**: no se puede descartar. En el borde de la lupa hay un cartel: **80 %** de potencia.",
       "frase": "La lupa ve de sesenta y cinco para arriba.",
       "dato": "Potencia: la diferencia mínima que el test detectaría con 80 % de probabilidad es 0,65 pp (0,6516). Una diferencia de ese tamaño o mayor probablemente se habría detectado; una menor no se puede descartar.",
       "cifras": [
         "0,65",
         "0,6516"
-      ]
+      ],
+      "significa": "la lupa es la potencia: con 80 % de probabilidad el test detectaría diferencias de 0,65 pp o más. Las menores no se pueden descartar"
     }
   ],
   "diapositivas": [
@@ -76,5 +81,7 @@
   "diapositivasId": [
     "sensibilidad"
   ],
-  "diapositivaNota": "Diferencia de medias: tercera fila de la tabla de la diapositiva 8."
+  "diapositivaNota": "Diferencia de medias: tercera fila de la tabla de la diapositiva 8.",
+  "idea": "la cancha donde dos equipos tiran de una soga. Acá se comparan los meses de suba del bono contra los de baja: es la diferencia de medias, la hipótesis que se mandó a los docentes",
+  "conGuion": true
 }

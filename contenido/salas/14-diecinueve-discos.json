@@ -12,7 +12,7 @@
     {
       "id": "r14-1",
       "lugar": "Máquina con diecinueve discos",
-      "imagen": "Una máquina con solo **19 discos** (trimestres) y la barra apoyada **hacia abajo**, inclinada al revés. Se prende una luz roja: **p = 0,0142**, β1 = −4,54.",
+      "imagen": "Entrás a la sala de la máquina. Es una máquina de pesas con **solo 19 discos**: uno por trimestre. La barra queda inclinada **hacia abajo** (de izquierda a derecha), al revés de lo que esperarías. Se prende una **luz roja**: **p = 0,0142**, β1 = −4,54.",
       "frase": "Diecinueve discos y la barra se inclina al revés.",
       "dato": "Muestra trimestral sin interpolar (n = 19): β̂1 = −4,5407, IC 95 % [−8,0455 ; −1,0359], p = 0,0142: se rechaza H0, y el signo es opuesto al de la estimación mensual.",
       "cifras": [
@@ -20,33 +20,36 @@
         "−8,0455",
         "−1,0359",
         "0,0142"
-      ]
+      ],
+      "significa": "la máquina con 19 discos es la muestra trimestral: el PBI sin pasarlo a meses (19 trimestres). La barra inclinada hacia abajo y la luz roja son que en esta muestra la pendiente sí es significativa (β1 = −4,5407, p = 0,0142) y con signo negativo"
     },
     {
       "id": "r14-2",
       "lugar": "Cartel de la consigna",
-      "imagen": "Un cartel de «**mínimo 50**» le tapa media luz a la máquina. Con 19 discos no llega. Es una limitación **de la consigna**, no una prueba de que el resultado sea falso.",
+      "imagen": "Pegado en la máquina hay un cartel que dice **mínimo 50**. Tapa la mitad de la luz roja. Con 19 discos no se llega. Es una limitación **de la consigna**, no una prueba de que el resultado sea falso.",
       "frase": "Diecinueve no llega a cincuenta.",
       "dato": "No se toma como resultado por dos razones: son menos de las 50 observaciones que pide la consigna (esto es una limitación respecto de la consigna y no demuestra que sea falso) y depende de un solo período.",
       "cifras": [
         "50"
-      ]
+      ],
+      "significa": "el cartel «mínimo 50» es la consigna: pide al menos 50 observaciones y 19 no alcanzan. Es una limitación, no prueba que el resultado sea falso"
     },
     {
       "id": "r14-3",
       "lugar": "Disco que se saca (2024Q1)",
-      "imagen": "Sacás de la barra un disco con **2024Q1** grabado, y la luz roja se **apaga**: **0,0527**. Probás sacar los otros 18, uno por uno: la luz sigue prendida. Solo ese disco la apaga.",
+      "imagen": "Sacás de la barra un disco con **2024Q1** grabado y la luz roja se **apaga**: **0,0527**. Probás sacar los otros 18, de a uno por vez: la luz **sigue prendida**. Solo ese disco la apaga.",
       "frase": "Sin 2024Q1, la luz se apaga: 0,0527.",
       "dato": "Leave-one-out: al sacar un período por vez la decisión se mantiene en 18 de 19 casos; sin 2024Q1 el p-valor pasa a 0,0527 y deja de ser significativo. Es el único trimestre cuya exclusión cambia la decisión.",
       "cifras": [
         "0,0527",
         "18 de 19"
-      ]
+      ],
+      "significa": "sacar el disco 2024Q1 es el análisis leave-one-out: se quita un trimestre por vez y se recalcula. Solo sin 2024Q1 cambia la conclusión (p = 0,0527): el resultado depende de un solo período"
     },
     {
       "id": "r14-4",
       "lugar": "Cinco discos de la caída",
-      "imagen": "Cinco discos con el PBI **cayendo**: en los **cinco** el bono subió. Otros catorce con PBI en suba: en **siete** subió el bono, la mitad. Etiquetas: 2022Q4 a 2024Q1.",
+      "imagen": "A un costado de la máquina hay **cinco discos** con una flecha **hacia abajo** (el PBI cayó): en los **cinco** el bono subió. Sus etiquetas van de 2022Q4 a 2024Q1. Al otro lado, **catorce discos** con una flecha **hacia arriba** (el PBI creció): en **siete** el bono subió, la mitad.",
       "frase": "Cinco de cinco, siete de catorce.",
       "dato": "En los 5 trimestres en que cayó el PBI, el bono subió en 5; en los 14 en que creció, subió en 7. Están entre 2022Q4 y 2024Q1 (la sequía de 2023, las elecciones y el cambio de gobierno de diciembre de 2023). Los dos con mayor suba del bono: 2024Q1 (+42,88 % con el PBI en −3,33 %) y 2022Q4 (+32,58 % con −2,34 %).",
       "cifras": [
@@ -54,18 +57,20 @@
         "−3,33 %",
         "+32,58 %",
         "−2,34 %"
-      ]
+      ],
+      "significa": "los discos de la caída son los 5 trimestres en que cayó el PBI: en los 5 el bono subió. En los 14 trimestres de suba del PBI, el bono subió en 7 (la mitad). Es un patrón de pocos trimestres, no una relación establecida"
     },
     {
       "id": "r14-5",
       "lugar": "Sello al costado de la máquina",
-      "imagen": "Un sello rojo en la máquina: **«agregado después de ver los resultados»**. Al lado, un cartel de **d = −2**: la pista exploratoria que también apunta hacia abajo (**0,0025**).",
+      "imagen": "Al costado de la máquina hay un **sello rojo**: **«agregado después de ver los resultados»**. Al lado, un cartel **d = −2**: la pista exploratoria que también apunta hacia abajo (**0,0025**).",
       "frase": "Pista, no resultado.",
       "dato": "La influencia de cada período (distancia de Cook) se agregó después de ver los resultados y se rotula como tal. El desfase exploratorio d = −2 (β1 = −5,8701; p = 0,0025) apunta al mismo signo, pero es exploratorio y comparte la limitación del spline. Señal para mirar, no resultado.",
       "cifras": [
         "−5,8701",
         "0,0025"
-      ]
+      ],
+      "significa": "el sello aclara que la influencia de cada período (distancia de Cook) se agregó después de ver los resultados. d = −2 es el desfase exploratorio que apunta al mismo signo: una pista para otro trabajo, no un resultado"
     }
   ],
   "diapositivas": [
@@ -73,5 +78,7 @@
   ],
   "diapositivasId": [
     "agregacion"
-  ]
+  ],
+  "idea": "una máquina con solo 19 discos. Es la muestra trimestral, la única excepción del trabajo, y por qué no se toma como resultado",
+  "conGuion": true
 }

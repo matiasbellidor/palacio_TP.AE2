@@ -12,42 +12,45 @@
     {
       "id": "r11-1",
       "lugar": "Tres filas con remeras",
-      "imagen": "Tres filas en el salón: **bajo** (19 personas con remera azul oscuro), **medio** (18, celeste) y **alto** (19, blanca). Cada fila es un tercio de los meses por crecimiento del PBI.",
+      "imagen": "Entrás a la clase grupal: un salón con **tres filas** de personas con remeras de distinto color. La fila de **adelante** (remera azul oscuro) son 19 personas: **bajo** crecimiento del PBI. La del **medio** (celeste) son 18: **medio**. La de **atrás** (blanca) son 19: **alto**. Cada fila es un **tercio** de los meses.",
       "frase": "Tres tercios: diecinueve, dieciocho, diecinueve.",
       "dato": "Grupos por terciles de la Var PBI: bajo −1,85 % a 0,07 % (19 meses); medio 0,09 % a 0,27 % (18); alto 0,30 % a 2,30 % (19). H0: la variación media del bono es igual en los tres. H1: al menos un grupo difiere.",
       "cifras": [
         "19 meses",
         "18"
-      ]
+      ],
+      "significa": "las tres filas son los tres grupos de meses ordenados por crecimiento del PBI (bajo, medio y alto), con un tercio de los meses en cada uno: 19, 18 y 19. Así compara grupos el ANOVA"
     },
     {
       "id": "r11-2",
       "lugar": "Pizarrón de promedios",
-      "imagen": "En el pizarrón, tres promedios con marcador: **+3,44**, **+3,34** y **+0,81**. A simple vista parecen distintos; la instructora levanta una ceja.",
+      "imagen": "En el pizarrón del frente, la instructora escribió tres promedios con marcador, uno por fila: **+3,44** (adelante), **+3,34** (medio) y **+0,81** (atrás). A simple vista parecen distintos; ella levanta una ceja.",
       "frase": "Dos parecidos arriba y uno abajo.",
       "dato": "Variación media del bono: bajo +3,44 %; medio +3,34 %; alto +0,81 %. A simple vista las medias se ven distintas; hay que ver si esa diferencia es mayor que la variación dentro de cada grupo.",
       "cifras": [
         "+3,44",
         "+3,34",
         "+0,81"
-      ]
+      ],
+      "significa": "los tres promedios del pizarrón son la variación media del bono en cada grupo: +3,44 %, +3,34 % y +0,81 %. A simple vista parecen distintos; el ANOVA responde si la diferencia es real o es azar"
     },
     {
       "id": "r11-3",
       "lugar": "Torta de la instructora",
-      "imagen": "Una torta enorme: el bocadito de **entre** grupos pesa **83,32**; todo el resto, **dentro**, pesa **8.555,05**. La torta entera pesa **8.638,37**.",
+      "imagen": "Sobre la mesa de la instructora hay una **torta enorme** que pesa **8.638,37**. La corta en dos: un **bocadito** de **83,32** (lo que hay **entre** las filas) y **todo el resto**, **8.555,05** (lo que hay **dentro** de cada fila).",
       "frase": "Entre es un bocadito; dentro es la torta.",
       "dato": "SC total = SC entre + SC dentro: 8.638,37 = 83,32 + 8.555,05. La diferencia entre grupos es chica al lado de lo que varía el bono adentro de cada grupo.",
       "cifras": [
         "83,32",
         "8.555,05",
         "8.638,37"
-      ]
+      ],
+      "significa": "la torta es la variabilidad total del bono (8.638,37), partida en la que hay entre grupos (el bocadito: 83,32) y la que hay dentro de cada grupo (el resto: 8.555,05). Si casi todo es «dentro», los grupos no se diferencian"
     },
     {
       "id": "r11-4",
       "lugar": "Balanza F junto a la puerta",
-      "imagen": "Una balanza con un cociente: **41,66 / 161,42 = 0,26**. Cuelga un cartel de **3,17**. El F ni se acerca.",
+      "imagen": "Junto a la puerta hay una balanza con un cociente escrito: **41,66 / 161,42 = 0,26**. Arriba de la puerta cuelga un cartel de **3,17**. El resultado de la balanza **ni se acerca** al cartel.",
       "frase": "F de 0,26: no llega a 3,17.",
       "dato": "F = CM entre / CM dentro = 41,66 / 161,42 = 0,2581, con (2; 53) gl. Valor crítico al 95 % 3,1716. p = 0,7735: no se rechaza H0.",
       "cifras": [
@@ -56,12 +59,13 @@
         "0,2581",
         "3,1716",
         "0,7735"
-      ]
+      ],
+      "significa": "la balanza del F es el estadístico F: variabilidad entre grupos dividida por variabilidad dentro. F = 0,2581 queda lejos del valor crítico (3,1716) y p = 0,7735: no se rechaza que las tres medias sean iguales"
     },
     {
       "id": "r11-5",
       "lugar": "Cartel de tamaño del efecto",
-      "imagen": "En el espejo, un solo punto rojo del tamaño de una moneda: el **1 %**. El grupo de crecimiento explica apenas una moneda de toda la torta. Al lado, un checklist con **Levene 0,0518**.",
+      "imagen": "En el espejo del salón hay un punto rojo del tamaño de una **moneda**: el **1 %**. El grupo explica apenas esa moneda de toda la torta. Al lado, un checklist con una tilde que dice **Levene 0,0518**.",
       "frase": "Un uno por ciento de torta.",
       "dato": "Tamaño del efecto η² = SC entre / SC total = 0,0096: el grupo de crecimiento del PBI explica el 1,0 % de la variación del bono. Supuestos: igualdad de varianzas (Levene) p = 0,0518; normalidad por grupo (Shapiro-Wilk): bajo p = 0,6217, medio p = 0,0088, alto p = 0,0407.",
       "cifras": [
@@ -70,7 +74,8 @@
         "0,6217",
         "0,0088",
         "0,0407"
-      ]
+      ],
+      "significa": "la moneda del 1 % es el tamaño del efecto η² = 0,0096: el grupo de crecimiento explica el 1 % de la variación del bono. Levene y Shapiro-Wilk son los chequeos de los supuestos del ANOVA"
     }
   ],
   "diapositivas": [
@@ -79,5 +84,7 @@
   "diapositivasId": [
     "sensibilidad"
   ],
-  "diapositivaNota": "ANOVA: segunda fila de la tabla de la diapositiva 8."
+  "diapositivaNota": "ANOVA: segunda fila de la tabla de la diapositiva 8.",
+  "idea": "una clase con tres filas de gente. Acá se comparan tres grupos de meses según el crecimiento del PBI: es el ANOVA de un factor",
+  "conGuion": true
 }

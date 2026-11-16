@@ -15,89 +15,98 @@
     {
       "id": "r4-1",
       "lugar": "Barra de entrada del bar",
-      "imagen": "Luka te desliza un **shaker** por la barra y dice «gracias» con la cabeza. Vos lo agarrás y mostrás **dos frascos transparentes** pegados con la etiqueta PÚBLICO.",
+      "imagen": "Estás en la entrada del bar de proteínas, frente a la barra. Luka, del otro lado, te **desliza un shaker** por la barra y vos lo agarrás. Sobre la barra hay **dos frascos transparentes**, cada uno con una etiqueta que dice **PÚBLICO**.",
       "frase": "Dos frascos, los dos públicos.",
       "dato": "Entrás agradeciéndole a Luka y anunciás que usaron dos fuentes públicas.",
       "dice": true,
-      "cifras": []
+      "cifras": [],
+      "significa": "la barra del bar es el comienzo de tu parte. Los dos frascos públicos son las dos fuentes de datos, que son públicas"
     },
     {
       "id": "r4-2",
       "lugar": "Heladera 1 (la del bono)",
-      "imagen": "Dentro de la heladera, **AL** el culturista suda billetes verdes. Pegada en la puerta, una planilla con **una fila por día**. Una etiqueta: **Data912**.",
+      "imagen": "A tu izquierda está la **heladera 1**. Abrís la puerta y adentro está **AL**, el culturista, sudando billetes verdes. Pegada en la puerta hay una planilla con **una fila por cada día** y una etiqueta: **Data912**.",
       "frase": "AL, un cierre por día, en dólares.",
       "dato": "Bono: precios de cierre diarios del AL30D, en dólares, de Data912. De ahí sale la variación de cada mes (se acumulan las variaciones diarias del mes).",
       "dice": true,
-      "cifras": []
+      "cifras": [],
+      "significa": "la heladera 1 guarda los datos del bono: AL es el AL30D, y la planilla con una fila por día son los precios de cierre diarios en dólares de Data912, de donde se arma la variación de cada mes"
     },
     {
       "id": "r4-3",
       "lugar": "Heladera 2 (la de la economía)",
-      "imagen": "En la segunda heladera, **Don Pibi** tirita con una sola botella en la mano. En la puerta, un cartel azul: **INDEC, PBI real**.",
+      "imagen": "A tu derecha está la **heladera 2**. Abrís la puerta y adentro está **Don Pibi** temblando de frío, con **una sola botella** en la mano (una por trimestre). En la puerta hay un cartel azul: **INDEC, PBI real**.",
       "frase": "Don Pibi: una botella cada tres meses.",
       "dato": "Economía: PBI real del INDEC (a precios de 2004).",
       "dice": true,
-      "cifras": []
+      "cifras": [],
+      "significa": "la heladera 2 guarda los datos de la economía: Don Pibi con una botella por trimestre es el PBI real que publica el INDEC cada tres meses"
     },
     {
       "id": "r4-4",
       "lugar": "Reloj de pared",
-      "imagen": "Un reloj con dos agujas: el segundero (el bono) corre **todos los días**, tic-tic-tic. La otra aguja (el INDEC) salta **cada tres meses**: CLONK. Las agujas no se encuentran nunca.",
+      "imagen": "Sobre las heladeras, en la pared, hay un reloj raro con dos agujas. La aguja **larga** (el bono) da vueltas **todos los días**: tic-tic-tic. La aguja **corta** (el INDEC) se queda quieta y salta una sola vez **cada tres meses**: ¡CLONK! Las dos agujas **nunca coinciden**.",
       "frase": "Todos los días contra cada tres meses.",
       "dato": "El problema, con énfasis y despacio: el INDEC publica cada tres meses y el bono cotiza todos los días.",
       "dice": true,
-      "cifras": []
+      "cifras": [],
+      "significa": "el reloj con dos agujas es el problema de los datos: una serie es diaria (el bono) y la otra trimestral (el PBI). No coinciden en frecuencia y hay que resolverlo"
     },
     {
       "id": "r4-5",
       "lugar": "Licuadora STL",
-      "imagen": "Metés el PBI en una licuadora con tres picos de salida: **tendencia**, **estacionalidad** y **resto**. Abrís la ventana y tirás por ahí el pico de estacionalidad: el patrón que se repite cada año.",
+      "imagen": "En la mesada hay una licuadora grande. Metés por arriba el PBI (a Don Pibi). La licuadora tiene **tres picos de salida**: tendencia, estacionalidad y resto. Abrís la ventana que está al lado y **tirás por ahí** lo que sale del pico de estacionalidad (el patrón que se repite cada año).",
       "frase": "STL: separa y tira lo que se repite.",
       "dato": "Primer paso de la solución: quitar la estacionalidad con STL, que separa tendencia, estacionalidad y resto. El PBI repite un patrón cada año (el segundo trimestre siempre es alto). Los factores coinciden con los del PIB desestacionalizado del INDEC. Qué es STL y cómo funciona: sub-sala 5A.",
       "dice": true,
-      "cifras": []
+      "cifras": [],
+      "significa": "la licuadora es el primer paso de la solución: STL separa el PBI en tendencia, estacionalidad y resto, y tirás por la ventana la estacionalidad (el patrón que se repite cada año). El detalle está en la sub-sala 5A"
     },
     {
       "id": "r4-6",
       "lugar": "Cinta métrica flexible sobre el mostrador",
-      "imagen": "Una cinta de modista pasa **por encima de cada clavo trimestral** clavado en el mostrador y dibuja una curva suave que sigue a todos: el **spline cúbico**. Entre clavo y clavo se marcan los meses.",
+      "imagen": "Sobre el mostrador hay **clavos** clavados en fila, uno por cada trimestre. Una **cinta de modista** (flexible) pasa **por encima de cada clavo**, tocándolos a todos, y dibuja una **curva suave**. Entre un clavo y el siguiente marcás los **meses** sobre la cinta con un fibrón.",
       "frase": "Spline: la cinta que toca todos los clavos.",
       "dato": "Segundo paso: pasar a meses con un spline cúbico, una curva suave que respeta el dato de cada trimestre.",
       "dice": true,
-      "cifras": []
+      "cifras": [],
+      "significa": "la cinta flexible es el segundo paso: el spline cúbico, una curva suave que pasa por cada dato trimestral (los clavos) y permite leer valores mes a mes"
     },
     {
       "id": "r4-7",
       "lugar": "Bandeja del plato final",
-      "imagen": "Una bandeja con **56 porciones** ordenadas, rotuladas de **octubre de 2021** a **mayo de 2026**. Un cartel clavado al costado: **pide 50**. Vos sonreís: servís 56.",
+      "imagen": "En el centro del mostrador hay una bandeja con **56 porciones** en fila, rotuladas desde **octubre de 2021** (la primera) hasta **mayo de 2026** (la última). Clavado al costado hay un cartel que dice **pide 50**. Vos sonreís: servís 56.",
       "frase": "Cincuenta pide, cincuenta y seis sirve.",
       "dato": "Resultado: 56 meses, de octubre de 2021 a mayo de 2026. La consigna pide al menos 50 observaciones, por eso la muestra principal es mensual.",
       "dice": true,
       "cifras": [
         "56",
         "50"
-      ]
+      ],
+      "significa": "la bandeja con 56 porciones es la muestra final: 56 meses, de octubre de 2021 a mayo de 2026. El cartel «pide 50» es el mínimo que exige la consigna; por eso la muestra principal es mensual"
     },
     {
       "id": "r4-8",
       "lugar": "Cartel de cupones en la puerta de la heladera 1",
-      "imagen": "AL tose cinco veces y escupe un cupón cada vez; el precio cae un tercio de golpe. Un cartel: **5 días, valor cero**.",
+      "imagen": "Volvés a la heladera 1: AL tose **cinco veces** y cada vez escupe un cupón de papel. Con cada tos, el precio dibujado en su remera cae de golpe, como un tercio. En la puerta hay un cartel: **5 días, valor cero**.",
       "frase": "Cinco veces paga: cero ese día.",
       "dato": "Para saberlo si te preguntan: en los 5 días en que el bono pagó cupón y amortización su precio cae de 7 a 13 % solo por el pago. A esos días se les asigna variación 0, para no confundir un pago con una pérdida.",
       "cifras": [
         "5 días",
         "7 a 13 %"
-      ]
+      ],
+      "significa": "los cupones son los 5 días en que el bono pagó (cupón y amortización) y su precio cayó solo por el pago. A esos días se les asigna variación 0 para no confundir un pago con una pérdida"
     },
     {
       "id": "r4-9",
       "lugar": "Estante de libros del rincón",
-      "imagen": "Un estante con una carpeta enorme rotulada **1.243 ruedas**. Dos auditores comparan el libro con una copia, línea por línea, y tachan con tilde verde.",
+      "imagen": "En el rincón hay un estante con una carpeta enorme rotulada **1.243 ruedas**. Dos auditores con chaleco, parados a cada lado, comparan la carpeta con una copia, **línea por línea**, y marcan cada línea con una tilde verde.",
       "frase": "Mil doscientas cuarenta y tres ruedas, todas verificadas.",
       "dato": "Para saberlo si te preguntan: el archivo del AL30D tiene 1.243 ruedas. Un test compara los datos ordenados por el grupo contra descargas independientes de Data912 y datos.gob.ar, valor por valor.",
       "cifras": [
         "1.243"
-      ]
+      ],
+      "significa": "la carpeta es el archivo del AL30D, con 1.243 ruedas (días de cotización). Los auditores que comparan línea por línea son el test que verifica que los datos ordenados coinciden con descargas independientes"
     }
   ],
   "diapositivas": [
@@ -105,5 +114,7 @@
   ],
   "diapositivasId": [
     "fuentes"
-  ]
+  ],
+  "idea": "la cocina donde se preparan los licuados. Acá se «cocinan» los datos: de dónde vienen, qué problema tienen y cómo se convierten en 56 meses. Es tu primera parte",
+  "conGuion": true
 }

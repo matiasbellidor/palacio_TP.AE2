@@ -15,25 +15,27 @@
     {
       "id": "r5-1",
       "lugar": "Cinta de correr 1 (pantalla de arriba)",
-      "imagen": "En la pantalla de arriba corre **AL**. Cuando sube, deja barras **azules** como botellas de agua; cuando baja, barras **naranjas** como zanahorias. Vos señalás la pantalla con el dedo.",
+      "imagen": "Entrás a la sala de cardio. Cada cinta de correr tiene dos pantallas, una **arriba** y otra **abajo**. En la pantalla de **arriba** corre **AL**: cuando el bono sube, deja una barra **azul** hacia arriba (como una botella de agua); cuando baja, una barra **naranja** hacia abajo (como una zanahoria). Vos señalás esa pantalla con el dedo.",
       "frase": "Arriba AL: azul sube, naranja baja.",
       "dato": "Señalar el panel de arriba: variación mensual del bono, azul cuando sube y naranja cuando baja.",
       "dice": true,
-      "cifras": []
+      "cifras": [],
+      "significa": "la pantalla de arriba es la serie del bono: la variación mensual del AL30D. Azul son los meses en que sube y naranja los meses en que baja"
     },
     {
       "id": "r5-2",
       "lugar": "Cinta de correr 2 (pantalla de abajo)",
-      "imagen": "En la pantalla de abajo camina **Don Pibi**, tranquilo: una línea azul suave, ondulada, que apenas sube y baja. Vos bajás el dedo a esa pantalla.",
+      "imagen": "En la pantalla de **abajo** camina **Don Pibi**, tranquilo, y deja una **línea azul** suave, ondulada, que apenas sube y baja. Vos bajás el dedo y señalás esa pantalla.",
       "frase": "Abajo Don Pibi, tranquilo.",
       "dato": "Señalar el panel de abajo: la variación del PBI (mensualizado).",
       "dice": true,
-      "cifras": []
+      "cifras": [],
+      "significa": "la pantalla de abajo es la serie del PBI mensualizado: la variación mensual del PBI real, una línea suave"
     },
     {
       "id": "r5-3",
       "lugar": "Regla gigante pintada en el piso",
-      "imagen": "Entre las cintas, una **regla gigante** en el piso. A la izquierda AL salta de −19 a +39: **decenas**. A la derecha Don Pibi apenas pasa de **uno o dos**. Pausa de un segundo y frase firme.",
+      "imagen": "Entre las dos pantallas, al pie de las cintas, hay una **regla gigante** pintada en el piso con números. Del lado de **AL** la regla va de **−19 a +39**: salta **decenas** de números. Del lado de Don Pibi apenas pasa de **1 o 2**. Hacés una pausa de un segundo y lo decís firme.",
       "frase": "Decenas contra uno o dos.",
       "dato": "Pausa de 1 s y frase firme sobre la escala: el bono se mueve decenas de puntos en un mes y el PBI uno o dos como mucho. El bono va de −19,53 a 39,48; el PBI, de −1,85 a 2,30.",
       "dice": true,
@@ -42,25 +44,28 @@
         "39,48",
         "−1,85",
         "2,30"
-      ]
+      ],
+      "significa": "la regla del piso es la escala: el bono se mueve decenas de puntos por mes (de −19,53 a 39,48) y el PBI uno o dos (de −1,85 a 2,30). Es la primera pista de que el PBI difícilmente explique al bono"
     },
     {
       "id": "r5-4",
       "lugar": "Pared del fondo, el cartel sellado",
-      "imagen": "En la pared, un cartel sellado con **cera roja** y un **candado**, fechado antes del partido. Debajo, sentado, el **Dado** (el p-valor): todavía no lo tiraron.",
+      "imagen": "En la pared del fondo hay un cartel cerrado con **cera roja** y un **candado**, con una fecha **anterior** al partido. Debajo, sentado en el piso, el **Dado** (el p-valor): todavía no lo tiraron.",
       "frase": "Escrito antes, p-valor después.",
       "dato": "El método quedó escrito antes de calcular un solo p-valor (qué bono, qué período, qué pruebas), para que el resultado no se acomode a lo que se quería encontrar.",
       "dice": true,
-      "cifras": []
+      "cifras": [],
+      "significa": "el cartel sellado con candado es la especificación previa: el grupo dejó escritos el bono, el período y las pruebas antes de calcular nada. El Dado es el p-valor, todavía sin tirar"
     },
     {
       "id": "r5-5",
       "lugar": "Puerta de salida de la sala",
-      "imagen": "Manu te espera en la puerta con una **balanza** bajo el brazo, mostrando la aguja. Le pasás el micrófono con una sonrisa.",
+      "imagen": "Salís por la puerta de la sala. **Manu** te espera ahí parado, con una **balanza** bajo el brazo, mostrándote la aguja. Le **pasás el micrófono** con una sonrisa.",
       "frase": "Datos armados → la balanza de Manu.",
       "dato": "Pase a Manu con una frase corta: con los datos armados, Manu cuenta qué estimaron. Ahí termina tu parte.",
       "dice": true,
-      "cifras": []
+      "cifras": [],
+      "significa": "Manu con la balanza es el pase: él sigue con los estimadores (media y desvío) de las series que acabás de mostrar"
     }
   ],
   "diapositivas": [
@@ -83,71 +88,81 @@
         {
           "id": "r5a-1",
           "lugar": "Cartel luminoso sobre la puerta del cuartito",
-          "imagen": "Sobre la puerta, un cartel luminoso con las letras **STL** enormes y debajo el nombre completo: **Seasonal and Trend decomposition using Loess**. Por la ventana se ve la licuadora de la sala 4 con una serie temporal ondulada adentro.",
+          "imagen": "Estás en un pasillo al costado de la sala de cardio. Sobre la puerta de un cuartito hay un cartel luminoso con las letras **STL** enormes y debajo el nombre completo: **Seasonal and Trend decomposition using Loess**. Por la ventanita de la puerta se ve **la licuadora de la sala 4** con una serie temporal ondulada adentro.",
           "frase": "STL: la licuadora que separa una serie en tres.",
           "dato": "STL (Seasonal and Trend decomposition using Loess) es una técnica estadística usada para descomponer una serie temporal en tres componentes: estacionalidad, tendencia y residuo.",
-          "cifras": []
+          "cifras": [],
+          "significa": "el cartel es el nombre de la técnica y la licuadora con la serie adentro es lo que hace: STL toma una serie de tiempo y la separa en partes"
         },
         {
           "id": "r5a-2",
           "lugar": "Primer pico de la licuadora",
-          "imagen": "Del primer pico sale un **calendario que gira** y escupe, año tras año, la misma **ola** en el mismo mes. Vos la atajás con una red: siempre vuelve igual.",
+          "imagen": "Entrás al cuartito. La licuadora está sobre una mesa y tiene **tres picos** al frente. Del **primer pico** (el de la izquierda) sale un **calendario que gira** y escupe, año tras año, **la misma ola** en el mismo mes. Vos la atajás con una red: **siempre vuelve igual**.",
           "frase": "Estacionalidad: la misma ola que vuelve cada año.",
           "dato": "Estacionalidad: patrones que se repiten de manera cíclica. En el PBI argentino, por ejemplo, el segundo trimestre siempre es alto.",
-          "cifras": []
+          "cifras": [],
+          "significa": "la ola que vuelve cada año es la estacionalidad: un patrón que se repite de forma cíclica, como el segundo trimestre alto del PBI"
         },
         {
           "id": "r5a-3",
           "lugar": "Segundo pico de la licuadora",
-          "imagen": "Del segundo pico se desenrolla un **sendero largo de montaña**, parejo, que sube despacio o baja despacio. Don Pibi lo recorre con su termo sin mirar los saltos de alrededor.",
+          "imagen": "Del **segundo pico** (el del medio) se desenrolla un **sendero largo de montaña**, parejo, que sube despacio o baja despacio. **Don Pibi** lo recorre con su termo, sin mirar los saltos de alrededor.",
           "frase": "Tendencia: hacia dónde va el camino.",
           "dato": "Tendencia: evolución a largo plazo o dirección general de la serie.",
-          "cifras": []
+          "cifras": [],
+          "significa": "el sendero es la tendencia: hacia dónde va la serie en el largo plazo, sin los altibajos"
         },
         {
           "id": "r5a-4",
           "lugar": "Tercer pico de la licuadora",
-          "imagen": "Del tercer pico caen **migas** en un vaso. Son lo que queda cuando ya sacaste la ola y el sendero: el **resto**. Barrés las migas con una escobita.",
+          "imagen": "Del **tercer pico** (el de la derecha) caen **migas** en un vaso. Son lo que queda cuando ya sacaste la ola y el sendero: el **resto**. Las barrés con una escobita.",
           "frase": "Residuo: las migas que quedan.",
           "dato": "Residuo: lo que queda después de remover la tendencia y la estacionalidad.",
-          "cifras": []
+          "cifras": [],
+          "significa": "las migas son el residuo: lo que queda de la serie cuando le sacás la tendencia y la estacionalidad"
         },
         {
           "id": "r5a-5",
           "lugar": "Colador de goma dentro de la licuadora",
-          "imagen": "Adentro de la licuadora hay un **colador de goma sin molde**: se estira y se adapta a cada tramo de la serie, sin forma fija. En la goma está escrito **LOESS**.",
+          "imagen": "Por la tapa transparente de la licuadora ves, adentro, un **colador de goma sin molde**: se **estira** y se adapta a cada tramo de la serie, sin forma fija. En la goma está escrito **LOESS**.",
           "frase": "Loess: un colador de goma, sin molde.",
           "dato": "STL se basa en LOESS, una técnica de regresión no paramétrica: no impone una forma fija a la curva y la ajusta localmente, tramo por tramo.",
-          "cifras": []
+          "cifras": [],
+          "significa": "el colador de goma sin molde es LOESS, una regresión no paramétrica: no impone una fórmula fija y ajusta la curva tramo por tramo, usando los datos cercanos a cada punto"
         },
         {
           "id": "r5a-6",
           "lugar": "Perilla de la ola",
-          "imagen": "La ola del primer pico tiene una **perilla** que gira **muy despacito**. Con los años la ola cambia de forma, pero nunca de golpe: tenés que esperar para ver el cambio.",
+          "imagen": "Al lado del primer pico hay una **perilla** que controla la forma de la ola. La perilla gira **muy despacito**: con los años la ola cambia de forma, pero **nunca de golpe**.",
           "frase": "La ola puede cambiar, pero despacito.",
           "dato": "Gracias a LOESS, el componente estacional puede cambiar lentamente a lo largo del tiempo (no es un patrón fijo e idéntico todos los años).",
-          "cifras": []
+          "cifras": [],
+          "significa": "la perilla lenta quiere decir que con loess el patrón estacional no tiene que ser idéntico todos los años: puede ir cambiando de a poco"
         },
         {
           "id": "r5a-7",
           "lugar": "Escudo de la licuadora",
-          "imagen": "Un **meteorito** (un dato loco, un outlier) cae del techo y **rebota en un escudo** de la licuadora. Ni el sendero ni la ola se tuercen: quedan derechos.",
+          "imagen": "Del techo cae un **meteorito** (un dato loco, un outlier) y pega contra un **escudo** que protege la licuadora: **rebota**. Ni el sendero ni la ola se tuercen: quedan **derechos**.",
           "frase": "Un meteorito no tuerce el camino.",
           "dato": "LOESS es resistente a outliers: evita que un dato extremo distorsione la tendencia o la estacionalidad.",
-          "cifras": []
+          "cifras": [],
+          "significa": "el meteorito es un outlier (un dato extremo) y el escudo es que el loess es robusto: un dato extremo no distorsiona ni la tendencia ni la estacionalidad"
         },
         {
           "id": "r5a-8",
           "lugar": "Bandeja de salida del cuartito",
-          "imagen": "Entra el PBI trimestral de Don Pibi. Por el primer pico sale **la ola del segundo trimestre** y la tirás por la ventana. En la bandeja queda **el camino limpio**, con un sello del INDEC que dice «coincide».",
+          "imagen": "Entra el PBI trimestral de Don Pibi por arriba de la licuadora. Por el primer pico sale **la ola del segundo trimestre** y la tirás por la ventana. En la bandeja de salida queda **el camino limpio**, con un sello del INDEC que dice «coincide».",
           "frase": "Tiro la ola, me quedo con el camino.",
           "dato": "En el TP: STL se aplica al PBI trimestral antes de pasarlo a meses con el spline. El PBI tiene un patrón que se repite todos los años (el segundo trimestre siempre es alto) y los factores coinciden con los del PIB desestacionalizado que publica el INDEC. Sensibilidades: con el PBI sin desestacionalizar p = 0,5218 y con el PIB desestacionalizado por el INDEC p = 0,8208: la decisión no cambia.",
           "cifras": [
             "0,5218",
             "0,8208"
-          ]
+          ],
+          "significa": "así se usó en el TP: se le sacó la ola estacional al PBI trimestral antes de pasarlo a meses. El sello del INDEC es que los factores estacionales coinciden con los del PIB desestacionalizado que publica el INDEC"
         }
       ]
     }
-  ]
+  ],
+  "idea": "la sala de las cintas con pantallas. Las pantallas muestran las dos series (la del bono y la del PBI) y la promesa de haber fijado el método antes de calcular. Es tu segunda parte, y tiene una sub-sala (5A) para explicar STL",
+  "conGuion": true
 }

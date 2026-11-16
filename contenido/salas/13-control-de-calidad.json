@@ -12,38 +12,41 @@
     {
       "id": "r13-1",
       "lugar": "Inspector Breusch-Pagan",
-      "imagen": "Un inspector con chaleco revisa si todos los alumnos tienen **brazos parejos** (varianza constante). Pasa raspando: **0,0586**, a un pelo del 0,05.",
+      "imagen": "Entrás a la oficina del encargado. Hay **cuatro inspectores** con chaleco. El primero, **Breusch-Pagan**, revisa si todos los alumnos tienen los **brazos parejos** (la misma variabilidad). Pasan **raspando**: **0,0586**, a un pelo del 0,05.",
       "frase": "Brazos parejos, por poco: 0,0586.",
       "dato": "Breusch-Pagan testea si la varianza de los errores cambia con X: p = 0,0586. No rechaza homocedasticidad, aunque queda cerca del umbral.",
       "cifras": [
         "0,0586"
-      ]
+      ],
+      "significa": "Breusch-Pagan revisa la homocedasticidad: que los errores tengan la misma variabilidad en todo el rango. Con p = 0,0586 se cumple, pero por poco"
     },
     {
       "id": "r13-2",
       "lugar": "Inspector Durbin-Watson",
-      "imagen": "Un segundo inspector sostiene un cartel con **1,94**: «el ideal es cerca de **2**, dos pies, dos independientes». Al lado, el compañero Breusch-Godfrey marca **0,83**.",
+      "imagen": "El segundo inspector, **Durbin-Watson**, sostiene un cartel con **1,94**: «el ideal es cerca de **2**». Al lado, su compañero **Breusch-Godfrey** marca **0,83**. Revisan que **un mes no repita el eco del anterior**.",
       "frase": "Cerca de dos: sin eco entre meses.",
       "dato": "Durbin-Watson = 1,94 (el ideal es cerca de 2) y Breusch-Godfrey p = 0,8349: no hay autocorrelación de los errores.",
       "cifras": [
         "1,94",
         "0,8349"
-      ]
+      ],
+      "significa": "Durbin-Watson y Breusch-Godfrey revisan la autocorrelación: que el error de un mes no se parezca al del mes anterior. DW = 1,94 (lo ideal es cerca de 2) y p = 0,8349: no la hay"
     },
     {
       "id": "r13-3",
       "lugar": "Paraguas en el perchero",
-      "imagen": "Un **paraguas robusto** con las siglas **HAC** (Newey-West) cubre a los cuatro inspectores bajo el aguacero de supuestos. Cartel: **0,9455**, misma decisión.",
+      "imagen": "En el perchero hay un **paraguas robusto** con las letras **HAC** (Newey-West). Lo abrís sobre los cuatro inspectores, que estaban bajo un aguacero de supuestos. Un cartel en el paraguas: **0,9455**, misma decisión.",
       "frase": "Con paraguas HAC: 0,9455.",
       "dato": "Errores robustos Newey-West (HAC, 3 rezagos), que no suponen varianza constante ni ausencia de autocorrelación: el coeficiente del PBI da p = 0,9455. Misma conclusión.",
       "cifras": [
         "0,9455"
-      ]
+      ],
+      "significa": "el paraguas HAC (Newey-West) son errores estándar robustos: no suponen varianza constante ni ausencia de autocorrelación. Con ellos el coeficiente del PBI da p = 0,9455, la misma conclusión"
     },
     {
       "id": "r13-4",
       "lugar": "Consola de perillas, fila superior",
-      "imagen": "Cuatro perillas: **A** (bono sin ajuste de pagos, 0,8915), **B** (PBI sin desestacionalizar, 0,5218), **D** (spline not-a-knot, 0,9943), **H** (PIB desestacionalizado del INDEC, 0,8208). Todas giran y la luz sigue apagada.",
+      "imagen": "Al fondo de la oficina hay una consola con perillas rotuladas con letras. En la **fila de arriba** hay cuatro: **A** (bono sin ajuste de pagos, 0,8915), **B** (PBI sin desestacionalizar, 0,5218), **D** (spline not-a-knot, 0,9943) y **H** (PIB desestacionalizado del INDEC, 0,8208). Las girás todas y la luz **sigue apagada**.",
       "frase": "A, B, D, H: giro y no cambia.",
       "dato": "Sensibilidades de la regresión simple, una decisión por vez: (a) bono sin ajuste ex-pago p = 0,8915; (b) PBI sin desestacionalizar p = 0,5218; (d) spline con not-a-knot p = 0,9943; (h) PBI desestacionalizado por el INDEC p = 0,8208.",
       "cifras": [
@@ -51,19 +54,21 @@
         "0,5218",
         "0,9943",
         "0,8208"
-      ]
+      ],
+      "significa": "las perillas son sensibilidades: se cambia una decisión de método por vez para ver si el veredicto se mueve. A: bono sin ajuste por pagos; B: PBI sin desestacionalizar; D: spline con otra condición de borde; H: PBI desestacionalizado por el INDEC. Ninguna cambia la decisión"
     },
     {
       "id": "r13-5",
       "lugar": "Consola de perillas, fila inferior",
-      "imagen": "Tres perillas: **C** (ANOVA con umbrales ±0,5 %, 0,7404), **F** (múltiple con HAC, 0,9455) y **G** (CCL con cierres operados, 0,8499 y 0,1544). Un hueco en la fila: **falta la E**.",
+      "imagen": "En la **fila de abajo** de la consola hay tres perillas: **C** (ANOVA con umbrales ±0,5 %, 0,7404), **F** (múltiple con HAC, 0,9455) y **G** (CCL con cierres operados, 0,8499 y 0,1544). Al mirar las siete letras juntas, notás que **falta la E**.",
       "frase": "C, F, G… la E se perdió.",
       "dato": "(c) ANOVA con umbrales ±0,5 % (n por grupo 10/32/14) p = 0,7404; (f) múltiple con errores HAC, β de Var PBI p = 0,9455; (g) múltiple con CCL de cierres operados (AL30C con volumen > 0): β de Var PBI p = 0,8499 y β de Var CCL p = 0,1544. Ninguna cambia la decisión.",
       "cifras": [
         "0,7404",
         "0,8499",
         "0,1544"
-      ]
+      ],
+      "significa": "más perillas: C: ANOVA con otros umbrales (±0,5 %); F: regresión múltiple con errores HAC; G: CCL calculado solo con los días en que operó el AL30C. Ninguna cambia la decisión. El informe las nombra a, b, c, d, f, g y h: no hay e"
     }
   ],
   "diapositivas": [
@@ -72,5 +77,8 @@
   "diapositivasId": [
     "sensibilidad"
   ],
-  "diapositivaNota": "La diapositiva 8 lo resume en una línea al pie; los supuestos y las sensibilidades están en el informe (secciones 6.1 y 6.3)."
+  "diapositivaNota": "La diapositiva 8 lo resume en una línea al pie; los supuestos y las sensibilidades están en el informe (secciones 6.1 y 6.3).",
+  "idea": "la oficina donde el encargado revisa que todo funcione. Acá se controla que el resultado se sostenga: supuestos de la regresión y sensibilidades",
+  "conGuion": false,
+  "sinGuion": "Esta sala casi no tiene guion: la diapositiva 8 la resume en una línea al pie y nadie la lee en voz alta. Los supuestos y las sensibilidades completas están en el informe (secciones 6.1 y 6.3)."
 }

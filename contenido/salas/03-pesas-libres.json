@@ -6,46 +6,50 @@
   "diapositiva": "Figura 4",
   "quien": "Luka",
   "resumen": "56 puntos, una recta de mínimos cuadrados casi horizontal.",
-  "historia": "En el rack cuelgan **56 discos**, uno por mes, repartidos como una nube. Apoyás la regla de madera y el entrenador la acomoda con un metro hasta que la suma de distancias al cuadrado sea la mínima. Queda **casi horizontal**: AL no sigue a Don Pibi. Un silencio de un segundo frente al espejo y, en el pasillo, Luka te señala el cartel con tu nombre.",
+  "historia": "Frente al rack hay un tablero con **56 discos**, uno por mes, repartidos como una nube. El entrenador sostiene tu regla de madera en el aire, delante de la nube, y la mueve con un metro hasta que la suma de distancias al cuadrado sea la mínima. Queda **casi horizontal**, flotando en el medio de la nube: AL no sigue a Don Pibi. Un silencio de un segundo frente al tablero y, en el pasillo, Luka te señala el cartel con tu nombre.",
   "puerta": "Luka te da el pase: al fondo del pasillo huele a licuado y se prende un cartel con tu nombre. Entrás al bar de proteínas.",
   "estaciones": [
     {
       "id": "r3-1",
-      "lugar": "Rack de sentadillas",
-      "imagen": "En el rack cuelgan **56 discos** de colores como medallas, cada uno rotulado con un mes. Por la altura se ve cuánto subió el bono; por la posición, cuánto creció el PBI.",
+      "lugar": "Tablero del rack (la estructura de barras para sentadillas)",
+      "imagen": "Estás frente a un tablero grande de madera clavado en el rack. Sobre el tablero hay **56 discos** de colores, como medallas, cada uno rotulado con un mes. Cuanto más a la **derecha** está un disco, más creció el PBI ese mes; cuanto más **arriba**, más subió el bono. Los 56 forman una **nube**.",
       "frase": "Cada disco, un mes.",
       "dato": "Diagrama de dispersión: cada punto es un mes. Eje horizontal: variación del PBI. Eje vertical: variación del bono. n = 56 meses.",
       "cifras": [
         "56"
-      ]
+      ],
+      "significa": "los 56 discos son los 56 meses de datos. Cada disco es un punto del gráfico de dispersión: su posición muestra cuánto creció el PBI y cuánto cambió el bono ese mes"
     },
     {
       "id": "r3-2",
-      "lugar": "Espejo largo de la pared",
-      "imagen": "El entrenador apoya tu regla de madera sobre los discos y con un metro mide las distancias, las eleva al cuadrado y las suma, moviendo la regla hasta que la suma **sea la mínima posible**.",
+      "lugar": "Frente al tablero de discos",
+      "imagen": "Delante del tablero, el entrenador sostiene tu **regla de madera**. **No la apoya sobre los discos ni la clava en ninguno**: la sostiene en el aire, delante de la nube, y la va girando y moviendo. Con un metro mide la distancia de cada disco a la regla, multiplica cada distancia por sí misma (la eleva al cuadrado) y las suma. Repite hasta encontrar la posición en que esa **suma es la mínima**.",
       "frase": "La regla que menos se aleja de los discos.",
       "dato": "Mínimos cuadrados (MCO): la recta que hace mínima la suma de los errores al cuadrado. Es el método con el que se estima la pendiente β1.",
-      "cifras": []
+      "cifras": [],
+      "significa": "el entrenador acomodando la regla es el método de mínimos cuadrados: elige la recta que mejor se ajusta, la que hace mínima la suma de los errores al cuadrado"
     },
     {
       "id": "r3-3",
-      "lugar": "Barra apoyada en el rack",
-      "imagen": "La regla queda **casi horizontal**, plana como una mesa. AL (el culturista) pasa por debajo sin agacharse: no hay inclinación que seguir.",
+      "lugar": "La regla ya ubicada, frente al tablero",
+      "imagen": "Cuando el entrenador la suelta, la regla queda **casi horizontal**, plana como una mesa, flotando en el **medio de la nube** de discos y lo más cerca posible de todos a la vez. AL (el culturista) pasa **por debajo** de la regla sin agacharse: no hay ninguna inclinación que seguir.",
       "frase": "Regla plana: AL no sigue a Don Pibi.",
       "dato": "La recta ajustada está casi plana: β1 = 0,0154. Si el bono acompañara al PBI, la nube estaría inclinada, para arriba o para abajo, y no lo está.",
       "cifras": [
         "0,0154"
-      ]
+      ],
+      "significa": "la regla casi horizontal es la recta estimada, casi plana: β1 = 0,0154. Plana quiere decir que el bono no sube ni baja según el PBI: AL no sigue a Don Pibi"
     },
     {
       "id": "r3-4",
       "lugar": "Cartel luminoso del pasillo",
-      "imagen": "Al final del pasillo, un cartel luminoso con tu nombre, y un megáfono que Luka te acerca. El cartel pregunta: **¿de dónde salen estos 56 meses?**",
+      "imagen": "Al final del pasillo que sale de la zona de pesas hay un cartel luminoso con **tu nombre**. Luka, parado al lado, te acerca un **megáfono** y señala el cartel, que pregunta: **¿de dónde salen estos 56 meses?**",
       "frase": "Mati, contales vos.",
       "dato": "Luka cierra su bloque preguntando de dónde salen esos 56 meses y te pasa la palabra: «Mati, contales vos». Esa es tu señal de entrada.",
       "cifras": [
         "56"
-      ]
+      ],
+      "significa": "el cartel con tu nombre es el pase de Luka: cierra su parte preguntando de dónde salen los 56 meses y te da la palabra. Ahí empieza tu parte"
     }
   ],
   "diapositivas": [
@@ -53,5 +57,7 @@
   ],
   "diapositivasId": [
     "figura-4"
-  ]
+  ],
+  "idea": "la zona donde se acomodan barras y discos. Acá se ve el gráfico de dispersión: los 56 meses son discos y la recta de mínimos cuadrados es la barra",
+  "conGuion": true
 }

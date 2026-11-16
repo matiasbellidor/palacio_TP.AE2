@@ -12,55 +12,61 @@
     {
       "id": "r1-1",
       "lugar": "Puerta de vidrio",
-      "imagen": "Empujás la puerta y los cinco, alineados detrás del mostrador, gritan **¡Hola!** a la vez. Vos mirás al público, no a la pantalla, y levantás una mano.",
+      "imagen": "Estás en la vereda, frente a la puerta de vidrio del gimnasio. La empujás para entrar y, parados en fila detrás del mostrador, están los **cinco integrantes**. Todos te gritan **¡Hola!** a la vez y vos levantás una mano y mirás de frente al público.",
       "frase": "Los cinco, de frente, a la vez.",
       "dato": "Apertura de 10 segundos: el grupo entero de frente al público. Después de la pausa, Luka da un paso adelante.",
       "dice": true,
-      "cifras": []
+      "cifras": [],
+      "significa": "la puerta de vidrio es el comienzo de la presentación; el «¡Hola!» a la vez es el saludo de los cinco integrantes al público"
     },
     {
       "id": "r1-2",
       "lugar": "Cartel de neón sobre la puerta",
-      "imagen": "En letras de neón: **¿El bono argentino sigue al PBI?** Debajo, un culturista (AL) camina detrás de un abuelito diminuto (Don Pibi) y no lo mira ni una vez.",
+      "imagen": "Mirás hacia arriba: sobre la puerta hay un cartel de neón con la pregunta **¿El bono argentino sigue al PBI?** Debajo, en el hall, un abuelito diminuto (Don Pibi) camina en línea recta hacia la derecha y un culturista enorme (AL) va detrás: **no lo sigue**, va para cualquier lado, a los saltos.",
       "frase": "¿AL sigue a Don Pibi?",
       "dato": "Pregunta del trabajo: cuando la economía argentina crece, ¿el bono AL30D sube? Análisis Estadístico 2, Cátedra Tito Lasanta, FCE-UBA, segundo cuatrimestre de 2026. Grupo 1.",
       "cifras": [
         "2026"
-      ]
+      ],
+      "significa": "el neón es el título del trabajo hecho pregunta. AL es el bono AL30D y Don Pibi es el PBI; que AL no lo mire es la pregunta: ¿el bono se mueve cuando se mueve el PBI?"
     },
     {
       "id": "r1-3",
       "lugar": "Torniquete de entrada",
-      "imagen": "Un culturista gigante bloquea el torniquete con una remera que dice **30 D**. De la manga le cuelgan billetes verdes. Te muestra una tarjeta: **VENCE 2030**.",
+      "imagen": "Pasando la puerta está el torniquete (la barrera con tarjeta de acceso). Un culturista **gigante** lo bloquea: lleva una remera con **30 D** grande en el pecho y billetes verdes (dólares) asomando de las mangas. Te muestra una tarjeta de socio con un cartel: **VENCE 2030**.",
       "frase": "AL30D: Deuda en Dólares que vence al 30.",
       "dato": "El AL30D es un bono de la deuda del Estado argentino, en dólares, que vence en 2030. Su precio sube cuando el mercado confía más en que el Estado va a pagar y baja cuando confía menos.",
       "cifras": [
         "2030"
-      ]
+      ],
+      "significa": "el torniquete es la entrada y el culturista con remera «30 D» es el bono AL30D: la «D» es de dólares y el 30 es el año en que vence (2030). Que sea enorme y nervioso anticipa que es muy volátil"
     },
     {
       "id": "r1-4",
       "lugar": "Mostrador de recepción",
-      "imagen": "Detrás del mostrador, **Don Pibi**, un abuelito del tamaño de un termo, abre el diario del INDEC **cada tres meses** y le pasa un borrador a la inflación hasta dejarlo «real».",
+      "imagen": "Más adelante está el mostrador de recepción. Detrás, parado sobre un banquito, **Don Pibi**: un abuelito del tamaño de un termo. Cada **tres meses** abre un diario con el logo del INDEC y con un borrador gigante le borra la inflación hasta que el diario dice **«real»**.",
       "frase": "Don Pibi: real, trimestral y tranquilo.",
       "dato": "El PBI mide todo lo que produce la economía. Usamos el PBI real (sin el efecto de la inflación) que publica el INDEC cada tres meses.",
-      "cifras": []
+      "cifras": [],
+      "significa": "Don Pibi es el PBI real. Abrir el diario del INDEC cada tres meses es que se publica trimestralmente; el borrador sobre la inflación es lo de «real»: el PBI sin el efecto de la inflación"
     },
     {
       "id": "r1-5",
       "lugar": "Pizarra de tiza de la pared",
-      "imagen": "Con tiza, cuatro dibujos encadenados con flechas: una planta que **crece**, una caja que **recauda**, una mano que **paga**, un signo de pregunta que dice **¿sube?**",
+      "imagen": "En la pared de al lado hay una pizarra. Con tiza dibujaron, de izquierda a derecha y unidos por flechas: una planta que **crece**, una caja que **recauda** monedas, una mano que **paga** una cuenta y un signo de pregunta: **¿sube?**",
       "frase": "Crece, recauda, paga… ¿sube?",
       "dato": "La intuición que pusimos a prueba: si la economía crece, el Estado recauda más y debería pagar su deuda con más facilidad, así que el bono podría subir.",
-      "cifras": []
+      "cifras": [],
+      "significa": "la pizarra es la intuición económica que se puso a prueba: si el país crece, el Estado recauda más, puede pagar mejor su deuda y entonces el bono podría subir"
     },
     {
       "id": "r1-6",
       "lugar": "Cartelito pegado en el mostrador",
-      "imagen": "Un cartelito en el vidrio: **SE MIRA, NO SE EMPUJA**. Podés mirar si AL y Don Pibi caminan juntos; no podés probar que uno empuja al otro.",
+      "imagen": "En el vidrio del mostrador hay pegado un cartelito rojo: **SE MIRA, NO SE EMPUJA**. Desde ahí podés mirar si AL y Don Pibi caminan juntos, pero no podés empujar a uno para ver si arrastra al otro.",
       "frase": "Se mira, no se empuja.",
       "dato": "Asociación, no causalidad: buscamos si las dos variables se mueven juntas. Aunque lo hicieran, eso solo no probaría que una mueve a la otra, porque los datos son observacionales.",
-      "cifras": []
+      "cifras": [],
+      "significa": "el cartel es la advertencia del trabajo: solo se mide si dos variables se mueven juntas (asociación) y no se prueba que una cause la otra (causalidad)"
     }
   ],
   "diapositivas": [
@@ -68,5 +74,7 @@
   ],
   "diapositivasId": [
     "portada"
-  ]
+  ],
+  "idea": "la entrada del gimnasio, donde te reciben y te cuentan de qué va todo. Acá se presenta la pregunta del trabajo y a los dos protagonistas: el bono (AL) y el PBI (Don Pibi)",
+  "conGuion": true
 }

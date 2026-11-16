@@ -7,7 +7,8 @@ Uso:
    informe del TP. Todo número con coma decimal del campo «dato» también (los datos son exactos; las imágenes pueden
    redondear y solo avisan).
 2. Las salas son consecutivas, los ids no se repiten y cada estación tiene sus campos.
-3. Lo que dice Mati está marcado (dice) y tiene su frase textual en privado/guion_mati.json.
+3. Lo que dice Mati está marcado (dice) y tiene su frase textual en privado/guion_mati.json; cada sala con
+   guion lo tiene en «guiones» (generado con tools/generar_guion.py).
 4. El guion textual NO está en texto plano en index.html (se buscan frases reales, no marcas del intérprete).
 """
 
@@ -59,6 +60,10 @@ def main() -> int:
     for i, s in enumerate(salas, start=1):
         if s["n"] != i:
             errores.append(f"Sala {i}: n = {s['n']}")
+        if not s.get("idea"):
+            errores.append(f"Sala {i}: falta la «idea» (qué es este cuarto)")
+        if "conGuion" not in s or (s["conGuion"] is False and not s.get("sinGuion")):
+            errores.append(f"Sala {i}: falta conGuion (y sinGuion si no tiene guion)")
         nums, dids = s.get("diapositivas"), s.get("diapositivasId")
         if nums is None or dids is None or len(nums) != len(dids):
             errores.append(f"Sala {i}: falta diapositivas / diapositivasId (o no tienen el mismo largo)")
@@ -79,7 +84,7 @@ def main() -> int:
                     errores.append(f"Sala {i}, sub-sala {x.get('id', '?')}: falta {campo}")
         for e in estaciones_de(s):
             total += 1
-            for campo in CAMPOS:
+            for campo in CAMPOS + ("significa",):
                 if campo not in e:
                     errores.append(f"{e.get('id', '?')}: falta {campo}")
             if e["id"] in ids:
@@ -99,12 +104,22 @@ def main() -> int:
     priv = AQUI / "privado" / "guion_mati.json"
     html = (AQUI / "index.html").read_text(encoding="utf-8") if (AQUI / "index.html").exists() else ""
     if priv.exists():
-        lineas = json.loads(priv.read_text(encoding="utf-8"))["lineas"]
+        contenido_priv = json.loads(priv.read_text(encoding="utf-8"))
+        lineas = contenido_priv["lineas"]
+        guiones = contenido_priv.get("guiones", {})
+        con_guion = {str(s["n"]) for s in salas if s.get("conGuion")}
+        if con_guion != set(guiones):
+            errores.append(f"Las salas con guion y el guion privado no coinciden: {sorted(con_guion ^ set(guiones))}")
+        for n, items in guiones.items():
+            for it in items:
+                if not it.get("lineas"):
+                    errores.append(f"Guion de la sala {n}: «{it.get('etiqueta')}» sin líneas")
         dicen = {e["id"] for s in salas for e in s["estaciones"] if e.get("dice") and e["id"][:2] in ("r4", "r5")}
         if dicen != set(lineas):
             errores.append(f"Guion privado y estaciones violetas no coinciden: {sorted(dicen ^ set(lineas))}")
         plano = normalizar(html)
-        for k, ls in lineas.items():
+        todo = list(lineas.items()) + [(f"sala {n}", it["lineas"]) for n, its in guiones.items() for it in its]
+        for k, ls in todo:
             for l in ls:
                 limpia = normalizar(re.sub(r"\[pausa [^\]]*\]", "", l))
                 if len(limpia) > 25 and (limpia in plano or " ".join(limpia.split()[:7]) in plano):

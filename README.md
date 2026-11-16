@@ -9,7 +9,8 @@ Material de estudio del Grupo 1 para exponer el trabajo práctico [«¿El bono a
 - **En violeta, lo que dice Mati** (salas 4 y 5, de 2:10 a 4:00, más el «¡Hola!» del grupo). En celeste, el resto del trabajo, por si hay que contestar preguntas o cubrir a alguien.
 - **Personajes que se repiten:** AL (el bono), Don Pibi (el PBI), el Dado (p-valor), la Cinta (intervalo de confianza) y la Cero (H0).
 - **Tres modos por sala:** Recorrido (todo a la vista), Ensayo (las imágenes tapadas hasta que las pedís) e Historia (la sala contada de corrido). Además, una película con las 15 salas encadenadas.
-- **Tu guion textual**, con las frases exactas de Mati, se abre con el código del grupo.
+- **Cada idea viene explicada:** cada sala dice qué es ese cuarto y cada estación traduce la imagen en un «(De qué se trata: …)», sin ambigüedades.
+- **Al lado de cada sala, el guion exacto** de lo que dice cada persona en la exposición (con los números ya reemplazados), para comparar con la historia del palacio. Lo de Mati va en violeta. Se abre con el código del grupo.
 
 ## Cómo estudiar
 
@@ -31,6 +32,7 @@ privado/                guion textual de Mati: NO está en el repo (.gitignore)
 ```
 
 ```bash
+python tools/generar_guion.py --tp ../trabajo_practico_AE2   # reparte el guion exacto del TP entre las salas (privado/)
 python build.py                 # arma index.html
 python build.py --codigo NNN    # además vuelve a cifrar privado/guion_mati.json con ese código de 3 dígitos
 python verificar.py --tp ../trabajo_practico_AE2

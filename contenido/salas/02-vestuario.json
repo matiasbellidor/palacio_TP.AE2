@@ -6,52 +6,57 @@
   "diapositiva": "Hipótesis",
   "quien": "Luka",
   "resumen": "El modelo, H0 y H1, el 0,05, las tres hipótesis y la caja fuerte del config.",
-  "historia": "En el vestuario abrís el primer locker y hay una regla de madera apoyada: arranca en beta cero y se inclina en beta uno. De su candado cuelga una medalla con forma de **0**: **Hay Cero** relación. En el banco, una torta de veinte porciones con una sola mordida. En la pared, tres perchas con tres remeras: Principal, Adelante y Profes. Al fondo, la caja fuerte del config, cerrada antes de que nadie mire nada.",
+  "historia": "En el vestuario abrís el primer locker y adentro hay una regla de madera apoyada en diagonal: arranca en beta cero y se inclina en beta uno. De su candado cuelga una medalla con forma de **0**: **Hay Cero** relación. Después te sentás en el banco a atarte los championes y a tu lado hay una caja de **20 alfajores** a la que le falta **uno**. En la pared, tres perchas con tres remeras: Principal, Adelante y Profes. Al fondo, la caja fuerte del config, cerrada antes de que nadie mire nada.",
   "puerta": "Salís del vestuario con la regla de madera bajo el brazo y entrás a la zona de pesas libres, donde esa regla va a quedar apoyada sobre 56 discos.",
   "estaciones": [
     {
       "id": "r2-1",
-      "lugar": "Locker número 1",
-      "imagen": "Abrís el locker y adentro hay una **regla de madera** apoyada: el pie de la regla marca de dónde arranca (**β0**) y el ángulo con el piso es cuánto se inclina (**β1**).",
+      "lugar": "Locker número 1 (el casillero donde guardás tus cosas)",
+      "imagen": "Estás en el vestuario, parado frente al locker número 1. Abrís la puerta y adentro hay una **regla de madera** apoyada en diagonal contra la pared del fondo. El punto donde la regla **arranca** (su pie) tiene una etiqueta **β0** y el ángulo con el que se **inclina** respecto del piso tiene una etiqueta **β1**.",
       "frase": "Beta-cero arranca, beta-uno inclina.",
       "dato": "Modelo: Var AL30D = β0 + β1 · Var PBI + error. Todo se juega en β1, la pendiente: cuántos puntos se mueve el bono por cada punto que se mueve el PBI.",
-      "cifras": []
+      "cifras": [],
+      "significa": "el locker es donde se guardan las reglas antes de jugar. La regla de madera es el modelo de la recta: dónde arranca es β0 (el punto de partida) y cuánto se inclina es β1 (la pendiente: cuánto cambia el bono por cada punto que cambia el PBI)"
     },
     {
       "id": "r2-2",
-      "lugar": "Candado del locker",
-      "imagen": "Del candado cuelga una medalla con forma de **cero** gigante, dorada. En el grabado se lee: **H0, Hay Cero**. Una segunda medalla, más chica y torcida, dice H1: distinto de cero.",
+      "lugar": "Candado del locker (el que cierra el casillero)",
+      "imagen": "Del candado de ese mismo locker cuelga una **medalla dorada con forma de cero gigante**, con letras grabadas: **H0, Hay Cero** (relación). Al lado cuelga una segunda medalla, más chica y torcida, con un cartelito: **H1, distinto de cero**.",
       "frase": "H0: Hay Cero.",
       "dato": "H0: β1 = 0 (no hay asociación, el PBI no ayuda a predecir el bono). H1: β1 ≠ 0 (hay asociación, positiva o negativa). Contraste bilateral.",
-      "cifras": []
+      "cifras": [],
+      "significa": "la medalla con forma de cero es la hipótesis nula H0: «β1 = 0», o sea que no hay relación. La otra medalla es H1, la alternativa: que sí hay relación, para arriba o para abajo"
     },
     {
       "id": "r2-3",
-      "lugar": "Banco de madera",
-      "imagen": "Sobre el banco, una torta partida en **20 porciones** y le falta una sola: **una de veinte**. Un cartel: «riesgo que acepto: 0,05».",
+      "lugar": "Banco del vestuario (donde te sentás a cambiarte)",
+      "imagen": "Te sentás en el **banco del vestuario** a atarte los championes. A tu lado hay una **caja de 20 alfajores** y falta **uno**: lo comió el entrenador y dice «**uno de veinte**, ese es mi riesgo». Del respaldo del banco cuelga un cartel: **0,05**.",
       "frase": "Una de veinte es mi riesgo.",
       "dato": "Nivel de significación α = 0,05: el riesgo que aceptamos de rechazar H0 por error. Equivale a trabajar con 95 % de confianza.",
       "cifras": [
         "0,05"
-      ]
+      ],
+      "significa": "el banco es donde te sentás a cambiarte. La caja con 20 alfajores y uno faltante es el nivel de significación α = 0,05, que es 1 de cada 20: el riesgo que aceptamos de equivocarnos al rechazar H0 (equivale a 95 % de confianza)"
     },
     {
       "id": "r2-4",
       "lugar": "Tres perchas en la pared",
-      "imagen": "Tres remeras colgadas: una dice **Principal** (la regresión simple), otra tiene una flecha hacia adelante y un **+1** (**Adelante**), y la tercera lleva un sello con la fecha **22/10** (**Profes**).",
+      "imagen": "En la pared del vestuario hay tres perchas, una al lado de la otra. De la primera cuelga una remera que dice **Principal** (con una recta dibujada). De la segunda, una remera con una flecha hacia adelante y un **+1**: **Adelante**. De la tercera, una remera con un sello de fecha **22/10**: **Profes**.",
       "frase": "Principal, Adelante, Profes.",
       "dato": "Hipótesis principal: regresión simple del bono contra el PBI del mismo mes. Extensión: con el PBI del mes siguiente, ¿el bono se anticipa? Hipótesis enviada a los docentes el 22/10: ¿el PBI crece distinto en los meses en que el bono sube que en los que baja? (diferencia de medias).",
       "cifras": [
         "22/10"
-      ]
+      ],
+      "significa": "las tres remeras son las tres preguntas del trabajo: la principal (¿el PBI se asocia con el bono?), la extensión (¿el bono se adelanta al PBI del mes siguiente?) y la que se mandó a los docentes (¿el PBI crece distinto en los meses de suba y de baja del bono?)"
     },
     {
       "id": "r2-5",
       "lugar": "Caja fuerte del fondo",
-      "imagen": "Una caja fuerte con **config.yaml** grabado en la puerta. El Dado (el p-valor) espera sentado afuera, sin tirarse, porque la caja se cierra **antes**.",
+      "imagen": "Al fondo del vestuario hay una caja fuerte con **config.yaml** grabado en la puerta. Está **cerrada con llave antes** de que empiece el partido. Afuera, sentado en un banquito esperando, está el **Dado** gigante (el p-valor): todavía no lo tiraron.",
       "frase": "Primero cierro, después miro.",
       "dato": "Todas las decisiones de método (qué bono, qué ventana, cómo tratar el PBI, qué pruebas son principales y cuáles exploratorias) se fijaron en config.yaml antes de calcular cualquier p-valor, para que el resultado no se acomode a lo que se quería encontrar.",
-      "cifras": []
+      "cifras": [],
+      "significa": "la caja fuerte es el archivo config.yaml, donde el grupo dejó escritas todas las decisiones de método antes de ver resultados. El Dado afuera es el p-valor, que todavía no se calculó: así el resultado no puede acomodarse a lo que se quería encontrar"
     }
   ],
   "diapositivas": [
@@ -59,5 +64,7 @@
   ],
   "diapositivasId": [
     "hipotesis"
-  ]
+  ],
+  "idea": "el lugar donde te cambiás y dejás guardadas tus cosas antes de entrenar. Acá se dejan guardadas las reglas del juego antes de mirar un solo dato: el modelo, la hipótesis nula (H0), el 0,05 y las tres hipótesis",
+  "conGuion": true
 }

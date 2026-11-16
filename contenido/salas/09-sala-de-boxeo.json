@@ -12,15 +12,16 @@
     {
       "id": "r9-1",
       "lugar": "Campana colgada del techo",
-      "imagen": "Una **campana de boxeo** con forma de campana de Gauss. Cada vez que los datos la golpean, suena o no suena: ¿son Normales? El test t y los IC suponen que sí.",
+      "imagen": "Entrás al gimnasio de boxeo. Del techo, sobre el ring, cuelga una **campana grande con forma de campana de Gauss**. Cada vez que un dato la golpea, **suena** (si se parece a una Normal) o **no suena**. Los tests t y los intervalos suponen que suena.",
       "frase": "¿Suena como Normal?",
       "dato": "Por qué: el test t y los intervalos suponen que los datos (o los errores) siguen una distribución Normal. La bondad de ajuste lo verifica; la consigna la pide.",
-      "cifras": []
+      "cifras": [],
+      "significa": "la campana de boxeo es la curva Normal (la «campana de Gauss»). Los tests del trabajo suponen que los datos se parecen a ella y esta sala lo revisa"
     },
     {
       "id": "r9-2",
       "lugar": "Ring de ocho rounds",
-      "imagen": "El ring tiene **8 rounds** (8 clases). En cada round esperabas **7 golpes** (56 dividido 8). AL saca un chi de **6,86**: bien. Don Pibi saca **19,43**: knockout. Línea roja en **11,07**.",
+      "imagen": "En el ring hay un cartel de **8 rounds**. En cada round se esperan **7 golpes** (56 dividido 8). **AL** pelea y saca **6,86**: bien. **Don Pibi** saca **19,43**: knockout. Hay una **línea roja** pintada en el piso del ring en **11,07**: pasarla es perder.",
       "frase": "Ocho rounds, siete golpes cada uno.",
       "dato": "Test χ²: k = 8 clases equiprobables, esperadas 7,0 por clase, 5 gl (se pierden 2 por estimar media y desvío), valor crítico 11,0705. Bono: χ² = 6,8571, p = 0,2315 (pasa). PBI: χ² = 19,4286, p = 0,0016 (no pasa).",
       "cifras": [
@@ -29,12 +30,13 @@
         "19,4286",
         "0,0016",
         "11,0705"
-      ]
+      ],
+      "significa": "los 8 rounds son las 8 clases del test χ²: se compara cuántos datos cayeron en cada clase con cuántos se esperarían si fueran Normales (7 por clase). Un valor chico (6,86) es buen ajuste; uno grande (19,43) es mal ajuste"
     },
     {
       "id": "r9-3",
       "lugar": "Silla del juez",
-      "imagen": "El juez **Wilk** levanta tarjetas con una **W**: AL recibe **0,9390** y Don Pibi **0,9542**. Un 1 sería perfecto; nadie lo saca. Debajo, los p-valores: **0,0070** y **0,0327**, los dos bajo 0,05.",
+      "imagen": "Al borde del ring, sentado en una silla alta, está el **juez Wilk**. Levanta tarjetas con una **W**: a **AL** le da **0,9390** y a **Don Pibi** **0,9542**. Un **1** sería perfecto; nadie lo saca. Debajo de cada tarjeta escribe el p-valor: **0,0070** y **0,0327**, los dos por debajo de 0,05.",
       "frase": "Wilk castiga a los dos: bajo 0,05.",
       "dato": "Shapiro-Wilk: bono W = 0,9390 (p = 0,0070); PBI W = 0,9542 (p = 0,0327); residuos de la regresión principal W = 0,9390 (p = 0,0070). W vale 1 si el ajuste es perfecto. Con muestras chicas detecta desvíos que el χ² pasa por alto.",
       "cifras": [
@@ -42,18 +44,20 @@
         "0,0070",
         "0,9542",
         "0,0327"
-      ]
+      ],
+      "significa": "el juez Wilk es el test de Shapiro-Wilk: da un estadístico W (1 sería una Normal perfecta). Con W de 0,9390 y 0,9542 y p-valores menores a 0,05, ninguna serie es exactamente Normal"
     },
     {
       "id": "r9-4",
       "lugar": "Guantes colgados en la pared",
-      "imagen": "Los guantes de AL están marcados con **−19,5** y **+39,5**: golpes extremos. Pero el ring aguanta: un cartel dice **56 alcanzan**, y un paraguas robusto (HAC) cubre a todos.",
+      "imagen": "En la pared están colgados los guantes de AL, marcados con **−19,5** y **+39,5**: golpes **extremos**. Pero el ring aguanta: un cartel dice **56 alcanzan**, y un **paraguas robusto** con las letras **HAC** cubre todo el ring.",
       "frase": "Cincuenta y seis aguantan el golpe.",
       "dato": "Las series no son exactamente Normales: el bono tiene meses extremos, de −19,5 % a +39,5 %. Con n = 56, los tests sobre medias y coeficientes siguen siendo aproximadamente válidos por el teorema central del límite, y los errores robustos llegan a la misma conclusión.",
       "cifras": [
         "−19,5 %",
         "+39,5 %"
-      ]
+      ],
+      "significa": "los guantes con golpes extremos son los meses extremos del bono (−19,5 % y +39,5 %). Con 56 datos los tests siguen siendo aproximadamente válidos (teorema central del límite) y los errores robustos (HAC) llevan a la misma conclusión"
     }
   ],
   "diapositivas": [
@@ -62,5 +66,7 @@
   "diapositivasId": [
     "mco"
   ],
-  "diapositivaNota": "Se menciona de pasada en la diapositiva 7 (normalidad); el detalle está en el informe, sección 5.7."
+  "diapositivaNota": "Se menciona de pasada en la diapositiva 7 (normalidad); el detalle está en el informe, sección 5.7.",
+  "idea": "el ring con una campana de boxeo. Acá se revisa si los datos se parecen a una distribución Normal, con el test χ² y el de Shapiro-Wilk",
+  "conGuion": true
 }

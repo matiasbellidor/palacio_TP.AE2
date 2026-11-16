@@ -12,25 +12,27 @@
     {
       "id": "r10-1",
       "lugar": "Las dos cuerdas del TRX",
-      "imagen": "Dos cuerdas: una con una etiqueta **PBI** y otra con **CCL**. Si **sostenés una quieta**, mirás qué hace la otra. Las dos tiran de AL; las separás con una **X** en forma de matriz.",
+      "imagen": "Entrás a la sala funcional. Del techo cuelgan **dos cuerdas de TRX** (cintas para entrenar). La de la **izquierda** tiene una etiqueta **PBI** y la de la **derecha** una **CCL**. Las dos tiran de **AL**, que cuelga en el medio. Agarrás una de las dos y la **mantenés quieta**: mirás qué hace AL con la otra.",
       "frase": "Dos cuerdas: sostengo una, miro la otra.",
       "dato": "Modelo: Var AL30D = β0 + β1 · Var PBI + β2 · Var CCL implícito + error. Se mide la relación con el PBI manteniendo constante el CCL. Estimación matricial: β̂ = (XᵀX)⁻¹Xᵀy, con n − k − 1 = 53 gl.",
       "cifras": [
         "53"
-      ]
+      ],
+      "significa": "las dos cuerdas son las dos variables explicativas: el PBI y el dólar CCL. Sostener una quieta es «mantener constante»: ver el efecto del PBI sin que el dólar lo tape"
     },
     {
       "id": "r10-2",
       "lugar": "Espejo de los dos billetes",
-      "imagen": "Un mismo billete verde reflejado en dos espejos: en uno aparece con etiqueta **pesos** (AL30) y en otro con **cable** (AL30C). Comparás los reflejos: la diferencia es el **CCL**.",
+      "imagen": "En la pared hay **dos espejos**, uno al lado del otro. Frente a ellos sostenés **un mismo billete verde**: en el espejo de la izquierda el reflejo dice **pesos** (AL30) y en el de la derecha dice **cable** (AL30C). La **diferencia entre los dos reflejos** es el **CCL**.",
       "frase": "Mismo bono, dos monedas: sale el CCL.",
       "dato": "El AL30D cotiza en dólares, así que se mueve también con el tipo de cambio. El CCL implícito sale de comparar el mismo bono en pesos (AL30) y en dólares cable (AL30C). Lo propuso Mati al principio y quedó fijado como control antes de ver resultados.",
-      "cifras": []
+      "cifras": [],
+      "significa": "los dos espejos son los dos precios del mismo bono: en pesos (AL30) y en dólares cable (AL30C). Comparándolos sale el dólar CCL implícito (contado con liquidación), que es el control del modelo"
     },
     {
       "id": "r10-3",
       "lugar": "Tablero de coeficientes",
-      "imagen": "En el tablero de la pared: la cuerda del **PBI** marca **−0,22** con luz roja apagada (**p 0,91**); la del **CCL** marca **−0,22** también con luz apagada (**p 0,18**). La constante: **3,53**, p 0,06.",
+      "imagen": "Al lado de las cuerdas hay un tablero con una fila por cada cuerda. La fila **PBI** marca **−0,22** y tiene la luz roja **apagada** (**p 0,91**). La fila **CCL** marca **−0,22** también con la luz **apagada** (**p 0,18**). Una tercera fila, la **constante**, marca **3,53** (p 0,06).",
       "frase": "El PBI sigue mudo: 0,91.",
       "dato": "Constante 3,5270 (p = 0,0623); Var PBI −0,2222 (EE 2,0258; t = −0,1097; p = 0,9131; IC [−4,2854 ; 3,8411]); Var CCL implícito −0,2240 (EE 0,1634; t = −1,3703; p = 0,1764; IC [−0,5518 ; 0,1039]). Ni con el control aparece relación con el PBI.",
       "cifras": [
@@ -39,12 +41,13 @@
         "0,9131",
         "−0,2240",
         "0,1764"
-      ]
+      ],
+      "significa": "el tablero es la tabla de coeficientes: cada variable con su estimación y su p-valor. El PBI sigue sin ser significativo (p = 0,9131) aun con el CCL adentro, y el CCL tampoco (p = 0,1764)"
     },
     {
       "id": "r10-4",
       "lugar": "Balanza del modelo completo",
-      "imagen": "Una balanza con dos platos: **295,58** explicado y **8.342,79** sin explicar. La aguja marca **3,4 %**. Una etiqueta: **R² ajustado −0,0022**: sumar una cuerda no ayudó, hasta restó.",
+      "imagen": "En el piso hay una balanza de dos platos: **295,58** (lo explicado) de un lado y **8.342,79** (lo no explicado) del otro. La aguja marca **3,4 %**. Una etiqueta dice **R² ajustado −0,0022**: sumar la segunda cuerda no ayudó; hasta restó.",
       "frase": "3,4 % explicado, ajustado en negativo.",
       "dato": "Test F global por sumas de cuadrados: regresión 295,58 (2 gl), error 8.342,79 (53 gl); F = 0,9389, p = 0,3975. R² = 0,0342; R² ajustado = −0,0022 (negativo: sumar variables no mejora la explicación). Valor crítico de F con (2; 53) gl = 3,17.",
       "cifras": [
@@ -54,17 +57,19 @@
         "0,3975",
         "0,0342",
         "−0,0022"
-      ]
+      ],
+      "significa": "la balanza es el test del modelo completo (F global): explica solo el 3,4 % del bono (R² = 0,0342), y el R² ajustado negativo (−0,0022) indica que sumar la variable no mejoró nada"
     },
     {
       "id": "r10-5",
       "lugar": "Cuerdas paralelas",
-      "imagen": "Las dos cuerdas cuelgan **paralelas, sin enredarse**: un cartel dice **VIF 1,01** y **1,01**. Si estuvieran trenzadas valdría más de 5 y habría que desenredarlas.",
+      "imagen": "Mirás las dos cuerdas de frente: cuelgan **paralelas, sin enredarse**. Un cartel entre ellas dice **VIF 1,01** y **1,01**. Si estuvieran trenzadas, el cartel diría más de 5 y habría que desenredarlas.",
       "frase": "Cuerdas sin enredo: VIF uno.",
       "dato": "VIF = 1 / (1 − R²j). Valores mayores a 5 o 10 preocupan; acá dan 1,01 y 1,01: las dos variables casi no se mueven juntas y el modelo puede separar lo que aporta cada una.",
       "cifras": [
         "1,01"
-      ]
+      ],
+      "significa": "las cuerdas paralelas sin enredarse son el VIF, que mide cuánto se solapan las dos variables entre sí. Un VIF de 1,01 es casi el mínimo: el modelo puede separar el aporte de cada una"
     }
   ],
   "diapositivas": [
@@ -73,5 +78,7 @@
   "diapositivasId": [
     "sensibilidad"
   ],
-  "diapositivaNota": "Regresión múltiple: primera fila de la tabla de la diapositiva 8."
+  "diapositivaNota": "Regresión múltiple: primera fila de la tabla de la diapositiva 8.",
+  "idea": "la sala de las cuerdas de entrenamiento. Acá se suma una segunda variable, el dólar CCL, a la regresión: es la regresión múltiple",
+  "conGuion": true
 }

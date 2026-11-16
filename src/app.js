@@ -17,7 +17,11 @@
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const md = (s) => esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
-  const guionHTML = (s) => md(s).replace(/\[pausa ([\d,]+) s\]/g, '<span class="pausa">pausa $1 s</span>');
+  const guionHTML = (s) => md(s)
+    .replace(/\[pausa ([\d,]+)\s?s\]/g, '<span class="pausa">pausa $1 s</span>')
+    .replace(/\[señalá «([^»]+)»\]/g, '<span class="cue cue--senal">señalá: $1</span>')
+    .replace(/\[público\]/g, '<span class="cue cue--publico">al público</span>')
+    .replace(/\[lento\]/g, '<span class="cue cue--lento">más lento</span>');
   const reducido = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const main = $("#contenido");
 
@@ -101,22 +105,37 @@
   }
 
   /* ── Sala ── */
-  function cerrojoHTML(s) {
-    if (!s.estaciones.some((e) => e.dice && /^r[45]-/.test(e.id)) || !CIF) return "";
-    const lock = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 11V8a5 5 0 0 1 10 0v3"/><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M12 15v2"/></svg>';
-    if (guion) {
-      return `<div class="cerrojo cerrojo--abierto" data-cerrojo>` +
-        `<div class="cerrojo__cab">${lock}<h2>Tu guion textual está abierto</h2></div>` +
-        `<p>Debajo de cada estación violeta aparecen tus frases exactas. Leelas en voz alta caminando la sala.</p>` +
-        `<div class="cerrojo__acciones"><button class="boton" type="button" data-bloquear>Volver a bloquear</button></div></div>`;
+  const ICONO_CANDADO = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 11V8a5 5 0 0 1 10 0v3"/><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M12 15v2"/></svg>';
+
+  function dichoHTML(it) {
+    const mati = it.orador === "mati";
+    return `<section class="dicho${mati ? " dicho--mati" : ""}"><div class="dicho__cab"><span class="chip ${mati ? "chip--violeta" : "chip--azul"}">${esc(it.etiqueta)}${mati ? " · vos" : ""}</span>` +
+      `<span class="dicho__tema">${esc(it.tema)}</span><span class="dicho__tiempo">${esc(it.tiempo)}</span></div>` +
+      (it.como ? `<p class="dicho__como"><b>Cómo:</b> ${esc(it.como)}</p>` : "") +
+      `<div class="dicho__texto">${it.lineas.map((l) => `<p>${guionHTML(l)}</p>`).join("")}</div>` +
+      (it.pase ? `<p class="dicho__pase"><b>Pase a ${esc(it.pase.a)}:</b> «${esc(it.pase.frase)}»</p>` : "") + `</section>`;
+  }
+
+  /* Panel al lado de cada sala: el guion exacto de cada persona, para comparar con la historia del palacio.
+     El texto viaja cifrado: se abre con el código del grupo y no se recuerda. */
+  function ladoHTML(s) {
+    if (!CIF) return "";
+    if (s.conGuion === false) {
+      return `<aside class="lado lado--vacio" aria-labelledby="lado-t"><h2 id="lado-t" class="lado__t">Guion de la exposición</h2><p>${esc(s.sinGuion || "Esta sala no tiene guion propio.")}</p></aside>`;
     }
-    const casillas = [1, 2, 3].map((i) => `<input class="codigo__casilla" id="cod-${i}" data-casilla type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" autocomplete="off" autocorrect="off" spellcheck="false" aria-label="Número ${i} de 3" aria-describedby="cod-ayuda cod-error">`).join("");
-    return `<div class="cerrojo" data-cerrojo><div class="cerrojo__cab">${lock}<h2>Tu guion textual, con código</h2></div>` +
-      `<p>Tus frases exactas para memorizarlas. No están en el texto de la página: se abren con el código del grupo.</p>` +
-      `<form class="codigo" data-codigo novalidate><div class="codigo__cabecera"><label class="codigo__etiqueta" id="cod-et" for="cod-1">Código del grupo</label><span class="codigo__formato" id="cod-fmt">3 números</span></div>` +
-      `<div class="codigo__casillas" role="group" aria-labelledby="cod-et cod-fmt">${casillas}</div>` +
-      `<p class="codigo__ayuda" id="cod-ayuda" data-ayuda>Se abre solo al completar las tres casillas. También podés pegarlo.</p>` +
-      `<p class="codigo__error" id="cod-error" data-error role="alert"></p><button class="codigo__abrir" type="submit" data-abrir>Abrir mi guion</button></form></div>`;
+    if (!guion) {
+      const casillas = [1, 2, 3].map((i) => `<input class="codigo__casilla" id="cod-${i}" data-casilla type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" autocomplete="off" autocorrect="off" spellcheck="false" aria-label="Número ${i} de 3" aria-describedby="cod-ayuda cod-error">`).join("");
+      return `<details class="lado" data-lado open><summary><span class="lado__t">${ICONO_CANDADO}Guion exacto de esta sala</span></summary><div class="lado__cuerpo">` +
+        `<p>Lo que dice cada persona en la exposición, para comparar con la historia del palacio. No está en el texto de la página: se abre con el código del grupo.</p>` +
+        `<form class="codigo" data-codigo novalidate><div class="codigo__cabecera"><label class="codigo__etiqueta" id="cod-et" for="cod-1">Código del grupo</label><span class="codigo__formato" id="cod-fmt">3 números</span></div>` +
+        `<div class="codigo__casillas" role="group" aria-labelledby="cod-et cod-fmt">${casillas}</div>` +
+        `<p class="codigo__ayuda" id="cod-ayuda" data-ayuda>Se abre solo al completar las tres casillas. También podés pegarlo.</p>` +
+        `<p class="codigo__error" id="cod-error" data-error role="alert"></p><button class="codigo__abrir" type="submit" data-abrir>Abrir el guion</button></form></div></details>`;
+    }
+    const items = (guion.guiones || {})[s.n] || [];
+    return `<details class="lado lado--abierto" data-lado open><summary><span class="lado__t">${ICONO_CANDADO}Lo que dicen en la exposición</span></summary><div class="lado__cuerpo">` +
+      (items.length ? items.map(dichoHTML).join("") : "<p>Esta sala no tiene guion propio.</p>") +
+      `<button class="boton" type="button" data-bloquear>Volver a bloquear</button></div></details>`;
   }
 
   function montarCerrojo() {
@@ -124,7 +143,7 @@
     if (!form || !window.CodigoCasillas) return;
     CodigoCasillas.montar(form, {
       verificar: (cod) => CodigoCasillas.descifrar(CIF, cod),
-      alAbrir: (g) => { guion = g; renderSala(leerRuta()); const c = $("[data-cerrojo] h2"); if (c) { c.setAttribute("tabindex", "-1"); c.focus(); } },
+      alAbrir: (g) => { guion = g; renderSala(leerRuta()); const l = $("[data-lado]"); if (l) { l.open = true; const c = $("summary", l); if (c) c.focus(); } },
       error: "Ese código no abre el guion. Revisalo con el grupo.",
     });
   }
@@ -134,7 +153,7 @@
     const sabe = !!memoria[e.id];
     const priv = dice && guion && guion.lineas && guion.lineas[e.id]
       ? `<blockquote class="guion"><small>Lo que decís, textual</small>${guion.lineas[e.id].map((l) => `<p>${guionHTML(l)}</p>`).join("")}</blockquote>` : "";
-    const cuerpo = `<p class="est__imagen">${md(e.imagen)}</p><p class="est__frase">${esc(e.frase)}</p>` +
+    const cuerpo = `<p class="est__imagen">${md(e.imagen)}</p>${e.significa ? `<p class="est__sig">(<b>De qué se trata:</b> ${md(e.significa)})</p>` : ""}<p class="est__frase">${esc(e.frase)}</p>` +
       `<div class="est__dato"><b>${dice ? "Qué cubrís vos" : "Qué hay que saber"}</b>${md(e.dato)}</div>${priv}`;
     const acciones = `<div class="est__acciones"><button class="est__sabe" type="button" data-sabe="${e.id}" aria-pressed="${sabe}">Lo sé</button></div>`;
     const cab = `<div class="est__cab"><span class="est__num" aria-hidden="true">${i + 1}</span><h3 class="est__lugar"><span class="sr-only">Estación ${i + 1}: </span>${esc(e.lugar)}</h3>${dice ? '<span class="chip chip--violeta">Lo decís vos</span>' : ""}</div>`;
@@ -175,11 +194,12 @@
       `<span class="sala-nav__pos">Sala ${s.n} de ${SALAS.length}</span><span class="sala-nav__espacio"></span>${ant}${sgt}</nav>` +
       `<p class="kicker"${s.tuParte ? ' style="color:var(--violeta)"' : ""}>Sala ${s.n} · ${esc(diapoLarga(s))} · ${esc(s.diapositiva)}</p>` +
       `<h1 tabindex="-1" data-foco>${esc(s.nombre)}</h1><p class="sala-cab__tema">${esc(s.tema)}</p>` +
+      (s.idea ? `<p class="sala-cab__idea${s.tuParte ? " sala-cab__idea--violeta" : ""}">(<b>Qué es este cuarto:</b> ${esc(s.idea)})</p>` : "") +
       `<div class="sala-cab__chips">${s.tuParte ? `<span class="chip chip--violeta">La decís vos · ${esc(s.tiempo)}</span>` : `<span class="chip chip--azul">Lo dice ${esc(s.quien)}</span>`}<span class="chip chip--diapo">${esc(diapoLarga(s))}</span><span class="chip">${todasEst(s).length} estaciones</span>${(s.subsalas || []).map((x) => `<button class="chip chip--btn" type="button" data-ir="sub-${esc(x.id)}">Sub-sala ${esc(x.etiqueta)}: ${esc(x.nombre)} ↓</button>`).join("")}</div>` +
       `<p class="sala-cab__como">${esc(s.como || s.resumen)}</p>${s.diapositivaNota ? `<p class="sala-cab__como">${esc(s.diapositivaNota)}</p>` : ""}</div>` +
-      cerrojoHTML(s) +
+      `<div class="sala-cols"><div class="sala-cols__main">` +
       `<div class="pestanas${s.tuParte ? " pestanas--violeta" : ""}" role="tablist" aria-label="Cómo estudiar esta sala">${tab("recorrido", "Recorrido")}${tab("ensayo", "Ensayo")}${tab("historia", "Historia")}</div>` +
-      `<div id="cuerpo" role="tabpanel" aria-labelledby="tab-${modo}" data-cuerpo>${cuerpoSala(s, modo)}</div>`;
+      `<div id="cuerpo" role="tabpanel" aria-labelledby="tab-${modo}" data-cuerpo>${cuerpoSala(s, modo)}</div></div>${ladoHTML(s)}</div>`;
   }
 
   function renderSala(r, conFoco) {
@@ -188,6 +208,7 @@
     main.innerHTML = `<div class="view">${salaHTML(s, r.modo)}</div>`;
     document.title = `Sala ${s.n}: ${s.nombre} · Palacio AE2`;
     montarCerrojo();
+    if (matchMedia("(max-width: 1099px)").matches) { const l = $("[data-lado]"); if (l) l.open = false; }
     if (conFoco) $("[data-foco]").focus({ preventScroll: true });
   }
 

@@ -6,13 +6,13 @@
   "diapositiva": "Informe, sección 5.1",
   "quien": "Manu",
   "resumen": "Cuatro escenarios de PBI, el intervalo de predicción, el mes siguiente y los desfases.",
-  "historia": "Cuatro cintas de correr, inclinadas distinto: recesión, estancamiento, crecimiento y crecimiento fuerte. AL corre siempre a **2,5** km/h en las cuatro. Alrededor, una franja amarilla de **26** a cada lado. Un mensajero de Don Pibi llega **un mes tarde** y AL no lo escucha. Al fondo, siete carteles de desfase: uno solo se prende, el de **−2**, y la luz parpadea porque probaron muchos.",
+  "historia": "Cuatro cintas de correr, inclinadas distinto: recesión, estancamiento, crecimiento y crecimiento fuerte. AL corre siempre a **2,5** km/h en las cuatro. Alrededor, una franja amarilla de **26** a cada lado. Un mensajero de Don Pibi trae el PBI **del mes que viene** y AL no se da vuelta. Al fondo, siete carteles de desfase: uno solo se prende, el de **−2**, y la luz parpadea porque probaron muchos.",
   "puerta": "Seguís por el pasillo y suena una campana: la sala de boxeo pregunta si los datos se parecen a una Normal.",
   "estaciones": [
     {
       "id": "r8-1",
       "lugar": "Las cuatro cintas de correr",
-      "imagen": "Cuatro cintas con inclinaciones distintas (**−1, 0, +1, +2**). AL las corre todas **a la misma velocidad**: +2,50, +2,51, +2,53, +2,54. La inclinación no le cambia nada.",
+      "imagen": "Entrás a una fila de **cuatro cintas de correr** con distinta inclinación: **−1** (bajada), **0** (plana), **+1** (subida) y **+2** (subida fuerte). **AL** las corre todas **a la misma velocidad**: +2,50, +2,51, +2,53 y +2,54. La inclinación no le cambia nada.",
       "frase": "Inclinás la cinta, AL va igual.",
       "dato": "Proyección con la recta estimada: Var PBI −1,00 % → +2,50 %; 0,00 % → +2,51 %; +1,00 % → +2,53 %; +2,00 % → +2,54 %. Escenarios dentro del rango observado (−1,85 % a 2,30 %) para no extrapolar.",
       "cifras": [
@@ -20,42 +20,49 @@
         "2,51",
         "2,53",
         "2,54"
-      ]
+      ],
+      "significa": "las cuatro cintas son los cuatro escenarios de PBI (recesión −1 %, estancamiento 0 %, crecimiento +1 % y crecimiento fuerte +2 %). Que AL corra siempre igual es que la proyección del bono casi no cambia: de +2,50 % a +2,54 %"
     },
     {
       "id": "r8-2",
       "lugar": "Franja amarilla alrededor de las cintas",
-      "imagen": "Una franja amarilla de **26** a cada lado de cada cinta. AL salta dentro de esa franja sin que importe cuánto se incline la cinta.",
+      "imagen": "Alrededor de cada cinta hay una **franja amarilla** que se extiende **26** hacia cada lado. AL salta de un lado a otro **dentro de esa franja**, sin importar cuánto se incline la cinta.",
       "frase": "Más o menos veintiséis, siempre.",
       "dato": "Intervalo de predicción al 95 % de un mes concreto: unos ±26 pp en todos los escenarios. Conocer el PBI no reduce la incertidumbre sobre el bono.",
       "cifras": [
         "26"
-      ]
+      ],
+      "significa": "la franja amarilla es el intervalo de predicción de un mes concreto: ±26 puntos. Es tan ancha que conocer el PBI no reduce la incertidumbre sobre el bono"
     },
     {
       "id": "r8-3",
       "lugar": "Puerta de la cinta 3 (el mes siguiente)",
-      "imagen": "Don Pibi manda un **mensajero** con el PBI del mes que viene. AL lo ve llegar pero **no se da vuelta**. En la gorra del mensajero: **+1**.",
+      "imagen": "En la puerta de la tercera cinta aparece **un mensajero** de Don Pibi con una gorra que dice **+1**: trae el PBI **del mes que viene**. AL lo ve llegar pero **no se da vuelta**.",
       "frase": "¿AL se adelanta? Treinta y seis por ciento: no.",
       "dato": "Extensión (d = +1, declarada antes de ver los datos): con el PBI del mes siguiente, β1 = 1,8997, IC 95 % [−2,2037 ; 6,0030], p = 0,3573, n = 55. No hay evidencia de que el bono se anticipe.",
       "cifras": [
         "1,8997",
         "0,3573"
-      ]
+      ],
+      "significa": "el mensajero con el +1 es el PBI del mes siguiente (desfase d = +1), para probar si el bono se anticipa. Resultado: β1 = 1,8997 y p = 0,3573, no hay evidencia"
     },
     {
       "id": "r8-4",
       "lugar": "Siete carteles de desfase en la pared",
-      "imagen": "Siete carteles numerados de **−3 a +3**. Dos con candado (**0 y +1**, declarados). Los otros cinco con cinta de «exploratorio». Se prende uno solo, el **−2**, y parpadea.",
+      "imagen": "En la pared del fondo hay **siete carteles** numerados de **−3 a +3**. Los de **0** y **+1** tienen candado: son los declarados. Los otros cinco tienen una cinta que dice «exploratorio». Se prende **uno solo**, el **−2**, y **parpadea**.",
       "frase": "Siete carteles, uno parpadea: casualidad.",
       "dato": "Exploración con desfases de −3 a +3 (2 declarados y 5 exploratorios), juzgados con umbral 0,01 porque son varias pruebas. Pasa d = −2: β1 = −5,8701, p = 0,0025. Queda como pista para otro trabajo, no como resultado.",
       "cifras": [
         "−5,8701",
         "0,0025"
-      ]
+      ],
+      "significa": "los siete carteles son los desfases de −3 a +3 meses: dos estaban declarados de antemano (0 y +1) y cinco son exploratorios. Que se prenda solo el −2 es una pista y no un resultado, porque con tantas pruebas alguna puede salir por azar"
     }
   ],
   "diapositivas": [],
   "diapositivasId": [],
-  "diapositivaNota": "Sin diapositiva propia: está en el informe (sección 5.1). Si preguntan, se explica desde esta sala."
+  "diapositivaNota": "Sin diapositiva propia: está en el informe (sección 5.1). Si preguntan, se explica desde esta sala.",
+  "idea": "las cintas de correr con distinta inclinación. Acá se proyecta qué le pasaría al bono bajo distintos escenarios de PBI y se prueban los desfases en el tiempo",
+  "conGuion": false,
+  "sinGuion": "Esta sala no tiene guion: ningún integrante la dice en la exposición. Está en el informe (sección 5.1). Si preguntan por escenarios o desfases, se responde desde acá."
 }

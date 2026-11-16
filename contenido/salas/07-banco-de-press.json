@@ -6,13 +6,13 @@
   "diapositiva": "Regresión mensual",
   "quien": "Manu",
   "resumen": "β1, el test t, las sumas de cuadrados, R², el IC y el p-valor.",
-  "historia": "En el banco de press, la barra carga un disco chiquito arriba y uno enorme abajo: **poquito sobre muchísimo, casi cero**. Un cartel cuelga del techo en **±2,0049** y el **t** del test ni le roza las rodillas. Una balanza de tres platos pesa una **pluma** contra un **camión**. El Dado cae en **0,9940**. La cinta de medir se estira cuatro para cada lado con el cero en el medio. Y el cartel final: **no se rechaza**.",
+  "historia": "En el banco de press, la barra tiene un disco **chiquito** en la punta izquierda y uno **enorme** en la derecha: **poquito sobre muchísimo, casi cero**. Un cartel cuelga del techo en **±2,0049** y el **t** del test es un enano que ni le llega a las rodillas. Una balanza de tres platos pesa una **pluma** contra un **camión**. El Dado cae en **0,9940**. La cinta de medir se estira cuatro para cada lado con el cero en el medio. Y el cartel final: **no se rechaza**.",
   "puerta": "Salís del banco con la barra descargada y te cruzás con cuatro cintas de correr inclinadas distinto: ahí se proyecta.",
   "estaciones": [
     {
       "id": "r7-1",
       "lugar": "Barra olímpica con dos discos",
-      "imagen": "En un extremo, un disco chiquito con **0,5967**; en el otro, uno enorme con **38,6396**. Los dividís: sale **0,0154**. Una pluma sobre la barra en la que se lee **β0 = 2,5138**.",
+      "imagen": "Estás acostado en el banco de press, mirando la barra. En la punta **izquierda** de la barra hay un disco **chiquito** con el número **0,5967** y en la **derecha** uno **enorme** con **38,6396**. Dividís el chico por el grande y sale **0,0154**. En el centro de la barra hay pegado un papelito: **β0 = 2,5138** (de dónde parte la recta).",
       "frase": "Poquito sobre muchísimo: casi cero.",
       "dato": "Estimación por mínimos cuadrados: β̂1 = Sxy / Sxx = 0,5967 / 38,6396 = 0,0154, y β̂0 = media de Y − β̂1 · media de X = 2,5138 (media de X = 0,1326, media de Y = 2,5158).",
       "cifras": [
@@ -20,12 +20,13 @@
         "38,6396",
         "0,0154",
         "2,5138"
-      ]
+      ],
+      "significa": "la barra con dos discos es el cálculo de β1: la covarianza (Sxy = 0,5967) dividida por la variabilidad de X (Sxx = 38,6396) da 0,0154, casi cero. β0 = 2,5138 es el punto de partida de la recta"
     },
     {
       "id": "r7-2",
       "lugar": "Soporte del banco (el test t)",
-      "imagen": "Un cartel colgado del techo a **±2,0049**. El **t** del test (0,0076) es un enano que ni le roza las rodillas. En el soporte: **54 grados de libertad**.",
+      "imagen": "En el soporte de la barra (los dos caños donde se apoya) hay un cartel colgado del techo a **±2,0049**. El **t** del test (**0,0076**) es un enano parado en el piso que ni siquiera llega a la altura de las rodillas del cartel. Un cartelito en el soporte: **54 grados de libertad**.",
       "frase": "t = 0,0076: ni roza el 2.",
       "dato": "Test t sobre la pendiente, con n − 2 = 54 gl: s² = 159,97; EE(β̂1) = 2,0347; t = 0,0076. El valor crítico es ±2,0049: si |t| lo supera se rechaza H0. Acá no.",
       "cifras": [
@@ -33,48 +34,53 @@
         "2,0347",
         "0,0076",
         "2,0049"
-      ]
+      ],
+      "significa": "el cartel del techo es el valor crítico del test t (±2,0049): si el t calculado lo supera, se rechaza H0. El t = 0,0076 es diminuto y ni se acerca. Los 54 gl son 56 − 2"
     },
     {
       "id": "r7-3",
       "lugar": "Balanza de tres platos",
-      "imagen": "Tres platos: en el de arriba, un camión (**SCT = 8.638,37**). Abajo se reparte en una **pluma** (SCR = **0,0092**, lo que explica la recta) y casi todo el camión (SCE = 8.638,37, el error). R² **0,0000**.",
+      "imagen": "Al lado del banco hay una balanza de tres platos. En el plato de **arriba** hay un camión (**SCT = 8.638,37**: toda la variabilidad). Abajo, a la izquierda, una **pluma** (**SCR = 0,0092**: lo que explica la recta) y, a la derecha, casi todo el camión (**SCE = 8.638,37**: el error). Un cartelito: **R² 0,0000**.",
       "frase": "Una pluma contra un camión.",
       "dato": "SCT = SCR + SCE. Regresión (lo que explica el PBI) 0,0092, error 8.638,37, total 8.638,37. R² = SCR/SCT = 0,0000: el PBI explica el 0,0 % de la variación del bono. F = 0,0001 con (1; 54) gl y F = t², así que da el mismo p-valor.",
       "cifras": [
         "8.638,37",
         "0,0092",
         "0,0001"
-      ]
+      ],
+      "significa": "la balanza de tres platos es la descomposición de la variabilidad: la total (SCT) es la que explica la recta (SCR, la pluma) más la del error (SCE, casi todo). R² = SCR/SCT = 0,0000: el PBI explica el 0 % del bono"
     },
     {
       "id": "r7-4",
       "lugar": "Dado gigante sobre el banco",
-      "imagen": "Tirás el **Dado** y cae en **0,9940**, casi cien. El dado tiene la **p** de **P**uro azar: con valor así el azar alcanza y sobra. Muy lejos del 0,05 colgado en la pared.",
+      "imagen": "Sobre el banco hay un **dado gigante**. Lo tirás y cae en **0,9940**, casi cien. La **p** del dado es de **P**uro azar: con un número así el azar alcanza y sobra. En la pared hay colgado un **0,05** mucho más chico: el número del dado queda **muy lejos**.",
       "frase": "p alto: el azar alcanza.",
       "dato": "p-valor = 0,9940, muy por encima de 0,05: no se rechaza H0. El p-valor es la probabilidad de ver un resultado igual o más extremo que el observado si en realidad no hubiera relación.",
       "cifras": [
         "0,9940"
-      ]
+      ],
+      "significa": "el dado es el p-valor, 0,9940: qué tan raro sería este resultado si no hubiera relación. Al ser tan alto, el azar alcanza para explicarlo; y como es mayor que 0,05, no se rechaza H0"
     },
     {
       "id": "r7-5",
       "lugar": "Cinta métrica sobre el banco",
-      "imagen": "La cinta se estira **cuatro hacia cada lado** con el **cero justo en el medio**: de **−4,06** a **+4,09**. Un cartel: **cero adentro, no hay evidencia**.",
+      "imagen": "Una cinta métrica se estira sobre el banco: llega **cuatro hacia la izquierda** (**−4,06**) y **cuatro hacia la derecha** (**+4,09**), con el **cero** justo en el medio. Cartel: **cero adentro, no hay evidencia**.",
       "frase": "Cuatro para cada lado, cero en el medio.",
       "dato": "IC 95 % de β1: [−4,0639 ; 4,0948]. Contiene el cero, que es lo mismo que dice el test t. Fórmula: β̂1 ± t crítico (n − 2 gl) · EE(β̂1).",
       "cifras": [
         "−4,0639",
         "4,0948"
-      ]
+      ],
+      "significa": "la cinta es el intervalo de confianza de β1: de −4,06 a 4,09, con el cero en el medio. Coincide con el test: la pendiente podría ser cero"
     },
     {
       "id": "r7-6",
       "lugar": "Cartel de veredicto",
-      "imagen": "Un cartel enorme con letras rojas: **NO SE RECHAZA**. Debajo, en letra chica: «no es lo mismo que **es cero**». Dos jueces asienten.",
+      "imagen": "Sobre el banco hay un cartel enorme con letras rojas: **NO SE RECHAZA**. Debajo, en letra chica: «no es lo mismo que **es cero**». Dos jueces con chaleco, uno a cada lado, asienten.",
       "frase": "No se rechaza no es «es cero».",
       "dato": "No se rechaza H0. No rechazar H0 no prueba que la relación sea cero: los datos no alcanzan para afirmarla. Por eso los intervalos importan: dicen qué tamaños de relación quedan descartados.",
-      "cifras": []
+      "cifras": [],
+      "significa": "el cartel es la decisión: no hay evidencia suficiente para afirmar una relación. No es lo mismo que probar que la relación sea cero"
     }
   ],
   "diapositivas": [
@@ -82,5 +88,7 @@
   ],
   "diapositivasId": [
     "mco"
-  ]
+  ],
+  "idea": "el banco donde se prueba cuánta fuerza tiene la barra. Acá se prueba si la pendiente de la recta es distinta de cero: test t, R², p-valor e IC. Es el resultado central del trabajo",
+  "conGuion": true
 }
